@@ -1,0 +1,116 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forumContent.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+        <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+        <div class="for-box">
+            <li class="name-box">
+                <a href="#" >论坛内容</a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+        </div>
+     </ul>
+      <div class="forum-content-container">
+        <p class="article-name">{{ form_dtl.title }}</p>
+        <div class="author-info">
+          <div class="img-box">
+             {% if form.lastest_reply.user.user_pho %}
+                <img src="{% url 'enter_website' %}media/{{ form_dtl.user.user_pho }}" alt="">
+             {% else %}
+                <img src="{% static 'images/touxiang_d.png' %}" alt="">
+             {% endif %}
+          </div>
+          <div class="right-info">
+            <p class="name">{{ form_dtl.user.user_name }}</p>
+            <p class="time">{{ form_dtl.created_at | hdatetime }}</p>
+          </div>
+        </div>
+        <div class="article-content">
+            {{ form_dtl.content }}
+        </div>
+        <div class="login-box">
+          <div class="like-box">
+            <img src="{% static 'images/fabulous.png' %}" alt="">
+            <img src="{% static 'images/setp.png' %}" alt="">
+          </div>
+          <div class="data-box">
+            <p class="num">{{ form_dtl.answers }}</p>
+            <p class="name">评论</p>
+          </div>
+          <div class="data-box">
+            <p class="num">{{ form_dtl.views }}</p>
+            <p class="name">浏览</p>
+          </div>
+          <a href="{% url 'forum_detail' form_dtl.id %}?cwindow=cmtopen" class="el-button primary">评论</a>
+          <a href="{% url 'forum_detail' form_dtl.id %}?cwindow=cmtclose" style="margin-left:10px" class="el-button primary">收起</a>
+        </div>
+        {% if cwindow == "cmtopen" %}
+            {% include 'front/forum/window/comment.html' %}
+        {% endif %}
+        <div class="comment-list-box">
+          {% for form_cmtrlpy in form_cmtrlpy_list %}
+             <div class="comment-item">
+                <div class="top-comment">
+                  <div class="img-box">
+                     {% if form_cmtrlpy.user.user_pho %}
+                        <img src="{% url 'enter_website' %}media/{{ form_cmtrlpy.user.user_pho }}" alt="">
+                     {% else %}
+                        <img src="{% static 'images/touxiang_d.png' %}" alt="">
+                     {% endif %}
+                  </div>
+                  <div class="right-info-box">
+                    <p class="name">{{ form_cmtrlpy.user.user_name }}<span>{{ form_cmtrlpy.created_at | hdatetime }}</span></p>
+                    <p class="content">{{ form_cmtrlpy.content }}</p>
+                    <div class="reply-box">
+                     {% if form_cmtrlpy.reply %}
+                          <div class="left">
+                            {% if form_cmtrlpy.reply_lastest %}
+                                <div class="small-img-box">
+                                     {% if form_cmtrlpy.reply_lastest.user.user_pho %}
+                                        <img src="{% url 'enter_website' %}media/{{ form_cmtrlpy.reply_lastest.user.user_pho }}" alt="">
+                                     {% else %}
+                                        <img src="{% static 'images/touxiang_d.png' %}" alt="">
+                                     {% endif %}
+                                </div>
+                                <span class="num">{{ form_cmtrlpy.nums }}条回复</span>
+                                <span class="text">最新回复 {{ form_cmtrlpy.reply_lastest.created_at | hdatetime }}</span>
+                            {% endif %}
+                            {% if pwindow == "popen" and form_cmtrlpy.id == frpid %}
+                              <a href="{% url 'forum_detail' form_dtl.id %}?pwindow=pclose&frpid={{ form_cmtrlpy.id }}">
+                                <img src="{% static 'images/icon-bottom.png' %}" alt="" style="width: 14px;height: 14px;cursor: pointer;">
+                              </a>
+                            {% else %}
+                              <a href="{% url 'forum_detail' form_dtl.id %}?pwindow=popen&frpid={{ form_cmtrlpy.id }}">
+                                 <img src="{% static 'images/icon-right.png' %}" alt="" style="width: 14px;height: 14px;cursor: pointer;">
+                              </a>
+                           {% endif %}
+                          </div>
+                      {% endif %}
+                      <div class="left"></div>
+                      <div class="right">
+                        <img src="{% static 'images/fabulous.png' %}" alt="">
+                        <img src="{% static 'images/setp.png' %}" alt="">
+                          <a href="{% url 'forum_detail' form_dtl.id %}?rwindow=ropen&frpid={{ form_cmtrlpy.id }}" class="el-button primary">回复</a>
+                          <a href="{% url 'forum_detail' form_dtl.id %}?rwindow=rclose&frpid={{ form_cmtrlpy.id }}" class="el-button primary" style="margin-left:10px">收起</a>
+                       </div>
+                    </div>
+                        {% if pwindow == "popen" and form_cmtrlpy.id == frpid %}
+                            {% include 'front/forum/window/reply_list.html' %}
+                        {% endif %}
+                  </div>
+                </div>
+                {% if rwindow == "ropen" and form_cmtrlpy.id == frpid %}
+                    {% include 'front/forum/window/reply.html' %}
+                {% endif %}
+             </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock %}

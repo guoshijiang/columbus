@@ -1,0 +1,61 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <form class="form-inline searchForm" id="searchForm" method="GET">
+                {% include 'backend/select/select_marchant.html' %}
+                <div class="form-group">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
+                </div>
+            </form>
+            </div>
+          </div>
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>开通人</th>
+                        <th>支付币种</th>
+                        <th>支付金额</th>
+                        <th>商家名称</th>
+                        <th>开通时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for open_record in open_record_list %}
+                        <tr>
+                            <td>{{ open_record.user.user_name }}</td>
+                            <td>{{ open_record.pay_way }}</td>
+                            <td>{{ open_record.pay_coin_amount | keep_two_decimal_places }}</td>
+                            <td>{{ open_record.marchant.name }}</td>
+                            <td>{{ open_record.created_at | hdatetime }}</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                  {% include 'backend/select/pagination.html' with items=open_record_list %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

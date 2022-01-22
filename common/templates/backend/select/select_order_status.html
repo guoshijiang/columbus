@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<div class="form-group">
+   <span class="el-form-label">商品类别: </span>
+   <select id="goods_type-select"  name="status" class="form-control el-select">
+      {% if status == "all" %}
+          <option value="all">全部</option>
+      {% else %}
+          <option value="all">全部</option>
+      {% endif %}
+      {% if status == "PAY_SUCCESS" %}
+          <option value="PAY_SUCCESS">支付成功</option>
+      {% else %}
+          <option value="PAY_SUCCESS">支付成功</option>
+      {% endif %}
+      {% if status == "SEND_GOODS" %}
+          <option value="SEND_GOODS">已发货</option>
+      {% else %}
+          <option value="SEND_GOODS">已发货</option>
+      {% endif %}
+       {% if status == "RECV_GOODS" %}
+          <option value="RECV_GOODS">已收货</option>
+      {% else %}
+          <option value="RECV_GOODS">已收货</option>
+      {% endif %}
+      {% if status == "RETURN_GOODS" %}
+          <option value="RETURN_GOODS">退货换货</option>
+      {% else %}
+          <option value="RETURN_GOODS">退货换货</option>
+      {% endif %}
+      {% if status == "FINISH" %}
+          <option value="FINISH">已完成</option>
+      {% else %}
+          <option value="FINISH">已完成</option>
+      {% endif %}
+   </select>
+</div>
+
+

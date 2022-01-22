@@ -1,0 +1,68 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+              <div class="module-box-body">
+                   <form class="form-inline searchForm" id="searchForm" method="GET">
+                        {% include 'backend/select/input_user_name.html' %}
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
+                        </div>
+                    </form>
+                </div>
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>反馈用户</th>
+                        <th>反馈标题</th>
+                        <th>反馈内容</th>
+                        <th>是否处理</th>
+                        <th>反馈时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for help_dk in help_dk_list %}
+                        <tr>
+                            <td>{{ help_dk.user.user_name }}</td>
+                            <td>{{ help_dk.title }}</td>
+                            <td>{{ help_dk.content }}</td>
+                            <td>{{ help_dk.process | helpdesk_handle }}</td>
+                            <td>{{ help_dk.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'bhd_detail' help_dk.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 处理
+                                </a>
+                                <a href="{% url 'bhd_close' help_dk.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 关闭
+                                </a>
+                            </td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                  {% include 'backend/select/pagination.html' with items=help_dk_list %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header">
+                <div>
+                    <a href="{% url 'create_coin' %}" data-toggle="tooltip" class="btn btn-primary btn-sm" data-original-title="添加">
+                        <i class="fa fa-plus"></i> 添加
+                    </a>
+                </div>
+              </div>
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>资产名称</th>
+                        <th>链名称</th>
+                        <th>美元价格</th>
+                        <th>人民币价格</th>
+                        <th>币种精度</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cin in coins %}
+                        <tr>
+                            <td>{{ cin.name }}</td>
+                            <td>{{ cin.chain_name }}</td>
+                            <td>{{ cin.usd_price | keep_two_decimal_places }}</td>
+                            <td>{{ cin.cny_price | keep_two_decimal_places }}</td>
+                            <td>{{ cin.unit }}</td>
+                            <td>{{ cin.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'update_coin' cin.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 修改
+                                </a>
+                                 <a href="{% url 'delete_coin' cin.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 删除
+                                </a>
+                            </td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

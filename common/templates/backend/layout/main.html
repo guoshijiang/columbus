@@ -1,0 +1,21 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>区块链后台</title>
+  <link rel="stylesheet" href="{% static 'backend/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'backend/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'backend/css/AdminLTE.min.css' %}">
+  <link rel="stylesheet" href="{% static 'backend/css/common.css' %}">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1289021_ontdzrqpqll.css">
+  <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+   {% block body %}
+   {% endblock %}
+</body>
+</html>

@@ -1,0 +1,62 @@
+.login-container {
+  width: 100%;
+}
+.login-container .login-content-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 0;
+  background-color: #fff;
+}
+.login-container .login-content-container .login-title {
+  font-size: 30px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #343434;
+  margin-bottom: 22px;
+}
+.login-container .login-content-container .login-desc {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #343434;
+  text-align: center;
+}
+.login-container .login-content-container .form-container {
+  width: 450px;
+  margin: 43px auto 0;
+}
+.login-container .login-content-container .form-container .select-box {
+  width: 450px;
+}
+.login-container .login-content-container .form-container .verification-code-box {
+  width: 100%;
+  margin-bottom: 22px;
+}
+.login-container .login-content-container .form-container .verification-code-box img {
+  width: 100%;
+}
+.login-container .login-content-container .form-container .login-btn {
+  width: 450px;
+  background: linear-gradient(90deg, #008dff, #0060ff);
+  box-shadow: 0px 10px 20px 0px rgba(76, 110, 245, 0.3);
+  border-radius: 22px;
+  margin-top: 50px;
+}
+.login-container .login-content-container .cipher-container{
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.login-container .login-content-container .cipher-container .cipher-text{
+  padding: 20px;
+}
+.login-container .login-content-container .cipher-container .hint-text{
+  padding: 10px 20px;
+  color: red;
+  border-bottom: 1px solid #ddd;
+}

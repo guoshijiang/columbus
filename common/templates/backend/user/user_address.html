@@ -1,0 +1,50 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="btn-group">
+                <a href="{% url 'user_detail' user_id %}" class="btn flat btn-sm btn-default BackButton">
+                    <i class="fa fa-arrow-left"></i>
+                    返回
+                </a>
+              </div>
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>收货人</th>
+                        <th>电话号码</th>
+                        <th>地址</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for u_addr in u_addr_list %}
+                        <tr>
+                            <td>{{ u_addr.user_name }}</td>
+                            <td>{{ u_addr.phone }}</td>
+                            <td>{{ u_addr.address }}</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

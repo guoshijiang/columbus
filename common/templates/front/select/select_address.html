@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<div class="el-form-item">
+   {% if has_addr %}
+       <span class="el-form-label">请选择收获地址: </span>
+       <select id="address-select"  name="address_id" class="el-select">
+          {% for user_addr in user_addr_list %}
+            {% if user_addr.id == address_id %}
+               <option value="{{ user_addr.id }}" selected>{{ user_addr.address }}</option>
+            {% else %}
+                <option value="{{ user_addr.id }}">{{ user_addr.address }}</option>
+            {% endif %}
+         {% endfor %}
+       </select>
+    {% else %}
+       <a style="text-decoration: none" href="{% url 'add_address' %}"><span class="el-form-label" style="color:red">您还没有收货地址，不能下单购买商品，点击创建地址</span></a>
+    {% endif %}
+</div>

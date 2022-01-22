@@ -1,0 +1,98 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <style>
+        .captcha {
+            margin-left: 140px;
+            width: 160px;
+            height: 80px;
+        }
+        #id_captcha_1 {
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+      <ul class="breadcrumb-navigation-container">
+        <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+        <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+        <div class="for-box">
+          <li class="name-box">
+            <a href="{% url 'register' %}" >注册</a>
+          </li>
+          <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+        </div>
+      </ul>
+      <div class="login-container">
+        <div class="login-content-container">
+          <h6 class="login-title">欢迎来到哥伦布</h6>
+          <p class="login-desc">欢迎注册哥伦布，请填写你的用户名和你的密码，你就可以在一个安全的环境中进行交易</p>
+          <div class="form-container">
+          <div class="search-select-box">
+            <div class="search-select-content">
+              <form action="{% url 'register' %}" class="el-form" method="post">
+                <div class="el-form-item">
+                    {{ register_form.user_name }}
+                    {% if register_form.user_name.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                             {{ register_form.user_name.errors }}
+                         </div>
+                    {% endif %}
+                </div>
+                <div class="el-form-item">
+                    {{ register_form.password }}
+                    {% if register_form.password.errors %}
+                        <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ register_form.password.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="el-form-item">
+                    {{ register_form.c_password }}
+                    {% if register_form.c_password.errors %}
+                        <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ register_form.c_password.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="el-form-item">
+                    {{ register_form.pin_code }}
+                    <p style="color:red; margin-left:8px; margin-top:5px">
+                      该pin码主要用于资金提取时使用，自行设置，非常重要
+                    </p>
+                    {% if register_form.pin_code.errors %}
+                        <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ register_form.pin_code.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="el-form-item" id="captcha-code">
+                  {{ register_form.captcha }}
+                  {% if register_form.captcha.errors %}
+                        <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ register_form.captcha.errors }}
+                        </div>
+                  {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <button type="submit" class="el-button primary login-btn">加入哥伦布</button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

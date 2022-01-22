@@ -1,0 +1,74 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <form class="form-inline searchForm" id="searchForm" action="#">
+                {% include 'backend/select/select_marchant.html' %}
+                {% include 'backend/select/select_order_status.html' %}
+                <div class="form-group">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询
+                    </button>
+                </div>
+            </form>
+            </div>
+          </div>
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>管理商家</th>
+                        <th>购买人</th>
+                        <th>订单号</th>
+                        <th>购买数量</th>
+                        <th>支付方式</th>
+                        <th>支付金额</th>
+                        <th>订单状态</th>
+                        <th>购买时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      {% for order in order_lists %}
+                        <tr>
+                            <td>{{ order.goods.name }}</td>
+                            <td>{{ order.merchant.name }}</td>
+                            <td>{{ order.user.user_name }}</td>
+                            <td>{{ order.order_number }}</td>
+                            <td>{{ order.buy_nums }}</td>
+                            <td>{{ order.pay_asset }}</td>
+                            <td>{{ order.pay_coin_amount | keep_two_decimal_places }}</td>
+                            <td>{{ order.status | user_order_status }}</td>
+                            <td>{{ order.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'b_order_detail' order.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 详情
+                                </a>
+                            </td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+               </div>
+               <div class="box-footer">
+                 {% include 'backend/select/pagination.html' with items=order_lists %}
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

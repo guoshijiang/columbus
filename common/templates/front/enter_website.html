@@ -1,0 +1,57 @@
+{% load staticfiles clb_tags%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入站验证</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/protect.css' %}">
+    <style>
+        .captcha {
+            margin-left: 140px;
+            width: 160px;
+            height: 80px;
+        }
+        #id_captcha_1 {
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+  <div class="protect-container">
+    <div class="header-box">
+      <img src="{% static 'images/logo.jpg' %}" alt="logo" class="logo">
+    </div>
+    <div class="protect-content">
+      <div class="protect-box">
+        <p class="desc">为了检查，请写下你看到的验证码。</p>
+        <h6 class="title">DDOS 保护</h6>
+        <form action="{% url 'enter_website' %}" class="el-form" method="post">
+          {{ enter_form.captcha }}
+          {% if enter_form.captcha.errors %}
+             <div style="color:red; margin-left:8px; margin-top:5px">
+                 {{ enter_form.captcha.errors }}
+             </div>
+          {% endif %}
+          <div class="el-form-item" style="margin:30px;">
+              <button type="submit" class="el-button primary next-btn">参观哥伦布</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <block-footer></block-footer>
+  </div>
+    <p class="footer-container">Copyright ©2013-2030  makt  沪ICP备10011451号-6 </p>
+</body>
+</html>

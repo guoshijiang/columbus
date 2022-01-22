@@ -1,0 +1,158 @@
+@import './common/accountInfo.less';
+@import './common/shopGrowth.less';
+@import './common/shopAdmin.less';
+.shop-admin-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .shop-admin-left-container{
+    width: 380px;
+    margin-bottom: 30px;
+  }
+  .shop-admin-right-container{
+    width: 810px;
+    margin-bottom: 30px;
+    .shop-tab-container{
+      width: 100%;
+      margin-top: 20px;
+      ::v-deep .el-tabs__item.is-active{
+        color: #333;
+        background-color: #F0F0F0;
+      }
+    }
+    .commodity-list-box{
+      width: 100%;
+      margin-top: 10px;
+      li{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #F0F0F0;
+        .left-commodity-box{
+          a{
+            display: flex;
+            text-decoration: none;
+          }
+          .img-box{
+            width: 140px;
+            height: 140px;
+            background: #FFFFFF;
+            border: 1px solid #EEEEEE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            img{
+              max-width: 140px;
+              max-height: 140px;
+              display: block;
+            }
+          }
+          .info-box{
+            width: 345px;
+            .icon-box{
+              margin-bottom: 14px;
+              span{
+                font-size: 14px;
+                font-family: PingFang SC;
+                font-weight: 400;
+                margin-right: 10px;
+              }
+              .blue-text{
+                color: #1652B5;
+              }
+              .green-text{
+                color: #008B4C;
+              }
+            }
+            .name{
+              font-size: 18px;
+              font-family: PingFang SC;
+              font-weight: bold;
+              color: #333333;
+              line-height: 20px;
+              margin-bottom: 12px;
+            }
+            .desc{
+              font-size: 14px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #343434;
+              margin-bottom: 7px;
+            }
+            .see-data{
+              font-size: 14px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #343434;
+              margin-bottom: 7px;
+              span{
+                margin-right: 30px;
+              }
+            }
+            .stock{
+              font-size: 14px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #343434;
+            }
+          }
+        }
+        .right-commodity-box{
+          width: 200px;
+          .name{
+            font-size: 18px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #343434;
+            margin-bottom: 4px;
+            text-align: right;
+          }
+          .price{
+            font-size: 20px;
+            font-family: SourceHanSansCN;
+            font-weight: 500;
+            color: #EC5151;
+            margin-bottom: 10px;
+            text-align: right;
+          }
+          .exchange-rate{
+            font-size: 16px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #343434;
+            line-height: 16px;
+            text-align: right;
+          }
+          .btn-box{
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            .el-button{
+              margin-left: 10px;
+            }
+            .remove-btn{
+              width: 90px;
+              height: 30px;
+              background: #1652B5;
+              border-radius: 15px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 14px auto 0;
+            }
+          }
+        }
+      }
+    }
+    .pagination-box{
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

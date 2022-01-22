@@ -1,0 +1,154 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+              <div class="module-box-body">
+                <div class="box-header with-border">
+                  <div class="btn-group">
+                      <a href="{% url 'b_order_list' %}" class="btn flat btn-sm btn-default BackButton">
+                          <i class="fa fa-arrow-left"></i>
+                          返回
+                      </a>
+                  </div>
+                </div>
+                <div class="box-body table-responsive">
+                  <h4 style="margin-bottom: 10px;">购买的商品信息</h4>
+                  <table class="table table-hover table-bordered datatable" width="100%">
+                      <thead>
+                          <tr>
+                              <th>商品标题</th>
+                              <th>商品LOGO</th>
+                              <th>商品价格</th>
+                              <th>关联商家</th>
+                              <th>特殊说明</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>{{ goods.title }}</td>
+                              <td>
+                                  <img style="max-width: 40px" src="{% url 'enter_website' %}media/{{ goods.logo.image }}">
+                              </td>
+                              <td>{{ goods.price | keep_two_decimal_places }}</td>
+                              <td>{{ goods.merchant.name }}</td>
+                              <td>{{ goods.mark }}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+                <hr/>
+                <div class="box-body table-responsive">
+                  <h4 style="margin-bottom: 10px;">订单信息</h4>
+                  <table class="table table-hover table-bordered datatable" width="100%">
+                      <thead>
+                      <tr>
+                          <th>订单号</th>
+                          <th>订单状态</th>
+                          <th>购买人</th>
+                          <th>购买数量</th>
+                          <th>支付币种</th>
+                          <th>支付金额</th>
+                          <th>物流公司</th>
+                          <th>快递运单号</th>
+                          <th>退货物流公司</th>
+                          <th>退货运单号</th>
+                          <th>支付时间</th>
+                          <th>是否退换货</th>
+                         <th>是否评价</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>{{ order_dtl.order_number }}</td>
+                              <td>{{ order_dtl.status | user_order_status }}</td>
+                              <td>{{ order_dtl.user.user_name }}</td>
+                              <td>{{ order_dtl.buy_nums }}</td>
+                              <td>{{ order_dtl.pay_asset.name }}</td>
+                              <td>{{ order_dtl.pay_coin_amount | keep_two_decimal_places }}</td>
+                              <td>{{ order_dtl.logistics }}</td>
+                              <td>{{ order_dtl.express_number }}</td>
+                              <td>{{ order_dtl.ret_logistics }}</td>
+                              <td>{{ order_dtl.ret_ship_number }}</td>
+                              <td>{{ order_dtl.pay_at }}</td>
+                              <td>{{ order_dtl.is_cancle }}</td>
+                              <td>{{ order_dtl.is_comment }}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </div>
+                <hr/>
+                  {% if order_ret %}
+                    <div class="box-body table-responsive">
+                      <h4 style="margin-bottom: 10px;">订单退换货信息</h4>
+                      <table class="table table-hover table-bordered datatable" width="100%">
+                          <thead>
+                          <tr>
+                              <th>退货原因</th>
+                              <th>问题描述</th>
+                              <th>问题图片</th>
+                              <th>商家拒绝原因</th>
+                              <th>申述描述</th>
+                              <th>申诉胜出方</th>
+                              <th>申诉失败方</th>
+                              <th>调解理由</th>
+                              <th>状态</th>
+                              <th>是否已发货物</th>
+                              <th>退货/换货</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                              <td>{{ order_ret.ret_goods_rs }}</td>
+                              <td>{{ order_ret.qs_describe }}</td>
+                              <td>
+                                   <img style="max-width: 40px" src="{% url 'enter_website' %}media/{{ order_ret.qs_img_one }}">
+                                   <img style="max-width: 40px" src="{% url 'enter_website' %}media/{{ order_ret.qs_img_two }}">
+                                   <img style="max-width: 40px" src="{% url 'enter_website' %}media/{{ order_ret.qs_img_three }}">
+                              </td>
+                              <td>{{ order_ret.ret_pay_rs }}</td>
+                              <td>{{ order_ret.adjust_content }}</td>
+                              <td>{{ order_ret.vectory_id  }}</td>
+                              <td>{{ order_ret.fail_id }}</td>
+                              <td>{{ order_ret.adjust_reason }}</td>
+                              <td>{{ order_ret.process }}</td>
+                              <td>{{ order_ret.is_send_goods }}</td>
+                              <td>{{ order_ret.fund_ret }}</td>
+                          </tr>
+                          </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
+              </div>
+               {% if order_ret %}
+               <div class="box-footer">
+                    <div class="col-sm-12 col-md-12" style="text-align: center">
+                        <div class="btn-group">
+                            {% if order_ret.process == "RETURN_SELLER_RJT" and order_ret.adjust_reason == "" %}
+                                <a href="{% url 'order_adjust' order_dtl.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                    调解
+                                </a>
+                            {% elif order_ret.process == "RETURN_SELLER_RJT" and order_ret.adjust_reason != ""  %}
+                                 <a type="reset" class="btn flat btn-default dataFormReset">
+                                    调解结束
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+             {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

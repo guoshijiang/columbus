@@ -1,0 +1,122 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+    <style>
+      .form-horizontal .control-label{
+        padding-top: 0;
+      }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header with-border">
+                <div class="btn-group">
+                    <a href="{% url 'b_goods_list' %}" class="btn flat btn-sm btn-default BackButton">
+                        <i class="fa fa-arrow-left"></i>
+                        返回
+                    </a>
+                </div>
+              </div>
+              <div  class="form-horizontal dataForm" style="padding-top: 20px;">
+                <div class="box-body" style="">
+                    <input type="hidden" name="id" value="33">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">商品标题</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.title }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="logo" class="col-sm-2 control-label">商品封面</label>
+                        <div class="col-sm-10 col-md-4">
+                          <img style="width:120px; height: 120px" src="{% url 'enter_website' %}media/{{ gds_dtl.logo.image }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="logo" class="col-sm-2 control-label">商品图片</label>
+                        {% for g_img in gds_dtl.goods_image.all %}
+                            <div class="col-sm-10 col-md-4">
+                              <img width="220px" height="220px" src="{% url 'enter_website' %}media/{{ g_img.image }}" alt="">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="merchant_id" class="col-sm-2 control-label">所属商户</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.merchant.name }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="merchant_id" class="col-sm-2 control-label">商品类别</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.goods_type }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="merchant_id" class="col-sm-2 control-label">商品产地</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.origin_state }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="merchant_id" class="col-sm-2 control-label">商品种类</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.goods_cat.name }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_amount" class="col-sm-2 control-label">商品总量</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.total_amount }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_amount" class="col-sm-2 control-label">商品剩余数量</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.left_amount }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="goods_price" class="col-sm-2 control-label">商品价格</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.price | keep_two_decimal_places }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="goods_mark" class="col-sm-2 control-label">商品特殊说明</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.mark }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" style="">
+                        <label for="goods_detail" class="col-sm-2 control-label">产品详细介绍</label>
+                        <div class="col-sm-10 col-md-4">
+                          <p>{{ gds_dtl.detail }}</p>
+                      </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="col-sm-12 col-md-12" style="text-align: center">
+                        <div class="btn-group">
+                            <a href="{% url 'b_goods_comment_list' gds_dtl.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                商品评价
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="#" >收藏的商家</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="order-container">
+        <div class="order-left-container">
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="order-right-container">
+          <div class="title-box">
+            <p class="title">收藏的商家</p>
+            <p class="desc">下面的供应商将在搜索和分类中显示他们的名单没有发现任何记录。</p>
+          </div>
+          <div class="el-table">
+            <ul class="el-table-header">
+              <li>店铺名称</li>
+              <li>日期</li>
+              <li>移除</li>
+            </ul>
+            <div class="el-table-body">
+                {% if m_clt_list %}
+                  {% for m_clt in m_clt_list %}
+                      <ul class="el-table_data_item">
+                        <li>
+                            <a href="{% url 'user_marchant_detail' m_clt.marchant.id %}">
+                                {{ m_clt.marchant.name }}
+                            </a>
+                        </li>
+                        <li>{{ m_clt.created_at | hdatetime }}</li>
+                        <li>
+                            <a href="{% url 'del_collect' m_clt.id %}" class="el-button primary">移除</a>
+                        </li>
+                      </ul>
+                  {% endfor %}
+                {% else %}
+                  <div class="el-table_no_data">暂无数据</div>
+                {% endif %}
+            </div>
+          </div>
+          {% include 'front/select/pagination.html' with items=m_clt_list %}
+        </div>
+    </div>
+ </div>
+{% endblock %}

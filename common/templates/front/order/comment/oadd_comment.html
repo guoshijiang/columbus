@@ -1,0 +1,89 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/publishComment.css' %}">
+    <style>
+        #id_service_star, #id_quality_star, #id_trade_star{
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+        #id_content {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >订单评价</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="place-order-container">
+        <div class="place-order-left-container">
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="place-order-right-container">
+          <p class="name-box">发布评论</p>
+          <form enctype="multipart/form-data" method="post" action="#">
+              <div class="publish-comment-box">
+                <div class="el-form">
+                  <div class="el-form-item">
+                      {{ cmt_form.content }}
+                      {% if cmt_form.content.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                             {{ cmt_form.content.errors }}
+                         </div>
+                      {% endif %}
+                  </div>
+                  <div class="el-form-item">
+                    <div class="el-form-label">服务评价</div>
+                    {{ cmt_form.service_star }}
+                    {% if cmt_form.service_star.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                             {{ cmt_form.service_star.errors }}
+                         </div>
+                      {% endif %}
+                  </div>
+                  <div class="el-form-item">
+                    <div class="el-form-label">质量评价</div>
+                    {{ cmt_form.quality_star }}
+                    {% if cmt_form.quality_star.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                             {{ cmt_form.quality_star.errors }}
+                         </div>
+                      {% endif %}
+                  </div>
+                  <div class="el-form-item">
+                    <div class="el-form-label">交易评价</div>
+                    {{ cmt_form.trade_star }}
+                    {% if cmt_form.trade_star.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                             {{ cmt_form.trade_star.errors }}
+                         </div>
+                      {% endif %}
+                  </div>
+                </div>
+                <button type="submit" class="submit-btn">评论</button>
+              </div>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

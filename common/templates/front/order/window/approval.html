@@ -1,0 +1,22 @@
+{% load staticfiles clb_tags %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>申述理由</p>
+      <a href="{% url 'order_detail' order_dtl.id %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <form enctype="multipart/form-data" method="post" action="{% url 'return_orde_approval' order_dtl.id %}">
+        <div class="el-dialog__body">
+          <div class="el-form">
+            <div class="el-form-item">
+              <div class="el-form-label">申述理由：</div>
+              <input type="text" name="approval" class="el-input">
+            </div>
+          </div>
+        </div>
+        <div class="el-dialog__footer">
+          <button type="submit" class="el-button primary">确定</button>
+        </div>
+    </form>
+  </div>
+</div>

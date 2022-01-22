@@ -1,0 +1,138 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/balance.css' %}">
+    <style>
+        #id_amount, #id_asset {
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >首页</a>
+        </li>
+<span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+      <div class="account-balance-container">
+        <div class="account-balance-left-container">
+           <div class="detailed-list-2">
+            <p class="module-title">钱包功能选项</p>
+            <div class="detailed-list-2-content">
+             {% include "front/wallet/tab_box/wallet_tab.html" %}
+            </div>
+          </div>
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="account-balance-right-container">
+          <div class="hint-text">
+            <span></span>
+            <img src="{% static 'images/jinggao.png' %}" alt="jinggao">
+            <p>
+              目前平台支持两种类型的虚拟币充值，优劣比对如下，您可自行选择合适的代币。
+            </p>
+          </div>
+          <div class="hint-box">
+            <p>ETH         隐私性一般   转账费高       购买简单    单价非常高</p>
+            <p>TRC20-USDT  隐私性差     转账费非常便宜  购买简单    单价很低</p>
+          </div>
+          <div class="extract-box">
+            <p class="extract-title">提现</p>
+            <div class="extract-content">
+              <p class="title">
+                  <span>BTC余额: {{ user_btc_wallet.balance | keep_two_decimal_places }}</span>
+                  <span style="margin-left:20px">USDT余额: {{ user_usdt_wallet.balance | keep_two_decimal_places }}</span>
+              </p>
+              <div class="form-box">
+                <form method="post" action="{% url 'wallet_withdraw' %}">
+                    <div class="el-form">
+                      <div class="el-form-item">
+                        <div class="el-form-label">币种</div>
+                         {{ withdraw_form.asset }}
+                         {% if withdraw_form.asset.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                 {{ withdraw_form.asset.errors }}
+                             </div>
+                         {% endif %}
+                      </div>
+                      <div class="el-form-item">
+                        <div class="el-form-label">{{ user_wallet.asset.name }}地址</div>
+                         {{ withdraw_form.address }}
+                         {% if withdraw_form.address.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                 {{ withdraw_form.address.errors }}
+                             </div>
+                         {% endif %}
+                      </div>
+                      <div class="el-form-item">
+                        <div class="el-form-label">金额</div>
+                         {{ withdraw_form.amount }}
+                         {% if withdraw_form.amount.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                 {{ withdraw_form.amount.errors }}
+                             </div>
+                         {% endif %}
+                         {% if tip_msg %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                {{ tip_msg }}
+                             </div>
+                         {% endif %}
+                      </div>
+                      <div class="el-form-item">
+                        <div class="el-form-label">pin码</div>
+                        {{ withdraw_form.pin_code }}
+                         {% if withdraw_form.pin_code.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                 {{ withdraw_form.pin_code.errors }}
+                             </div>
+                         {% endif %}
+                      </div>
+                      {% if cipher_text_hex %}
+                        <div class="el-form-item">
+                           <textarea cols="40" rows="10" style="height:200px; width:560px;outline:none; padding:0; margin:0; box-sizing: border-box" >
+                              {{ cipher_text_hex }}
+                            </textarea>
+                        </div>
+                        <div class="el-form-item">
+                            <div class="el-form-label">双重认证码</div>
+                            {{ withdraw_form.factor }}
+                             {% if withdraw_form.factor.errors %}
+                                 <div style="color:red; margin-left:8px; margin-top:5px">
+                                     {{ withdraw_form.factor.errors }}
+                                 </div>
+                             {% endif %}
+                        </div>
+                      {% endif %}
+                      <div class="el-form-item">
+                        <div class="el-form-label"></div>
+                        <button type="submit" class="el-button primary send-btn">确认提取</button>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+             <div class="pgp-box">
+                <p class="pgp-title">注意</p>
+                <p class="pgp-content">提现地址需要填写正确，目前 USDT 只支持 TRC20-USDT提现，其他主链上不支持</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

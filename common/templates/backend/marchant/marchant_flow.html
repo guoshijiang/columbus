@@ -1,0 +1,63 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <form class="form-inline searchForm" id="searchForm" method="GET">
+                {% include 'backend/select/select_marchant.html' %}
+                <div class="form-group">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
+                </div>
+            </form>
+            </div>
+          </div>
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>商家名称</th>
+                        <th>订单ID</th>
+                        <th>支付币种</th>
+                        <th>支付金额</th>
+                        <th>是否有效</th>
+                        <th>是否结算</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for flow in flow_list %}
+                        <tr>
+                            <td>{{ flow.marchant.name }}</td>
+                            <td>{{ flow.order_id }}</td>
+                            <td>{{ flow.asset.name }}</td>
+                            <td>{{ flow.coin_amount |  keep_two_decimal_places }}</td>
+                            <td>{{ flow.is_valid }}</td>
+                            <td>{{ flow.is_stat }}</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                  {% include 'backend/select/pagination.html' with items=flow_list %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

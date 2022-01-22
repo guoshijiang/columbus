@@ -1,0 +1,12 @@
+{% load staticfiles clb_tags%}
+<div class="header-container">
+  <div class="header-box">
+    <a href="#" ><img src="{% static 'images/logo.jpg' %}" alt="logo" class="logo"></a>
+    <div>
+      <div class="login-box">
+        <a href="{% url 'before_login' %}">登录</a>
+        <a href="{% url 'register' %}">注册</a>
+      </div>
+    </div>
+  </div>
+</div>

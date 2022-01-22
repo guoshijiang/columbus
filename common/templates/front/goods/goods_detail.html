@@ -1,0 +1,174 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/commodity.css' %}">
+{% endblock %}
+{% block body %}
+    <div class="layout-box">
+        <ul class="breadcrumb-navigation-container">
+            <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+            <div class="for-box">
+                <li class="name-box">
+                    <a href="#" >商品详情</a>
+                </li>
+                <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+            </div>
+        </ul>
+        <div class="shop-detail-container">
+            <div class="shop-detail-left-container">
+                {% include "front/public/list_item.html" %}
+                {% include "front/public/coin_rete.html" %}
+            </div>
+            <div class="shop-detail-right-container">
+                <div class="shop-basic-info-box">
+                    <div class="left-basic-info">
+                        <div class="big-img-box">
+                            <img src="{% url 'enter_website' %}media/{{ goods_detail.logo }}" alt="">
+                        </div>
+                        <ul class="small-img-box">
+                            {% for goods_img in goods_detail.goods_image.all %}
+                                <a href="{% url 'enter_website' %}media/{{ goods_img.image }}">
+                                    <li>
+                                        <img src="{% url 'enter_website' %}media/{{ goods_img.image }}" alt="">
+                                    </li>
+                                </a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="right-basic-info">
+                        <a style="text-decoration:none" href="{% url 'marchants_detail' goods_detail.merchant.id %}">
+                            <span class="blue-text" style="margin-bottom:6px; font-size:18px">商家:{{ goods_detail.merchant }}</span>
+                        </a>
+                        <p class="shop-name"> {{ goods_detail.title }}</p>
+                        <div class="desc">
+                            <p>{{ goods_detail.goods_name }}</p>
+                            <span class="blue-icon">供应商级别: {{ goods_detail.merchant.shop_level }}</span>
+                            <span class="green-icon">信任级别: {{ request.session.member_level }}</span>
+                        </div>
+                        <p class="project-characteristic-title">产品特性</p>
+                        <ul class="project-characteristic-content">
+                            <li>
+                                <div>
+                                    <p>商品类型</p>
+                                    <p class="gray-text">{{ goods_detail.goods_type }}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <p>剩余量</p>
+                                    <p class="gray-text">{{ goods_detail.left_amount }}</p>
+                                </div>
+                            </li>
+                            {% if goods_detail.goods_type == "实体商品" %}
+                                <li>
+                                    <div>
+                                        <p>商品类别</p>
+                                        <p class="gray-text">{{ goods_detail.goods_cat }}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p>原产国</p>
+                                        <p class="gray-text">{{ goods_detail.origin_state }}</p>
+                                    </div>
+                                </li>
+                            {% endif %}
+                            <li class="no-margin-bottom">
+                                <div>
+                                    <p>特殊说明</p>
+                                    <p class="gray-text">{{ goods_detail.mark }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="price-box">
+                            <p class="price">单价：<span>¥ {{ goods_detail.price | keep_two_decimal_places }}</span></p>
+                            <p class="volume">已售：{{ goods_detail.sell_nums }}</p>
+                        </div>
+                        <form method="post" action="{% url 'pay_order_info' %}">
+                            <div style="margin-bottom:30px">
+                                <div class="buy-btn-box">
+                                    <p class="balance-box" style="margin-right:30px; line-height:30px">
+                                        {{ goods_eth_p }}eth/{{ goods_usdt_p }}usdt
+                                    </p>
+                                    <input type="hidden" name="eth_unit_coin_amount" value="{{ goods_eth_p }}">
+                                    <input type="hidden" name="usdt_unit_coin_amount" value="{{ goods_usdt_p }}">
+                                    <input type="number" name="goods_quantity" placeholder="请填写需要购买的商品数量" value="1" class="el-input__inner" style="width:100px; margin-right: 20px;">
+                                    <select class="el-select" style="width:200px; height: 32px; margin-bottom:5px" name="pay_asset_name" required id="id_pay_way">
+                                        <option value="Select" selected>请选择支付方式</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="USDT">USDT</option>
+                                    </select>
+                                </div>
+                                <div class="buy-btn-box" style="display:inline-block">
+                                    {% include 'front/select/select_address.html' %}
+                                    <input type="hidden" name="goods_id" value="{{ goods_detail.id }}">
+                                </div>
+                                <div class="buy-btn-box">
+                                     <button type="submit" class="buy-btn">立即购买</button>
+                                     <a href="{% url 'goods_collect' goods_detail.id %}" class="buy-btn">收藏商品</a>
+                                </div>
+                            </div>
+                            <div style="margin-bottom:10px; color: red; font-size:16px">
+                                {{ tip_msg }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="el-tabs">
+                    <div class="tabs-box">
+                        {% if tab == 'goods' %}
+                            <a class="el-tab active" href="{% url 'goods_detail'  goods_detail.id %}?tab=goods">商品描述</a>
+                        {% else %}
+                            <a class="el-tab" href="{% url 'goods_detail'  goods_detail.id %}?tab=goods">商品描述</a>
+                        {% endif %}
+                        {% if tab == "comment" %}
+                            <a class="el-tab active" href="{% url 'goods_detail'  goods_detail.id %}?tab=comment">评价</a>
+                        {% else %}
+                            <a class="el-tab" href="{% url 'goods_detail'  goods_detail.id %}?tab=comment">评价</a>
+                        {% endif %}
+                        {% if tab == "return_p" %}
+                            <a class="el-tab active" href="{% url 'goods_detail'  goods_detail.id %}?tab=return_p">退货政策</a>
+                        {% else %}
+                            <a class="el-tab" href="{% url 'goods_detail'  goods_detail.id %}?tab=return_p">退货政策</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="el-tab-content">
+                    {% if tab == 'goods' %}
+                        {{ goods_detail.detail }}
+                    {% endif %}
+                    {% if tab == 'comment' %}
+                        <div class="comment-list-box">
+                           {% for cmt in comment_list %}
+                               <div class="comment-item">
+                                  <div class="top-user-info">
+                                    <div class="left-logo">
+                                       {% if request.session.user_pho %}
+                                            <img src="{% url 'enter_website' %}media/{{ request.session.user_pho }}" >
+                                        {% else %}
+                                            <img src="{% static 'images/touxiang_d.png' %}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="right-info-box">
+                                      <p class="user-name">{{ cmt.user.user_name }}</p>
+                                      <p class="time">{{ cmt.created_at | cn_hdatetime }}</p>
+                                    </div>
+                                  </div>
+                                  <div class="content-box">{{ cmt.content }}</div>
+                               </div>
+                           {% endfor %}
+                           {% include 'front/select/pagination.html' with items=comment_list %}
+                        </div>
+                    {% endif %}
+                    {% if tab == 'return_p' %}
+                         <div class="info-box">
+                           {{ goods_detail.return_goods_pc }}
+                          </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,113 @@
+.detailed-list-2 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.detailed-list-2 .detailed-list-2-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 22px;
+  border: 1px solid #F4F5F7;
+}
+.detailed-list-2 ul {
+  width: 100%;
+}
+.detailed-list-2 ul li {
+  width: 100%;
+  margin-bottom: 28px;
+}
+.detailed-list-2 ul li a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  text-decoration: none;
+}
+.detailed-list-2 ul li a.active {
+  color: #1652B5;
+  border-bottom: 1px solid #1652B5;
+}
+.detailed-list-2 ul li:last-child {
+  margin-bottom: 0;
+}
+.buyer-statistics-container {
+  width: 100%;
+}
+.buyer-statistics-container .buyer-statistics-content {
+  width: 100%;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 13px 15px 20px;
+  border-bottom: 1px solid #F4F5F7;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div.no-bottom {
+  margin-bottom: 0;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div h6 {
+  font-size: 20px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p.red-text {
+  color: #FF0000;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p.green-text {
+  color: #04BC00;
+}
+.collection-shop-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.collection-shop-container .collection-shop-left-container {
+  width: 380px;
+  margin-bottom: 30px;
+}
+.collection-shop-container .collection-shop-right-container {
+  width: 800px;
+  margin-bottom: 30px;
+  padding-right: 9px;
+}
+.collection-shop-container .collection-shop-right-container .title-box {
+  padding-top: 14px;
+}
+.collection-shop-container .collection-shop-right-container .title-box .title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.collection-shop-container .collection-shop-right-container .title-box .desc {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.collection-shop-container .collection-shop-right-container .table-box {
+  margin-top: 10px;
+}
+.collection-shop-container .collection-shop-right-container .table-box .remove-btn {
+  width: 90px;
+  height: 30px;
+  background: #1652B5;
+  border-radius: 15px;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}

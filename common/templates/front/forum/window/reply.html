@@ -1,0 +1,8 @@
+{% load staticfiles clb_tags%}
+<form method="post" action="{% url 'forum_cmt_reply' form_dtl.id %}">
+    <input type="hidden" name="father_cmt_id" value="{{ form_cmtrlpy.id }}">
+    <div class="text-area-box">
+      <textarea row="8" name="content" style="height:60px;outline: none;padding: 20px;box-sizing: border-box;" placeholder="请输入内容" class="text-area el-textarea_inner"></textarea>
+      <button type="submit" class="el-button primary" style="width: 100px;">回复</button>
+    </div>
+</form>

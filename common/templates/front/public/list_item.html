@@ -1,0 +1,40 @@
+{% load staticfiles clb_tags %}
+<div class="detailed-list-2">
+    <p class="module-title">清单选项</p>
+    <div class="detailed-list-2-content">
+      <ul>
+          <li><a href="{% url 'goods_list' %}">商品中心</a></li>
+          {% if side_bar == "order_list" %}
+             <li><a class="active" href="{% url 'order_list' %}">订单列表</a></li>
+          {% else %}
+              <li><a href="{% url 'order_list' %}">订单列表</a></li>
+          {% endif %}
+          {% if side_bar == "address_list" %}
+             <li><a class="active" href="{% url 'address_list' %}">收货地址</a></li>
+          {% else %}
+              <li><a href="{% url 'address_list' %}">收货地址</a></li>
+          {% endif %}
+          {% if side_bar == "message_list" %}
+             <li><a class="active" href="{% url 'message_list' %}">联系卖家</a></li>
+          {% else %}
+             <li><a href="{% url 'message_list' %}">联系卖家</a></li>
+          {% endif %}
+          {% if side_bar == "goods_collect_list" %}
+            <li><a class="active" href="{% url 'goods_collect_list' %}">收藏的商品</a></li>
+          {% else %}
+             <li><a href="{% url 'goods_collect_list' %}">收藏的商品</a></li>
+          {% endif %}
+
+          {% if side_bar == "collect_list" %}
+            <li><a class="active" href="{% url 'collect_list' %}">收藏的店</a></li>
+          {% else %}
+              <li><a href="{% url 'collect_list' %}">收藏的店</a></li>
+          {% endif %}
+          {% if side_bar == "marchant_black_list" %}
+              <li><a class="active" href="{% url 'marchant_black_list' %}">屏蔽名单</a></li>
+          {% else %}
+              <li><a href="{% url 'marchant_black_list' %}">屏蔽名单</a></li>
+          {% endif %}
+      </ul>
+    </div>
+</div>

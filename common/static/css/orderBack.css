@@ -1,0 +1,103 @@
+.detailed-list-2 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.detailed-list-2 .detailed-list-2-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 22px;
+  border: 1px solid #F4F5F7;
+}
+.detailed-list-2 ul {
+  width: 100%;
+}
+.detailed-list-2 ul li {
+  width: 100%;
+  margin-bottom: 28px;
+}
+.detailed-list-2 ul li a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  text-decoration: none;
+}
+.detailed-list-2 ul li a.active {
+  color: #1652B5;
+  border-bottom: 1px solid #1652B5;
+}
+.detailed-list-2 ul li:last-child {
+  margin-bottom: 0;
+}
+.exchange-rate-box {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 33px 33px 10px;
+  border: 1px solid #F4F5F7;
+}
+.exchange-rate-box .exchange-rate-content ul {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.exchange-rate-box .exchange-rate-content ul li .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.exchange-rate-box .exchange-rate-content ul li .price {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.up {
+  color: #C30000;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.down {
+  color: #05C300;
+}
+.order-back-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 60px;
+}
+.order-back-container .order-back-left-container {
+  width: 380px;
+  margin-bottom: 35px;
+}
+.order-back-container .order-back-right-container {
+  width: 791px;
+}
+.order-back-container .order-back-right-container .name-box {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  padding-top: 10px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.order-back-container .order-back-right-container .el-form {
+  padding: 30px;
+}
+.order-back-container .order-back-right-container .el-form .el-form-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.order-back-container .order-back-right-container .el-form .el-form-item .el-form-label {
+  width: 120px;
+  text-align: right;
+  padding-right: 20px;
+}

@@ -1,0 +1,8 @@
+.login-page{
+  background-color: #ececec;
+  background-image: url(/static/backend/images/default_background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}

@@ -1,0 +1,80 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/orderBack.css' %}">
+    <style>
+        #id_fund_ret, #id_is_recv_goods {
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >退货</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="order-back-container">
+      <div class="order-back-left-container">
+        {% include 'front/public/list_item.html' %}
+        {% include 'front/public/coin_rete.html' %}
+      </div>
+      <div class="order-back-right-container">
+        <p class="name-box">退换货</p>
+        <form enctype="multipart/form-data" method="post" action="{% url 'return_order' oid %}">
+            <div class="el-form">
+              <div class="el-form-item">
+                <div class="el-form-label">退货/换货</div>
+                  {{ return_goods_form.fund_ret }}
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">退货原因</div>
+                {{ return_goods_form.ret_goods_rs }}
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">问题描述</div>
+                {{ return_goods_form.qs_describe }}
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">图片描述一</div>
+                <div class="el-upload">
+                  {{ return_goods_form.qs_img_one }}
+                </div>
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">图片描述二</div>
+                <div class="el-upload">
+                  {{ return_goods_form.qs_img_two }}
+                </div>
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">图片描述二</div>
+                <div class="el-upload">
+                  {{ return_goods_form.qs_img_three }}
+                </div>
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label"></div>
+                <button type="submit" class="el-button primary submit-btn">提交</button>
+              </div>
+            </div>
+         </form>
+      </div>
+      </div>
+    </div>
+{% endblock %}

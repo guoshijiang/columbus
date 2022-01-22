@@ -1,0 +1,25 @@
+{% load staticfiles clb_tags %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>支付信息</p>
+      <a href="{% url 'index' %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <form enctype="multipart/form-data" method="post" action="{% url 'open_marchant' %}">
+        <div class="el-dialog__body">
+          <div class="el-form">
+            <div class="el-form-item">
+              <div class="el-form-label">支付币种：{{ pay_way }}</div>
+              <div class="el-form-label">支付金额：{{ pay_amount | keep_two_decimal_places }}</div>
+              <div class="el-form-label">钱包余额：{{ wallet_amount | keep_two_decimal_places}}</div>
+              <div class="el-form-label">剩余资金：{{ wallet_left_amount | keep_two_decimal_places }}</div>
+              <input type="hidden" name="pay_way" value="{{ pay_way }}">
+            </div>
+          </div>
+        </div>
+        <div class="el-dialog__footer">
+          <button type="submit" class="el-button primary">确定</button>
+        </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{% load staticfiles clb_tags %}
+<div class="exchange-rate-box">
+  <p class="module-title">虚拟币汇率</p>
+  <div class="exchange-rate-content">
+    <ul>
+      <li>
+          <span class="name">{{ eth_asset_name }}({{ eth_chain_name }})</span>
+          <span class="price up">{{ eth_cyn_price | keep_two_decimal_places}}</span>
+      </li>
+      <li>
+          <span class="name">{{ usdt_asset_name }}({{ usdt_chain_name }})</span>
+          <span class="price up">{{ usdt_cyn_price | keep_two_decimal_places }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

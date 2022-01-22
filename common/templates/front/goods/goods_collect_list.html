@@ -1,0 +1,58 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/order_2.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+      <ul class="breadcrumb-navigation-container">
+        <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}}"></span>
+        <div class="for-box">
+            <li class="name-box">
+                <a href="#" >商品收藏</a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+        </div>
+      </ul>
+      <div class="collection-commodity-container">
+        <div class="collection-commodity-left-container">
+            {% include "front/public/list_item.html" %}
+            {% include "front/public/coin_rete.html" %}
+        </div>
+        <div class="collection-commodity-right-container">
+          <div class="title-box">
+            <p class="title">商品收藏</p>
+          </div>
+          <ul class="commodity-list-box">
+            {% for goods_clt in goods_clt_list %}
+                <li>
+                  <div class="left-commodity-box">
+                    <a href="{% url 'goods_detail' goods_clt.goods.id %}">
+                      <div class="img-box">
+                        <img src="{% url 'enter_website' %}media/{{ goods_clt.goods.logo }}" alt="">
+                      </div>
+                      <div class="info-box">
+                        <p class="name">{{ goods_clt.goods.title }}</p>
+                        <p class="desc">{{ goods_clt.goods.name }}</p>
+                        <p class="see-data"><span>浏览：{{ goods_clt.goods.views  }}</span><span>销售：{{ goods_clt.goods.sell_nums }}</span></p>
+                        <p class="stock">剩余数量：{{ goods_clt.goods.left_amount }}</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="right-commodity-box">
+                    <p class="name">商品价格</p>
+                    <p class="price">¥ {{ goods_clt.goods.price | keep_two_decimal_places }}</p>
+                    <a href="{% url 'del_goods_collect' goods_clt.goods.id %}" class="el-button primary remove-btn">移除</a>
+                  </div>
+                </li>
+            {% endfor %}
+          </ul>
+          {% include 'front/select/pagination.html' with items=goods_clt_list %}
+        </div>
+      </div>
+    </div>
+{% endblock %}

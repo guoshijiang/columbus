@@ -1,0 +1,71 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/seller.css' %}">
+    <link rel="stylesheet" href="{% static 'css/seller_edit_info.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+            <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+            </li>
+            <span class="lj-icon"><img src="{% static "images/jt-1.png" %}"></span>
+            <span class="lj-icon"><img src="{% static "images/jt-2.png" %}"></span>
+            <div class="for-box">
+                <li class="name-box">
+                    <a href="#" >添加地址</a>
+                </li>
+                <span class="lj-icon"><img src="{% static "images/jt-2.png" %}"></span>
+                <span class="lj-icon"><img src="{% static "images/jt-1.png" %}"></span>
+            </div>
+      </ul>
+    <div class="become-seller-container">
+      <div class="become-seller-left-container">
+        {% include 'front/public/list_item.html' %}
+      </div>
+      <div class="become-seller-right-container">
+        <div class="title-box">
+          <p class="title">填写收货地址信息</p>
+          <p class="more"></p>
+        </div>
+        <div class="form-box">
+          <form method="post" action="{% url 'add_address' %}">
+              <div class="el-form">
+                <div class="el-form-item">
+                  <div class="el-form-label">用户名</div>
+                  {{ addr_from.user_name }}
+                  {% if addr_from.user_name.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                         {{ addr_from.user_name.errors }}
+                     </div>
+                  {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">电话号码</div>
+                  {{ addr_from.phone }}
+                  {% if addr_from.phone.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                         {{ addr_from.phone.errors }}
+                     </div>
+                  {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">收货地址</div>
+                  {{ addr_from.address }}
+                  {% if addr_from.address.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                         {{ addr_from.address.errors }}
+                     </div>
+                  {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label"></div>
+                  <button type="submit" class="el-button primary add-btn">确定</button>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+{% endblock %}

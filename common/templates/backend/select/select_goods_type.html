@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<div class="form-group">
+   <span class="el-form-label">商品类别: </span>
+   <select id="goods_type-select"  name="goods_type" class="form-control el-select">
+      {% if goods_type == "all" %}
+          <option value="all">全部</option>
+      {% else %}
+          <option value="all">全部</option>
+      {% endif %}
+      {% if goods_type == "real" %}
+          <option value="real">实体商品</option>
+      {% else %}
+          <option value="real">实体商品</option>
+      {% endif %}
+      {% if goods_type == "virtual" %}
+          <option value="virtual">虚拟商品</option>
+      {% else %}
+          <option value="virtual">虚拟商品</option>
+      {% endif %}
+   </select>
+</div>

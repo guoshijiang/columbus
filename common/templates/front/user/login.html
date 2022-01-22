@@ -1,0 +1,109 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <style>
+        .captcha {
+            margin-left: 140px;
+            width: 160px;
+            height: 80px;
+        }
+        #id_captcha_1 {
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+        #id_login_time {
+             width: 100%;
+             max-width: 450px;
+             height: 40px;
+             border: 1px solid #ddd;
+             border-radius: 20px;
+             padding: 0 10px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+<ul class="breadcrumb-navigation-container">
+    <li class="icon-box"><a href="{% url 'index' %}" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+    <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+    <div class="for-box">
+      <li class="name-box">
+        <a href="{% url 'login' %}">登录</a>
+      </li>
+      <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+    </div>
+</ul>
+<div class="login-container">
+    <div class="login-content-container">
+      <h6 class="login-title">登录哥伦布</h6>
+      <p class="login-desc">欢迎来到哥伦布，请登录进入市场。如果您没有帐户，您可以注册访问列表。注册是免费的，向每个人开放。<br />如果开启了双重认证，请将下面的加密字符串解密之后输入到双重认证码。</p>
+      <div class="form-container">
+      <div class="search-select-box">
+        <div class="search-select-content">
+          <form action="{% url 'login' %}?user_name={{ user_name }}" class="el-form" method="post">
+            <div class="el-form-item">
+                <input type="text" name="user_name"  value="{{ user_name }}" class="el-input" maxlength="64" disabled>
+            </div>
+            <div class="el-form-item">
+              {{ login_form.password }}
+              {% if login_form.password.errors %}
+                 <div style="color:red; margin-left:8px; margin-top:5px">
+                     {{ login_form.password.errors }}
+                 </div>
+              {% endif %}
+            </div>
+            <div class="el-form-item">
+                {{ login_form.login_time }}
+                {% if login_form.login_time.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                         {{ login_form.login_time.errors }}
+                     </div>
+                {% endif %}
+            </div>
+            {% if cipher_text_hex %}
+                <div class="el-form-item">
+                  <div class="cipher-container">
+                    <p class="hint-text">请拷贝上边的密文到PGP软件中进行解密，并将解密文字填入框内</p>
+                    <textarea cols="40" rows="10" style="height:200px; width:460px;outline:none; box-sizing: border-box;" >
+                      {{ cipher_text_hex }}
+                    </textarea>
+                  </div>
+
+                </div>
+                <div class="el-form-item">
+                    {{ login_form.factor }}
+                    {% if login_form.factor.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                             {{ login_form.factor.errors }}
+                         </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="el-form-item">
+               {{ login_form.captcha }}
+               {% if login_form.captcha.errors %}
+                 <div style="color:red; margin-left:8px; margin-top:5px">
+                     {{ login_form.captcha.errors }}
+                 </div>
+              {% endif %}
+            </div>
+            <div class="el-form-item">
+              <button class="el-button primary login-btn">登录</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

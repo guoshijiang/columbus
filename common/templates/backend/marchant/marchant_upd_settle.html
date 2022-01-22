@@ -1,0 +1,58 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header with-border">
+                <div class="btn-group">
+                    <a href="{% url 'b_marchant_detail' marchant.id %}" class="btn flat btn-sm btn-default BackButton">
+                        <i class="fa fa-arrow-left"></i>
+                        返回
+                    </a>
+                </div>
+              </div>
+              <form enctype="multipart/form-data" method="post" action="{% url 'update_mct_settle' marchant.id %}">
+                  <div class="form-horizontal dataForm" novalidate="novalidate">
+                     <div class="box-body">
+                        <div class="form-group">
+                            <label for="nickname" class="col-sm-2 control-label">结算比例</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input type="text" name="settle_percent" placeholder="请输入结算比例">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="nickname" class="col-sm-2 control-label"></label>
+                             <div class="col-sm-10 col-md-4">
+                                <button type="submit" class="btn flat btn-default dataFormReset">
+                                    确定
+                                </button>
+                             </div>
+                         </div>
+                     </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+          <div class="page-right-footer-content-container">
+             <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+          </div>
+        </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

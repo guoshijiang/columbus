@@ -1,0 +1,28 @@
+{% load staticfiles clb_tags %}
+<div class="tabs-box">
+  {% if account_tab == "account_uinfo" %}
+       <a class="el-tab active" href="{% url 'account_uinfo' %}">修改用户名</a>
+  {% else %}
+       <a class="el-tab" href="{% url 'account_uinfo' %}">修改用户名</a>
+  {% endif %}
+  {% if account_tab == "update_user_photo" %}
+       <a class="el-tab active" href="{% url 'update_user_photo' %}">修改头像</a>
+  {% else %}
+       <a class="el-tab" href="{% url 'update_user_photo' %}">修改头像</a>
+  {% endif %}
+  {% if account_tab == "update_password" %}
+     <a class="el-tab active" href="{% url 'update_password' %}">修改密码</a>
+  {% else %}
+      <a class="el-tab" href="{% url 'update_password' %}">修改密码</a>
+  {% endif %}
+  {% if account_tab == "update_pincode" %}
+      <a class="el-tab active" href="{% url 'update_pincode' %}">修改PIN</a>
+  {% else %}
+      <a class="el-tab" href="{% url 'update_pincode' %}">修改PIN</a>
+  {% endif %}
+  {% if account_tab == "update_gpg" %}
+    <a class="el-tab active" href="{% url 'update_gpg' %}">编辑PGP</a>
+  {% else %}
+    <a class="el-tab" href="{% url 'update_gpg' %}">编辑PGP</a>
+  {% endif %}
+</div>

@@ -1,0 +1,87 @@
+.account-info-box{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 31px 8px 13px 12px;
+  border: 1px solid #F4F5F7;
+  .account-info-left{
+    .header-img-box{
+      width: 110px;
+      height: 110px;
+      margin: 0 auto;
+      img{
+        display: block;
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    p{
+      font-size: 16px;
+      font-family: Adobe Heiti Std;
+      font-weight: normal;
+      color: #666666;
+      text-align: center;
+      margin-top: 14px;
+    }
+    span{
+      display: block;
+      margin: 7px auto;
+      width: 49px;
+      height: 17px;
+      text-align: center;
+      background: #FF6600;
+      border-radius: 9px 8px 8px 8px;
+      font-size: 12px;
+      line-height: 17px;
+      font-family: PingFang SC;
+      font-weight: 200;
+      color: #FDFDFD;
+    }
+  }
+  .account-info-right{
+    font-size: 15px;
+    line-height: 24px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #343434;
+    padding-top: 25px;
+    .info-item{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      &.last-info-item{
+        margin-bottom: 0;
+        padding-right: 30px;
+      }
+      .info-label{
+        display: flex;
+        flex-shrink: 0;
+        span{
+          width: 24px;
+          height: 24px;
+          margin-right: 5px;
+          img{
+            width: 100%;
+          }
+        }
+      }
+      .red-text{
+        color: #FF0000;
+      }
+      .green-text{
+        color: #04BC00;
+      }
+    }
+    .btn-item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .login-btn-box{
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

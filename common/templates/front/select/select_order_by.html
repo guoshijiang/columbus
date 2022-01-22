@@ -1,0 +1,26 @@
+{% load staticfiles clb_tags %}
+<div class="el-form-item">
+    <p class="el-form-label">查找顺序</p>
+    <select id="order-by-select" name="order_by"  class="el-select">
+        {% if order_by == 'all' %}
+            <option value="all" selected>全部</option>
+        {% else %}
+          <option value="all">全部</option>
+        {% endif %}
+        {% if order_by == 'time' %}
+            <option value="time" selected>时间</option>
+        {% else %}
+            <option value="time">时间</option>
+        {% endif %}
+         {% if order_by == 'price' %}
+            <option value="price" selected>价格</option>
+        {% else %}
+            <option value="price">价格</option>
+        {% endif %}
+        {% if order_by == 'sell' %}
+            <option value="sell" selected>销量</option>
+        {% else %}
+            <option value="sell">销量</option>
+        {% endif %}
+    </select>
+</div>

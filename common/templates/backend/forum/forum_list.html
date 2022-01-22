@@ -1,0 +1,82 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+               <form class="form-inline searchForm" id="searchForm" method="GET">
+                    {% include 'backend/select/input_user_name.html' %}
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>论坛发布者</th>
+                        <th>所属分类</th>
+                        <th>所属主题</th>
+                        <th>标题</th>
+                        <th>查看次数</th>
+                        <th>回答次数</th>
+                        <th>是否屏蔽</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for forum in forum_list %}
+                        <tr>
+                            <td>{{ forum.user.user_name }}</td>
+                            <td>{{ forum.cat.name }}</td>
+                            <td>{{ forum.topic.name }}</td>
+                            <td>{{ forum.title }}</td>
+                            <td>{{ forum.views }}</td>
+                            <td>{{ forum.answers }}</td>
+                            <td>{{ forum.is_active }}</td>
+                            <td>{{ forum.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'b_forum_detail' forum.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 详情
+                                </a>
+                               {% if forum.is_active == True %}
+                                    <a href="{% url 'disable_forum' forum.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                        <i class="fa"></i> 禁用
+                                    </a>
+                                {% else %}
+                                     <a href="{% url 'enable_forum' forum.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                        <i class="fa"></i> 开启
+                                     </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                 {% include 'backend/select/pagination.html' with items=forum_list %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

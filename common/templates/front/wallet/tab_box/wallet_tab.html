@@ -1,0 +1,23 @@
+{% load staticfiles clb_tags%}
+<ul>
+     {% if side_bar == "wallet_deposit" %}
+        <li><a class="active" href="{% url 'wallet_deposit' %}">充值</a></li>
+    {% else %}
+       <li><a href="{% url 'wallet_deposit' %}">充值</a></li>
+    {% endif %}
+    {% if side_bar == "wallet_withdraw" %}
+        <li><a class="active" href="{% url 'wallet_withdraw' %}">提现</a></li>
+    {% else %}
+       <li><a href="{% url 'wallet_withdraw' %}">提现</a></li>
+    {% endif %}
+    {% if side_bar == "wallet_record" %}
+        <li ><a class="active" href="{% url 'wallet_record' %}">充提记录</a></li>
+    {% else %}
+         <li><a href="{% url 'wallet_record' %}">充提记录</a></li>
+    {% endif %}
+     {% if side_bar == "wallet_trans_record" %}
+        <li ><a class="active" href="{% url 'wallet_trans_record' %}">交易记录</a></li>
+    {% else %}
+         <li><a href="{% url 'wallet_trans_record' %}">交易记录</a></li>
+    {% endif %}
+</ul>

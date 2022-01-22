@@ -1,0 +1,7 @@
+{% load staticfiles clb_tags %}
+<div class="el-form-item">
+    <p class="el-form-label">价格范围</p>
+    <input type="number" name="start_price" placeholder="0.00" value="{{ start_price | keep_two_decimal_places }}" class="el-input__inner">
+    至
+    <input type="number" name="end_price" placeholder="999999.99" value="{{ end_price | keep_two_decimal_places }}" class="el-input__inner">
+</div>

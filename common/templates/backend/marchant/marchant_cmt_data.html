@@ -1,0 +1,130 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header with-border">
+                <div class="btn-group">
+                    <a href="{% url 'b_marchant_detail' marchant_id %}" class="btn flat btn-sm btn-default BackButton">
+                        <i class="fa fa-arrow-left"></i>
+                        返回
+                    </a>
+                </div>
+              </div>
+              <div class="form-horizontal dataForm" novalidate="novalidate">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">服务好评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.serice_best }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">服务中评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.service_good }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">服务差评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.service_bad }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_user" class="col-sm-2 control-label">服务评论星率</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.service_avg }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">服务星星数量</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.service_num }}</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="box-body">
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">交易好评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.trade_best }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">交易中评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.trade_good }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">交易差评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.trade_bad }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_user" class="col-sm-2 control-label">交易评论星率</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.trade_avg }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">交易星星数量</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.trade_num }}</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="box-body">
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">质量好评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.quality_best }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">质量中评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.quality_good }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">质量差评</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.quality_bad }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_user" class="col-sm-2 control-label">质量评论星率</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.quality_avg }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">质量星星数量</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ mct_stat_data.quality_num }}</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

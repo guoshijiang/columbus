@@ -1,0 +1,79 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+    <style>
+        .publish-btn{
+            width: 25px;
+            height: 25px;
+            background: #FFFFFF;
+            border: 1px dashed #B5B5B5;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 21px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #B5B5B5;
+            cursor: pointer;
+       }
+    </style>
+{% endblock %}
+{% block body %}
+   <div class="layout-box">
+      <ul class="breadcrumb-navigation-container">
+            <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+            </li>
+            <span class="lj-icon"><img src="{% static "images/jt-1.png" %}"></span>
+            <span class="lj-icon"><img src="{% static "images/jt-2.png" %}"></span>
+            <div class="for-box">
+                <li class="name-box">
+                    <a href="#" >地址列表</a>
+                </li>
+                <span class="lj-icon"><img src="{% static "images/jt-2.png" %}"></span>
+                <span class="lj-icon"><img src="{% static "images/jt-1.png" %}"></span>
+            </div>
+      </ul>
+      <div class="order-container">
+        <div class="order-left-container">
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/buyer_stat.html' %}
+        </div>
+        <div class="order-right-container">
+          <div class="title-box" style="display:inline">
+            <div class="title" style="float:left">收货地址</div>
+            <a href="{% url 'add_address' %}">
+                <div class="publish-btn" style="float:right; margin-right:10px">+</div>
+            </a>
+          </div>
+          <div class="el-table">
+            <ul class="el-table-header">
+              <li>用户名</li>
+              <li>电话</li>
+              <li>地址</li>
+              <li>操作</li>
+            </ul>
+            <div class="el-table-body">
+              {% if ret_address_list %}
+              {% for address in ret_address_list %}
+                  <ul class="el-table_data_item">
+                    <li>{{ address.user_name }}</li>
+                    <li>{{ address.phone }}</li>
+                    <li>{{ address.address }}</li>
+                    <li>
+                        <a href="{% url 'update_address'  address.id %}" class="el-button primary">修改</a>
+                        <a href="{% url 'del_address'  address.id %}" class="el-button primary" style="margin-left:10px">删除</a>
+                    </li>
+                  </ul>
+              {% endfor %}
+              {% else %}
+                  <div class="el-table_no_data">暂无数据</div>
+              {% endif %}
+            </div>
+          </div>
+          {% include 'front/select/pagination.html' with items=ret_address_list %}
+        </div>
+      </div>
+    </div>
+{% endblock %}

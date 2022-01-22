@@ -1,0 +1,37 @@
+    // 虚拟币汇率
+    .exchange-rate-box{
+      width: 100%;
+      .exchange-rate-content{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 33px 33px 10px;
+        border: 1px solid #F4F5F7;
+        ul{
+          width: 100%;
+          li{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            .name{
+              font-size: 18px;
+              font-family: PingFang SC;
+              font-weight: bold;
+              color: #343434;
+            }
+            .price{
+              font-size: 18px;
+              font-family: Arial;
+              font-weight: bold;
+              &.up{
+                color: #C30000;
+              }
+              &.down{
+                color: #05C300;
+              }
+            }
+          }
+        }
+      }
+    }

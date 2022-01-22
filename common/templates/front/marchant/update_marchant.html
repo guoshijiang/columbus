@@ -1,0 +1,86 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/seller_edit_info.css' %}">
+    <style>
+        #id_detail {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+       }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'update_marchant'  marchant_detail.id  %}" >完善店铺信心</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="become-seller-container">
+      <div class="become-seller-left-container">
+        {% include 'front/public/list_item.html' %}
+        {% include 'front/public/coin_rete.html' %}
+      </div>
+      <div class="become-seller-right-container">
+        <div class="title-box">
+          <p class="title">修改店铺信息</p>
+          <p class="more"></p>
+        </div>
+        <div class="form-box">
+            <form method="post" action="{% url 'update_marchant'  marchant_detail.id %}" enctype="multipart/form-data">
+              <div class="el-form">
+                  <div class="el-form-item">
+                       <div class="el-form-label">商家Logo</div>
+                      <input type="file" name="logo" accept="image/*" id="id_logo">
+                  </div>
+              </div>
+              <div class="el-form">
+                <div class="el-form-item">
+                  <div class="el-form-label"></div>
+                  <div class="el-upload">
+                    <img width="180px" height="180px" src="{% url 'enter_website' %}media/{{ marchant_detail.logo }}">
+                  </div>
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">商家名称</div>
+                  {{ marchant_form.name }}
+                  {% if marchant_form.name.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ marchant_form.name.errors }}
+                      </div>
+                   {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">商家简介</div>
+                  {{ marchant_form.introduce }}
+                  {% if marchant_form.introduce.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ marchant_form.introduce.errors }}
+                      </div>
+                   {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">商家详情</div>
+                  {{ marchant_form.detail }}
+                   {% if marchant_form.detail.errors %}
+                     <div style="color:red; margin-left:8px; margin-top:5px">
+                        {{ marchant_form.detail.errors }}
+                      </div>
+                   {% endif %}
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label"></div>
+                  <button type="submit" class="el-button primary add-btn">确定</button>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

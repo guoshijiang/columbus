@@ -1,0 +1,66 @@
+.account-container {
+  width: 100%;
+}
+.account-container .account-basic-info {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 22px;
+  display: flex;
+}
+.account-container .account-basic-info .img-box {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 28px;
+}
+.account-container .account-basic-info .img-box img {
+  display: block;
+  max-width: 110px;
+  max-height: 110px;
+}
+.account-container .account-basic-info .right-info p {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  display: flex;
+  align-items: center;
+  margin-bottom: 23px;
+}
+.account-container .account-basic-info .right-info p:last-child {
+  margin-bottom: 0;
+}
+.account-container .account-basic-info .right-info p.name {
+  margin-top: 8px;
+}
+.account-container .account-basic-info .right-info p.name span {
+  display: block;
+  font-size: 12px;
+  height: 20px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 20px;
+  padding: 0 10px;
+  background: #1652B5;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.account-container .account-basic-info .right-info p.basic span {
+  margin-left: 40px;
+}
+.account-container .account-tab-container ::v-deep .el-tabs__item.is-active {
+  color: #333;
+  background-color: #F0F0F0;
+}
+.el-button.primary.persnal-btn {
+  display: block;
+  width: 450px;
+  height: 44px;
+  background: linear-gradient(90deg, #008dff, #0060ff);
+  box-shadow: 0px 10px 20px 0px rgba(76, 110, 245, 0.3);
+  border-radius: 22px;
+  margin: 89px auto 50px;
+}

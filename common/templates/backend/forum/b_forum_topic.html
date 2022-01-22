@@ -1,0 +1,66 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header">
+                <div>
+                    <a href="{% url 'create_bforum_topic' %}" data-toggle="tooltip" class="btn btn-primary btn-sm" data-original-title="添加">
+                        <i class="fa fa-plus"></i> 添加
+                    </a>
+                </div>
+              </div>
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>所属分类</th>
+                        <th>主题名称</th>
+                        <th>主题介绍</th>
+                        <th>主题数量</th>
+                        <th>帖子数量</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ftopic in ftopic_list %}
+                        <tr>
+                            <td>{{ ftopic.cat.name }}</td>
+                            <td>{{ ftopic.name }}</td>
+                            <td>{{ ftopic.introduce }}</td>
+                            <td>{{ ftopic.topic_num }}</td>
+                            <td>{{ ftopic.forum_num }}</td>
+                            <td>{{ ftopic.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'update_bforum_topic' ftopic.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 修改
+                                </a>
+                                 <a href="{% url 'delete_bforum_topic' ftopic.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 删除
+                                </a>
+                            </td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

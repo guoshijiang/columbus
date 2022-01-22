@@ -1,0 +1,62 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/balance.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >钱包充提记录</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="account-balance-container">
+        <div class="account-balance-left-container">
+           <div class="detailed-list-2">
+            <p class="module-title">钱包功能选项</p>
+            <div class="detailed-list-2-content">
+             {% include 'front/wallet/tab_box/wallet_tab.html' %}
+            </div>
+          </div>
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="account-balance-right-container">
+          <div class="table-box">
+            <div class="table-title">交易记录</div>
+            <div class="el-table">
+              <ul class="el-table-header">
+                <li>币种</li>
+                <li>金额</li>
+                <li>收入支出</li>
+                <li>来源/去向</li>
+                <li>日期</li>
+              </ul>
+              <div class="el-table-body">
+                {% if wallet_trans %}
+                  {% for wt in wallet_trans %}
+                    <ul class="el-table_data_item">
+                      <li>{{ wt.asset.name }}</li>
+                      <li>{{ wt.amount | keep_two_decimal_places }}</li>
+                      <li>{{ wt.trans_way | trans_way }}</li>
+                      <li>{{ wt.source }}</li>
+                      <li>{{ wt.created_at | hdatetime }}</li>
+                    </ul>
+                  {% endfor %}
+                {% else %}
+                    <div class="el-table_no_data">暂无数据</div>
+                {% endif %}
+              </div>
+            </div>
+            {% include 'front/select/pagination.html' with items=wallet_record_list %}
+            <p class="small-hint-box">此处为交易记录详情，会具体标明整个交易的资金的来源和去向。如果是订单相关的，只有订单处于完成状态，才会有具体的收入和支付情况</p>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

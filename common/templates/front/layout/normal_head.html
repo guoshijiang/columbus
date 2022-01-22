@@ -1,0 +1,27 @@
+{% load staticfiles clb_tags%}
+<div class="header-container">
+    <div class="header-box">
+      <a href="{% url 'index' %}" ><img src="{% static 'images/logo.jpg' %}" alt="logo" class="logo"></a>
+      <div class="login-info-box">
+        <div class="header-img">
+            {% if user.user_pho %}
+                <img src="{% url 'enter_website' %}media/{{ user.user_pho }}" >
+            {% else %}
+                <img src="{% static 'images/touxiang_d.png' %}">
+            {% endif %}
+        </div>
+        <div class="right-info-box">
+          <div class="name-box">
+            <p class="name">登陆人：{{ user.user_name }}</p>
+          </div>
+          <div class="balance-box">
+            <p>ETH：<span>{{ user_eth_wallet.balance | keep_two_decimal_places }}</span> /USDT：<span>{{ user_usdt_wallet.balance | keep_two_decimal_places }}</span></p>
+          </div>
+          <div class="operation-box">
+            <p><a href="{% url 'account_uinfo' %}" >设置</a></p>
+            <p><a href="{% url 'logout' %}" class="btn">注销</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

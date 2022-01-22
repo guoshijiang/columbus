@@ -1,0 +1,67 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="#" >商家中心</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="shop-detail-container">
+        <div class="shop-detail-left-container">
+          {% include "front/public/list_item.html" %}
+          {% include "front/public/buyer_stat.html" %}
+        </div>
+        <div class="shop-detail-right-container">
+          <p class="name-box">店铺主页</p>
+          <div class="basic-info-box">
+            <div class="basic-left-info-box">
+              <div class="img-box">
+                <img src="{% url 'enter_website' %}media/{{ marchant_detail.logo }}" alt="img">
+              </div>
+              <div class="info-box">
+                <div class="name-title-box">
+                  <p>{{ marchant_detail.name }}</p>
+                  <span class="blue">供应商级别: {{ marchant_detail.shop_level }}</span>
+                  <span class="green">商家评分: {{ marchant_detail.shop_score }}</span>
+                </div>
+                <p>店铺好评率（12个月内）：{{ marchant_detail.shop_score }}</p>
+                <p>加入时间：{{ marchant_detail.created_at | hdatetime }}</p>
+                <p>最后一次在线：{{ marchant_detail.updated_at | hdatetime }} </p>
+              </div>
+            </div>
+            <div class="basic-right-info-box">
+              <a href="{% url 'user_marchant_detail'  marchant_detail.id %}" class="el-button primary">查看店铺</a>
+            </div>
+          </div>
+          <div class="characteristic-shopmall-box">
+            <p class="module-title">商品列表</p>
+            <div class="characteristic-shopmall-content">
+              <ul>
+               {% for marchant_goods in marchant_goods_lst %}
+                    <li>
+                      <a href="{% url 'goods_detail'  marchant_goods.id %}" >
+                        <div class="img-box">
+                          <img src="{% url 'enter_website' %}media/{{ marchant_goods.logo }}" alt="project-img">
+                        </div>
+                        <p class="price-box"><span class="price">¥ {{ marchant_goods.price| keep_two_decimal_places }}</span></p>
+                        <p class="commodity-name">{{ marchant_goods.title }}</p>
+                      </a>
+                    </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% include 'front/select/pagination.html' with items=marchant_goods_lst %}
+        </div>
+      </div>
+   </div>
+{% endblock %}

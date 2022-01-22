@@ -1,0 +1,121 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/seller_add_commodity.css' %}">
+    <style>
+        #id_price, #id_goods_cat, #id_goods_type, #id_total_amount, #id_origin_state, #id_is_admin, #id_merchant{
+            width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+        #id_detail {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >添加商品</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="add-shop-container">
+        <div class="add-shop-left-container">
+            {% include 'front/marchant/left/self_marchant_left.html' %}
+        </div>
+        <div class="add-shop-right-container">
+          <div class="form-box">
+            <div class="form-box">
+                <form enctype="multipart/form-data" method="post" action="{% url 'marchant_upd_goods' gds.id %}">
+                  <div class="el-form">
+                    <div class="el-form-item">
+                       <div class="el-form-label">商品标题(名称)</div>
+                        {{ goods_form.title }}
+                        {% if goods_form.title.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                {{ goods_form.title.errors }}
+                             </div>
+                        {% endif %}
+                    </div>
+                    <div class="el-form-item">
+                      <div class="el-form-label">特殊说明</div>
+                      {{ goods_form.mark }}
+                      {% if goods_form.mark.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ goods_form.mark.errors }}
+                         </div>
+                     {% endif %}
+                    </div>
+                    {% if goods_type == "real" %}
+                        <div class="el-form-item">
+                          <div class="el-form-label">商品分类</div>
+                          {{ goods_form.goods_cat }}
+                          {% if goods_form.goods_cat.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                {{ goods_form.goods_cat.errors }}
+                             </div>
+                         {% endif %}
+                        </div>
+                        <div class="el-form-item">
+                          <div class="el-form-label">产地</div>
+                          {{ goods_form.origin_state }}
+                          {% if goods_form.origin_state.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                {{ goods_form.origin_state.errors }}
+                             </div>
+                          {% endif %}
+                        </div>
+                        <div class="el-form-item">
+                          <div class="el-form-label">库存</div>
+                          {{ goods_form.total_amount }}
+                          {% if goods_form.total_amount.errors %}
+                             <div style="color:red; margin-left:8px; margin-top:5px">
+                                {{ goods_form.total_amount.errors }}
+                             </div>
+                          {% endif %}
+                        </div>
+                    {% endif %}
+                     <div class="el-form-item">
+                      <div class="el-form-label">产品人民币价格</div>
+                      {{ goods_form.price }}
+                      {% if goods_form.price.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ goods_form.price.errors }}
+                         </div>
+                      {% endif %}
+                    </div>
+                    <div class="el-form-item">
+                      <div class="el-form-label">产品详细介绍</div>
+                      {{ goods_form.detail }}
+                      {% if goods_form.detail.errors %}
+                         <div style="color:red; margin-left:8px; margin-top:5px">
+                            {{ goods_form.detail.errors }}
+                         </div>
+                      {% endif %}
+                    </div>
+                    <div class="el-form-item">
+                      <div class="el-form-label"></div>
+                      <button type="submit" class="el-button primary add-btn">下一步</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

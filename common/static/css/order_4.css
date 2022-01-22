@@ -1,0 +1,242 @@
+.detailed-list-2 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.detailed-list-2 .detailed-list-2-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 22px;
+  border: 1px solid #F4F5F7;
+}
+.detailed-list-2 ul {
+  width: 100%;
+}
+.detailed-list-2 ul li {
+  width: 100%;
+  margin-bottom: 28px;
+}
+.detailed-list-2 ul li a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  text-decoration: none;
+}
+.detailed-list-2 ul li a.active {
+  color: #1652B5;
+  border-bottom: 1px solid #1652B5;
+}
+.detailed-list-2 ul li:last-child {
+  margin-bottom: 0;
+}
+.buyer-statistics-container {
+  width: 100%;
+}
+.buyer-statistics-container .buyer-statistics-content {
+  width: 100%;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 13px 15px 20px;
+  border-bottom: 1px solid #F4F5F7;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div.no-bottom {
+  margin-bottom: 0;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div h6 {
+  font-size: 20px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p.red-text {
+  color: #FF0000;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p.green-text {
+  color: #04BC00;
+}
+.order-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.order-container .order-left-container {
+  width: 380px;
+  margin-bottom: 30px;
+}
+.order-container .order-right-container {
+  width: 800px;
+  margin-bottom: 30px;
+  padding-right: 9px;
+}
+.order-container .order-right-container .title-box {
+  padding-top: 14px;
+}
+.order-container .order-right-container .title-box .title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.order-container .order-right-container .title-box .desc {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.order-container .order-right-container .no-data {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-container .order-right-container .order-list-container {
+  width: 100%;
+  margin-top: 20px;
+}
+.order-container .order-right-container .order-list-container .order-item {
+  width: 100%;
+}
+.order-container .order-right-container .order-list-container .order-item .title {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  background-color: #F0F0F0;
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.order-container .order-right-container .order-list-container .order-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box {
+  width: 440px;
+  display: flex;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .img-box {
+  width: 140px;
+  height: 140px;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .img-box img {
+  max-width: 140px;
+  max-height: 140px;
+  display: block;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .info-box {
+  width: 345px;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .info-box .icon-box {
+  margin-bottom: 14px;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .info-box .icon-box span {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-right: 10px;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .info-box .icon-box .blue-text {
+  color: #1652B5;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .info-box .icon-box .green-text {
+  color: #008B4C;
+}
+.order-container .order-right-container .order-list-container .order-info .left-commodity-box .info-box .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+.order-container .order-right-container .order-list-container .order-info .middle-commodity-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.order-container .order-right-container .order-list-container .order-info .middle-commodity-box p {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  margin: 5px;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 4px;
+  text-align: right;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box .price {
+  font-size: 20px;
+  font-family: SourceHanSansCN;
+  font-weight: 500;
+  color: #EC5151;
+  margin-bottom: 10px;
+  text-align: right;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box .exchange-rate {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  line-height: 16px;
+  text-align: right;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box .btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box .btn-box .el-button {
+  margin-left: 10px;
+}
+.order-container .order-right-container .order-list-container .order-info .right-commodity-box .remove-btn {
+  width: 90px;
+  height: 30px;
+  background: #1652B5;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 14px 10px 0;
+  margin-left: 10px;
+}

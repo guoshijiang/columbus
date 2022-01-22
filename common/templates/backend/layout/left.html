@@ -1,0 +1,199 @@
+{% load staticfiles clb_tags%}
+<div class="page-left-container">
+      <p class="page-left-title-container">哥伦布后台管理系统</p>
+      <div class="page-left-content-container">
+        <div class="user-info-box flex-center">
+          <img src="{% static 'images/touxiang_d.png' %}" alt="touxiang_d">
+          <p class="name"> admin </p>
+        </div>
+        <p class="name-box">导航菜单</p>
+        <ul class="nav-list-box father-nav">
+          <li class="active">
+            <a href="{% url 'bar_index' %}" class="flex alcenter">
+              <i class="iconfont iconaside_gongpengguanli"></i>
+              <p>后台首页</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'bar_marchant' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>商家管理</p>
+            </a>
+            {% if self_bar == "marchant" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'b_marchants_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商家列表</p>
+                    </a>
+                  </li>
+                   <li>
+                    <a href="{% url 'b_marchant_flow' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商家交易流水</p>
+                    </a>
+                  </li>
+                   <li>
+                    <a href="{% url 'open_marchant_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商家开通记录</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'mct_config_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商家开通费用配置</p>
+                    </a>
+                  </li>
+                </ul>
+           {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'bar_goods' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>商品管理</p>
+            </a>
+            {% if self_bar == "goods" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'b_goods_cat' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商品类别</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+             {% if self_bar == "goods" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'b_goods_state' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商品产地</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+            {% if self_bar == "goods" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'b_goods_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>商品列表</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'bar_order' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>订单管理</p>
+            </a>
+            {% if self_bar == "order" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'b_order_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>订单列表</p>
+                    </a>
+                  </li>
+                </ul>
+           {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'bar_user' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>用户管理</p>
+            </a>
+            {% if self_bar == "user" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'user_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>用户列表</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'bar_wallet' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>钱包管理</p>
+            </a>
+            {% if self_bar == "wallet" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'coin_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>币种管理</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'wd_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>充提列表</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'trans_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>交易记录</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'bar_forum' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>论坛管理</p>
+            </a>
+            {% if self_bar == "forum" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'b_forum_cat' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>论坛分类</p>
+                    </a>
+                  </li>
+                   <li>
+                    <a href="{% url 'b_forum_topic' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>论坛主题</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'b_forum_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>论坛列表</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{% url 'bar_help' %}" class="flex alcenter">
+              <i class="iconfont iconshuju1"></i>
+              <p>帮助中心</p>
+            </a>
+           {% if self_bar == "help" %}
+                <ul class="child-nav">
+                  <li>
+                    <a href="{% url 'bnews_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>公告列表</p>
+                    </a>
+                  </li>
+                   <li>
+                    <a href="{% url 'bhd_list' %}" class="flex alcenter">
+                      <i class="iconfont icongeren"></i>
+                      <p>工单列表</p>
+                    </a>
+                  </li>
+                </ul>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>

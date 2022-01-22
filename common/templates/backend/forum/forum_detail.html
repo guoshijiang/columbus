@@ -1,0 +1,121 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header with-border">
+                <div class="btn-group">
+                    <a href="{% url 'b_forum_list' %}" class="btn flat btn-sm btn-default BackButton">
+                        <i class="fa fa-arrow-left"></i>
+                        返回
+                    </a>
+                </div>
+              </div>
+              <div class="form-horizontal dataForm" novalidate="novalidate">
+                <input type="hidden" name="id" value="8">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">论坛发布者</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.user.user_name }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">论坛类别</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.cat.name }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">论坛主题</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.topic.name }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact_user" class="col-sm-2 control-label">论坛标题</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.title }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">论坛摘要</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.abstract }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="we_chat" class="col-sm-2 control-label">论坛内容</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.content }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">论坛查看次数</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ forum_dtl.views }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">论坛踩次数</label>
+                        <div class="col-sm-10 col-md-4">
+                             <p>{{ forum_dtl.un_likes }}</p>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">论坛点赞次数</label>
+                        <div class="col-sm-10 col-md-4">
+                             <p>{{ forum_dtl.likes }}</p>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">答案个数</label>
+                        <div class="col-sm-10 col-md-4">
+                             <p>{{ forum_dtl.answers }}</p>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">是否审核</label>
+                        <div class="col-sm-10 col-md-4">
+                             <p>{{ forum_dtl.is_check }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="col-sm-12 col-md-12" style="text-align: center">
+                        <div class="btn-group">
+                            <a href="{% url 'b_forum_comment' forum_dtl.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                论坛评论
+                            </a>
+                        </div>
+                    </div>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

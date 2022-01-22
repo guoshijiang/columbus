@@ -1,0 +1,134 @@
+.detailed-list-2 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.detailed-list-2 .detailed-list-2-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 22px;
+  border: 1px solid #F4F5F7;
+}
+.detailed-list-2 ul {
+  width: 100%;
+}
+.detailed-list-2 ul li {
+  width: 100%;
+  margin-bottom: 28px;
+}
+.detailed-list-2 ul li a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  text-decoration: none;
+}
+.detailed-list-2 ul li a.active {
+  color: #1652B5;
+  border-bottom: 1px solid #1652B5;
+}
+.detailed-list-2 ul li:last-child {
+  margin-bottom: 0;
+}
+.exchange-rate-box {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 33px 33px 10px;
+  border: 1px solid #F4F5F7;
+}
+.exchange-rate-box .exchange-rate-content ul {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.exchange-rate-box .exchange-rate-content ul li .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.exchange-rate-box .exchange-rate-content ul li .price {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.up {
+  color: #C30000;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.down {
+  color: #05C300;
+}
+.become-seller-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.become-seller-container .become-seller-left-container {
+  width: 380px;
+  margin-bottom: 30px;
+}
+.become-seller-container .become-seller-right-container {
+  width: 810px;
+  margin-bottom: 30px;
+}
+.become-seller-container .become-seller-right-container .title-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 26px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.become-seller-container .become-seller-right-container .title-box p.title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 14px;
+}
+.become-seller-container .become-seller-right-container .form-box {
+  width: 600px;
+  padding: 10px 0;
+}
+.become-seller-container .become-seller-right-container .form-box .add-btn {
+  width: 450px;
+  height: 44px;
+  background: linear-gradient(90deg, #008dff, #0060ff);
+  box-shadow: 0px 10px 20px 0px rgba(76, 110, 245, 0.3);
+  border-radius: 22px;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+.become-seller-container .become-seller-right-container .form-box .el-form .el-form-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.become-seller-container .become-seller-right-container .form-box .el-form .el-form-item .el-form-label {
+  text-align: right;
+  margin-right: 10px;
+}
+.become-seller-container .become-seller-right-container .form-box .avatar-uploader .avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.become-seller-container .become-seller-right-container .form-box .avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}

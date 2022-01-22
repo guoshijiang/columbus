@@ -1,0 +1,119 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header with-border">
+                <div class="btn-group">
+                    <a href="{% url 'user_list' %}" class="btn flat btn-sm btn-default BackButton">
+                        <i class="fa fa-arrow-left"></i>
+                        返回
+                    </a>
+                </div>
+              </div>
+              <div class="form-horizontal dataForm" novalidate="novalidate">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.user_name }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">用户头像</label>
+                         <div class="col-sm-10 col-md-4">
+                          <img style="width:120px; height: 120px" src="{% url 'enter_website' %}media/{{ user.user_pho }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">登陆次数</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.login_count }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">是否开通商家</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.is_merchant }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">会员等级</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.member_level }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">是否开启2fa</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.is_open }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">调解胜利次数</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.adjust_victor }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">调解失败次数</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.adjust_fail }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">注册时间</label>
+                        <div class="col-sm-10 col-md-4">
+                            <p>{{ user.created_at | hdatetime }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="col-sm-12 col-md-12" style="text-align: center">
+                        <div class="btn-group">
+                            <a href="{% url 'user_wallets' user.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                查看钱包
+                            </a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="{% url 'user_recv_address' user.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                查看收地址
+                            </a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="{% url 'user_collect_gds' user.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                收藏的商品
+                            </a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="{% url 'user_collect_mct'  user.id %}" type="reset" class="btn flat btn-default dataFormReset">
+                                收藏的商家
+                            </a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="{% url 'user_backlist_mct'  user.id  %}" type="reset" class="btn flat btn-default dataFormReset">
+                                屏蔽的商家
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

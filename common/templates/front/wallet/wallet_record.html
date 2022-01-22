@@ -1,0 +1,66 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/balance.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >钱包充提记录</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="account-balance-container">
+        <div class="account-balance-left-container">
+           <div class="detailed-list-2">
+            <p class="module-title">钱包功能选项</p>
+            <div class="detailed-list-2-content">
+              {% include 'front/wallet/tab_box/wallet_tab.html' %}
+            </div>
+          </div>
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="account-balance-right-container">
+          <div class="table-box">
+            <div class="table-title">交易记录</div>
+            <div class="el-table">
+              <ul class="el-table-header">
+                <li>币种</li>
+                <li>类型</li>
+                <li>转入地址</li>
+                <li>转出地址</li>
+                <li>收到金额</li>
+                <li>请求日期</li>
+                <li>状态</li>
+              </ul>
+              <div class="el-table-body">
+                {% if wallet_record_list %}
+                  {% for wallet_record in wallet_record_list %}
+                    <ul class="el-table_data_item">
+                      <li>{{ wallet_record.asset.name }}</li>
+                      <li>{{ wallet_record.w_or_d }}</li>
+                      <li>{{ wallet_record.to_addr }}</li>
+                      <li>{{ wallet_record.from_addr }}</li>
+                      <li>{{ wallet_record.amount | keep_two_decimal_places }}</li>
+                      <li>{{ wallet_record.created_at | hdatetime }}</li>
+                      <li>{{ wallet_record.status | wallet_record_status }}</li>
+                    </ul>
+                  {% endfor %}
+                {% else %}
+                    <div class="el-table_no_data">暂无数据</div>
+                {% endif %}
+              </div>
+            </div>
+            {% include 'front/select/pagination.html' with items=wallet_record_list %}
+            <p class="small-hint-box">由于隐私原因，提款将在7天后从本节中消失。提款将直接发送到btc地址。</p>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

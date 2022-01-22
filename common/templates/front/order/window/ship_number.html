@@ -1,0 +1,29 @@
+{% load staticfiles clb_tags %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>填写快递单号</p>
+      <a href="{% url 'order_detail' order_dtl.id %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <form enctype="multipart/form-data" method="post" action="{% url 'set_orde_shipnum' order_dtl.id %}">
+        <div class="el-dialog__body">
+          <div class="el-form">
+            <div class="el-form-item">
+              <div class="el-form-label">快递公司：</div>
+              <input type="text" name="ship_company" class="el-input">
+            </div>
+          </div>
+          <div class="el-form">
+            <div class="el-form-item">
+              <div class="el-form-label">快递单号：</div>
+              <input type="text" name="ship_number" class="el-input">
+            </div>
+          </div>
+          <div class="el-dialog__footer">
+            <button type="submit" class="el-button primary">确定</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+

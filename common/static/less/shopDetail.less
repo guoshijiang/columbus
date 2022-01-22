@@ -1,0 +1,219 @@
+@import './common/listOption.less';
+@import './common/buyerStatistics.less';
+.shop-detail-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .module-title{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 21px;
+    font-size: 18px;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #343434;
+    background: #F0F0F0;
+  }
+  .shop-detail-left-container{
+    width: 380px;
+    margin-bottom: 30px;
+  }
+  .shop-detail-right-container{
+    width: 791px;
+    margin-bottom: 30px;
+    .name-box{
+      font-size: 18px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #333333;
+      padding-top: 10px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .basic-info-box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      margin-bottom: 25px;
+      .basic-left-info-box{
+        display: flex;
+        .img-box{
+          width: 140px;
+          height: 140px;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid #EEEEEE;
+          margin-right: 10px;
+          img{
+            display: block;
+            max-width: 140px;
+            max-height: 140px;
+          }
+        }
+        .info-box{
+          p{
+            font-size: 14px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #343434;
+            margin-bottom: 15px;
+          }
+          .name-title-box{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            p{
+              font-size: 18px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #333333;
+              margin-right: 10px;
+              margin-bottom: 0;
+            }
+            span{
+              font-size: 12px;
+              font-family: PingFang SC;
+              font-weight: 400;
+              color: #FFFFFF;
+              line-height: 20px;
+              padding: 0 10px;
+              margin-right: 5px;
+              border-radius: 10px;
+              &.blue{
+                background-color:#1652B5;
+              }
+              &.green{
+                background-color:#0CA345;
+              }
+
+            }
+          }
+        }
+      }
+      .basic-right-info-box{
+        min-width: 90px;
+        padding-right: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        ::v-deep .el-button{
+          width: 90px;
+          height: 30px;
+          background: #1652B5;
+          border-radius: 15px;
+          border-color: #1652B5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 0;
+          margin-bottom: 5px;
+        }
+      }
+    }
+    .title-box{
+      font-size: 18px;
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #333333;
+      margin-bottom: 14px;
+    }
+    .feedback-box{
+      width: 100%;
+      li{
+        width: 100%;
+        height: 44px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        &.title{
+          background-color: #F0F0F0;
+        }
+        p{
+          width: 50px;
+          text-align: center;
+        }
+        div{
+          width: 70px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #343434;
+          img{
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .score-box{
+      li{
+        p{
+          width: 105px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .red-text{
+            color: #DA0000;
+          }
+          .green-text{
+            color: #0CA345;
+          }
+        }
+      }
+    }
+    .shop-tab-container{
+      width: 100%;
+      margin-top: 20px;
+      ::v-deep .el-tabs__item.is-active{
+        color: #333;
+        background-color: #F0F0F0;
+      }
+    }
+  }
+}
+        .comment-list-box{
+        width: 100%;
+        box-sizing: border-box;
+        .comment-item{
+          padding: 0 20px 20px;
+          .top-user-info{
+            width: 100%;
+            display: flex;
+            margin-bottom: 10px;
+            .left-logo{
+              width: 46px;
+              height: 46px;
+              margin-right: 10px;
+              img{
+                display: block;
+                width: 100%;
+              }
+            }
+            .right-info-box{
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+            }
+          }
+          .content-box{
+            font-size: 16px;
+            line-height: 20px;
+          }
+        }
+      }
+      .pagination-box{
+        display: flex;
+        justify-content: center;
+      }
+      .basic-btn{
+        padding: 8px 12px;
+      }

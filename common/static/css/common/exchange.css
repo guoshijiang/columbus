@@ -1,0 +1,36 @@
+.exchange-rate-box {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 33px 33px 10px;
+  border: 1px solid #F4F5F7;
+}
+.exchange-rate-box .exchange-rate-content ul {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.exchange-rate-box .exchange-rate-content ul li .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.exchange-rate-box .exchange-rate-content ul li .price {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.up {
+  color: #C30000;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.down {
+  color: #05C300;
+}

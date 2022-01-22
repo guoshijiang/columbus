@@ -1,0 +1,63 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >商品列表</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="home-container">
+      <div class="home-left-container">
+        <div class="search-select-box">
+          <p class="module-title">复杂搜索选项</p>
+          <div class="search-select-content">
+            <form action="{% url 'goods_list' %}" class="el-form" method="post">
+              {% include 'front/select/select_sourch.html' %}
+              {% include 'front/select/select_type.html' %}
+              {% include 'front/select/select_price.html' %}
+              {% include 'front/select/select_cat.html' %}
+              {% include 'front/select/select_state.html' %}
+              {% include 'front/select/select_order_by.html' %}
+              {% include 'front/select/select_pay.html' %}
+              <div style="text-align: center; margin-top:26px">
+                <button type="submit" style="width:120px; height:36px;border-radius: 4px;color: #FFF;background-color: #409EFF; border-color: #409EFF;">确认检索</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        {% include 'front/public/coin_rete.html' %}
+      </div>
+      <div class="home-right-container">
+        <div class="characteristic-shopmall-box">
+          <div class="characteristic-shopmall-content">
+            <ul>
+              {% for item in goods_list %}
+                  <li>
+                    <a href="{% url 'goods_detail' item.id %}">
+                      <div class="img-box">
+                        <img src="{% url 'enter_website' %}media/{{ item.logo }}">
+                      </div>
+                      <p class="price-box"><span class="price">¥ {{ item.price | keep_two_decimal_places }}</span></p>
+                      <p class="commodity-name">{{ item.title }}</p>
+                    </a>
+                  </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% include 'front/select/pagination.html' with items=goods_list %}
+      </div>
+    </div>
+</div>
+{% endblock %}

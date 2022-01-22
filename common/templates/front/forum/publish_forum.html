@@ -1,0 +1,73 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/publishForum.css' %}">
+    <style>
+        #id_cat, #id_topic{
+             width: 100%;
+            max-width: 450px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 16px;
+            line-height: 40px;
+            box-sizing: border-box;
+        }
+        #id_content {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+        <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+        <div class="for-box">
+            <li class="name-box">
+                <a href="#" >发布帖子</a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+        </div>
+     </ul>
+      <div class="publish-forum-container">
+        <p class="title">发布帖子</p>
+          <form action="{% url 'pulish_form' %}?cat_id={{ cat_id }}" method="post">
+            <div class="el-form">
+              <div class="el-form-item">
+                <input type="hidden" name="cat_id" value="{{ cat_id }}">
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">话题</div>
+                   <select name="topic_id" id="id_topic">
+                      {% for topic in topic_list %}
+                          {% if topic.id == topic_id %}
+                            <option value="{{ topic.id }}">{{ topic.name }}</option>
+                          {% else %}
+                            <option value="{{ topic.id }}">{{ topic.name }}</option>
+                          {% endif %}
+                      {% endfor %}
+                    </select>
+                </div>
+              <div class="el-form-item">
+                <div class="el-form-label">标题</div>
+                <input type="text" name="title" placeholder="请输入论坛标题" class="el-input" required id="id_title">
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label">内容</div>
+                 <textarea name="content" cols="40" rows="10" style="height:200px; width:800px;outline: none;padding:10px;box-sizing: border-box;" required id="id_content"></textarea>
+              </div>
+              <div class="el-form-item">
+                <div class="el-form-label"></div>
+                <button type="submit" class="el-button primary submit-btn">发布</button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+{% endblock %}

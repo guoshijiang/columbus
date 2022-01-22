@@ -1,0 +1,57 @@
+@import './common/accountInfo.less';
+@import './common/shopGrowth.less';
+.wait-deliver-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .wait-deliver-left-container{
+    width: 380px;
+    margin-bottom: 30px;
+  }
+  .wait-deliver-right-container{
+    width: 810px;
+    margin-bottom: 30px;
+    .title-box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 26px;
+      box-sizing: border-box;
+      padding: 0 20px;
+      border-bottom: 1px solid #F0F0F0;
+      p.title{
+        font-size: 18px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #333333;
+        margin-bottom: 14px;
+      }
+    }
+    .el-table{
+      .el-button{
+        padding: 10px;
+      }
+    }
+    .pagination-box{
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.express-dialog{
+  display: none;
+  &.show{
+    display: block;
+  }
+  .el-form-item{
+    display: flex;
+    align-items: center;
+    .el-form-label{
+      text-align: right;
+      padding-right: 10px;
+    }
+  }
+}

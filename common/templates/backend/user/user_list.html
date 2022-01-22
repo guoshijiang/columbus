@@ -1,0 +1,74 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>登陆次数</th>
+                        <th>用户级别</th>
+                        <th>是否开通商家</th>
+                        <th>是否开启2FA</th>
+                        <th>调解胜利</th>
+                        <th>调解失败</th>
+                        <th>是否禁用</th>
+                        <th>注册时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in user_lsts %}
+                        <tr>
+                            <td>{{ user.user_name }}</td>
+                            <td>{{ user.login_count }}</td>
+                            <td>{{ user.member_level }}</td>
+                            <td>{{ user.is_merchant }}</td>
+                            <td>{{ user.is_open }}</td>
+                            <td>{{ user.adjust_victor }}</td>
+                            <td>{{ user.adjust_fail }}</td>
+                            <th>{{ user.is_active }}</th>
+                            <td>{{ user.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'user_detail' user.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 详情
+                                </a>
+                                {% if user.is_active == True %}
+                                    <a href="{% url 'disable_user' user.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                        <i class="fa"></i> 禁用
+                                    </a>
+                                {% else %}
+                                     <a href="{% url 'enable_user' user.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                        <i class="fa"></i> 开启
+                                     </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                  {% include 'backend/select/pagination.html' with items=user_lsts %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load staticfiles clb_tags %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>商家模块未开通提示</p>
+      <a href="{% url 'index' %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <div class="el-dialog__body">
+      <div class="el-form">
+        <div class="el-form-item">
+          <div class="el-form-label"></div>
+          <p>商家模块暂未开通，请稍等</p>
+        </div>
+      </div>
+      <div class="el-dialog__footer">
+        <a href="{% url 'index' %}" class="el-button primary">返回首页</a>
+      </div>
+    </div>
+  </div>
+</div>

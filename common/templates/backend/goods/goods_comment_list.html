@@ -1,0 +1,61 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="btn-group">
+                <a href="{% url 'goods_detail' goods_id %}" class="btn flat btn-sm btn-default BackButton">
+                    <i class="fa fa-arrow-left"></i>
+                    返回
+                </a>
+            </div>
+            <div class="module-box-body">
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>评论用户</th>
+                        <th>关联商家</th>
+                        <th>质量星级</th>
+                        <th>交易星级</th>
+                        <th>服务星级</th>
+                        <th>评论内容</th>
+                        <th>评论时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for gds_cmt in gds_cmt_list %}
+                        <tr>
+                            <td>{{ gds_cmt.user.user_name }}</td>
+                            <td>{{ gds_cmt.merchant.name }}</td>
+                            <td>{{ gds_cmt.quality_star }}</td>
+                            <td>{{ gds_cmt.trade_star }}</td>
+                            <td>{{ gds_cmt.service_star }}</td>
+                            <td>{{ gds_cmt.content }}</td>
+                            <td>{{ gds_cmt.created_at | hdatetime }}</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                  {% include 'backend/select/pagination.html' with items=gds_cmt_list %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

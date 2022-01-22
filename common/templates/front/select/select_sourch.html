@@ -1,0 +1,12 @@
+{% load staticfiles clb_tags %}
+<div class="el-form-item" style="margin-bottom:10px">
+    <div class="search-contai">
+      <div class="search-box" style="width: 300px; height: 40px">
+          {% if goods_name != None %}
+              <input style="width:180px" type="text" name="goods_name" value="{{ goods_name }}" placeholder="请输入商品的名称">
+          {% else %}
+              <input style="width:180px" type="text" name="goods_name" placeholder="请输入商品的名称">
+          {% endif %}
+      </div>
+    </div>
+</div>

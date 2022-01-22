@@ -1,0 +1,20 @@
+{% load staticfiles clb_tags %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>余额不足提示</p>
+      <a href="{% url 'index' %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <div class="el-dialog__body">
+      <div class="el-form">
+        <div class="el-form-item">
+          <div class="el-form-label"></div>
+          <p>您的钱包余额不足, 请去充值，您使用的是 {{ pay_way }} 支付, 充值金额应大于 {{ deposit_amount | keep_two_decimal_places }} {{ pay_way }}</p>
+        </div>
+      </div>
+      <div class="el-dialog__footer">
+        <a href="{% url 'wallet_deposit' %}" class="el-button primary">去充值</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{% load staticfiles clb_tags%}
+<div class="nav-container">
+  <ul class="nav-box">
+    {% if nav_active == 'login' %}
+        <li class="active"><a href="{% url 'before_login' %}" >登录</a></li>
+    {% else %}
+         <li><a href="{% url 'before_login' %}" >登录</a></li>
+    {% endif %}
+    {% if nav_active == 'register' %}
+        <li class="active"><a href="{% url 'register' %}">注册</a></li>
+    {% else %}
+         <li><a href="{% url 'register' %}">注册</a></li>
+    {% endif %}
+    {% if nav_active == 'forget_password' %}
+        <li class="active"><a href="{% url 'forget_password' %}">忘记密码</a></li>
+    {% else %}
+         <li><a href="{% url 'forget_password' %}">忘记密码</a></li>
+    {% endif %}
+  </ul>
+</div>

@@ -1,0 +1,45 @@
+@import './common/listOption.less';
+@import './common/buyerStatistics.less';
+.news-detail-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .news-detail-left-container{
+    width: 380px;
+    margin-bottom: 30px;
+  }
+  .news-detail-right-container{
+    width: 791px;
+    margin-bottom: 30px;
+    .title{
+      font-size: 30px;
+      font-family: PingFang SC;
+      font-weight: 600;
+      color: #333333;
+      line-height: 60px;
+      margin-bottom: 20px;
+    }
+    .info-box{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 20px;
+      .auth-info{
+        display: flex;
+        align-items: center;
+        img{
+          width: 20px;
+        }
+        p{
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+    }
+    .content-box{
+      padding-right: 30px;
+      text-align: justify;
+    }
+  }
+}

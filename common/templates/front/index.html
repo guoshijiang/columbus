@@ -1,0 +1,147 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >首页</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="home-container">
+      <div class="home-left-container">
+          {% include 'front/layout/left/index_left.html' %}
+          {% include 'front/public/coin_rete.html' %}
+          <div class="notice-info-box">
+            <p class="module-title">商城公告信息</p>
+            <div class="notice-info-content">
+              <ul>
+                {% for news in news_list %}
+                    <li>
+                      <p>
+                          <span class="time">
+                              {{ news.created_at | cn_hdatetime }}
+                          </span>
+                          <a href="{% url 'news_detail' news.id %}" >
+                              <span class="text">{{ news.title }}</span>
+                          </a>
+                      </p>
+                    </li>
+                {% endfor %}
+              </ul>
+              {% if news_more %}
+                 <a href="{% url 'news_list' %}"><p class="see-more-box">加载更多 >></p></a>
+              {% else %}
+                   <p class="hint-text">暂无消息</p>
+              {% endif %}
+            </div>
+          </div>
+      </div>
+      <div class="home-right-container">
+            <div class="search-shop-box">
+              <p>欢迎来到哥伦布！</p>
+              <form method="post" action="{% url 'goods_list' %}">
+                  <div class="search-box" style="width:460px; height: 38px">
+                    <input name="goods_name" type="text" style="width:400px;font-size: 14px;" placeholder="请输入商品的名称">
+                      <button type="submit" style="border:none; background-color:transparent; outline:none;padding: 0;">
+                        <span class="search-btn">
+                            <img src="{% static 'images/search-icon.png' %}" alt="search-icon">
+                        </span>
+                      </button>
+                  </div>
+              </form>
+            </div>
+            <div class="characteristic-business-container">
+              <p class="module-title">特色商家</p>
+              <ul class="characteristic-business-content">
+                  {% for marchant in marchant_list %}
+                    <li>
+                      <a href="{% url 'marchants_detail' marchant.id %}">
+                        <div class="left-img">
+                          <img src="{% url 'enter_website' %}media/{{ marchant.logo }}" alt="">
+                        </div>
+                        <div class="right-info">
+                          <p class="name">
+                             {{ marchant.name }}
+                          </p>
+                          <p>简介：{{ marchant.introduce }}</p>
+                          <p>主营：{{ marchant.detail }}</p></div>
+                      </a>
+                    </li>
+                  {% endfor %}
+              </ul>
+              {% if marchant_more %}
+                  <a href="{% url 'marchants_list' %}"><p class="see-more-box">加载更多 >></p></a>
+              {% else %}
+                  <p class="hint-text">暂无更多</p>
+              {% endif %}
+            </div>
+        <div class="characteristic-shopmall-box">
+          <p class="module-title">精选商品</p>
+          <div class="characteristic-shopmall-content">
+            <ul>
+              {% for goods in goods_list %}
+                  <li>
+                    <a href="{% url 'goods_detail' goods.id %}">
+                      <div class="img-box">
+                        <img src="{% url 'enter_website' %}media/{{ goods.logo }}">
+                      </div>
+                      <p class="price-box"><span class="price">¥ {{ goods.price }}</span></p>
+                      <p class="commodity-name">{{ goods.name }}</p>
+                    </a>
+                  </li>
+              {% endfor %}
+            </ul>
+            {% if goods_more %}
+                <a href="{% url 'goods_list' %}"><p class="see-more-box">加载更多 >></p></a>
+            {% else %}
+                <p class="see-more-box no-data">暂无更多</p>
+            {% endif %}
+          </div>
+        </div>
+        {% if is_show %}
+            <div class="account-security-box">
+              <p class="module-title">安全</p>
+              <div class="account-security-content">
+                <p class="prpgress-text">账户担保：{{ secrity }}</p>
+                <div class="progress-bg">
+                  {% if user.is_open == "Yes" %}
+                     <div class="progress-must" style="width: 100%"></div>
+                  {% else %}
+                     <div class="progress-must" style="width: 65%"></div>
+                  {% endif %}
+                </div>
+                <div class="hint-text">
+                  {% if user.is_open == "Yes" %}
+                      <img src="{% static 'images/jinggao.png' %}">
+                      <p>您已经添加了PGP密钥</p>
+                  {% else %}
+                      <img src="{% static 'images/jinggao.png' %}">
+                       <p>您的配置文件中没有任何PGP密钥。</p>
+                       <a style="text-decoration:none" href="{% url 'update_gpg' %}" type="primary" class="add-btn">添加</a>
+                  {% endif %}
+                </div>
+                <div class="hint-text">
+                  {% if user.is_open == "Yes" %}
+                       <img src="{% static 'images/jinggao.png' %}" alt="jinggao">
+                      <p>您已经开启双重身份认证(2FA)。</p>
+                  {% else %}
+                      <img src="{% static 'images/jinggao.png' %}" alt="jinggao">
+                      <p>您现在没有使用双重身份验证(2FA)。</p>
+                      <a href="{% url 'update_gpg' %}" type="primary" class="add-btn">添加</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        {% endif %}
+      </div>
+    </div>
+</div>
+{% endblock %}

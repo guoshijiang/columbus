@@ -1,0 +1,73 @@
+@import './common/accountInfo.less';
+@import './common/shopGrowth.less';
+.add-shop-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .add-shop-left-container{
+    width: 380px;
+    margin-bottom: 30px;
+  }
+  .add-shop-right-container{
+    width: 810px;
+    margin-bottom: 30px;
+    .title-box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 26px;
+      box-sizing: border-box;
+      padding: 0 20px;
+      border-bottom: 1px solid #F0F0F0;
+      p.title{
+        font-size: 18px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #333333;
+        margin-bottom: 14px;
+      }
+    }
+    .form-box{
+      width: 600px;
+      padding: 10px 0;
+      .add-btn{
+        width: 450px;
+        height: 44px;
+        background: linear-gradient(90deg, #008DFF, #0060FF);
+        box-shadow: 0px 10px 20px 0px rgba(76, 110, 245, 0.3);
+        border-radius: 22px;
+        font-size: 16px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #FFFFFF;
+      }
+      .avatar-uploader {
+        .avatar-uploader-icon {
+          font-size: 28px;
+          color: #8c939d;
+          width: 178px;
+          height: 178px;
+          line-height: 178px;
+          text-align: center;
+        }
+        .avatar {
+          width: 178px;
+          height: 178px;
+          display: block;
+        }
+      }
+    }
+  }
+}
+.el-form{
+  .el-form-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    .el-form-label{
+      text-align: right;
+      margin-right: 10px;
+    }
+  }
+}

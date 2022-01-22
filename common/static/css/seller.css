@@ -1,0 +1,331 @@
+.account-info-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 31px 8px 13px 12px;
+  border: 1px solid #F4F5F7;
+}
+.account-info-box .account-info-left .header-img-box {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+}
+.account-info-box .account-info-left .header-img-box img {
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+}
+.account-info-box .account-info-left p {
+  font-size: 16px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #666666;
+  text-align: center;
+  margin-top: 14px;
+}
+.account-info-box .account-info-left span {
+  display: block;
+  margin: 7px auto;
+  width: 49px;
+  height: 17px;
+  text-align: center;
+  background: #FF6600;
+  border-radius: 9px 8px 8px 8px;
+  font-size: 12px;
+  line-height: 17px;
+  font-family: PingFang SC;
+  font-weight: 200;
+  color: #FDFDFD;
+}
+.account-info-box .account-info-right {
+  font-size: 15px;
+  line-height: 24px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  padding-top: 25px;
+  box-sizing: border-box;
+  width: 358px;
+}
+.account-info-box .account-info-right .info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.account-info-box .account-info-right .info-item.last-info-item {
+  margin-bottom: 0;
+  padding-right: 30px;
+}
+.account-info-box .account-info-right .info-item .info-label {
+  display: flex;
+  flex-shrink: 0;
+  width: 110px;
+}
+.account-info-box .account-info-right .info-item .info-label span {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+.account-info-box .account-info-right .info-item .info-label span img {
+  width: 100%;
+}
+.account-info-box .account-info-right .info-item .red-text {
+  color: #FF0000;
+}
+.account-info-box .account-info-right .info-item .green-text {
+  color: #04BC00;
+}
+.account-info-box .account-info-right .btn-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-info-box .login-btn-box {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shop-growth {
+  margin-top: 24px;
+  box-shadow: 0px 0px 10px 0px rgba(6, 0, 1, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.shop-growth .shop-growth-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px;
+  border: 1px solid #F4F5F7;
+}
+.shop-growth .shop-growth-box .shop-growth-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+.shop-growth .shop-growth-box .shop-growth-item:last-child {
+  margin-bottom: 0;
+}
+.shop-growth .shop-growth-box .shop-growth-item p {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  line-height: 20px;
+}
+.shop-growth .shop-growth-box .shop-growth-item p.label {
+  width: 110px;
+  margin-right: 20px;
+}
+.shop-admin-box {
+  width: 100%;
+}
+.shop-admin-box .title-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.shop-admin-box .title-box p.title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.shop-admin-box .shop-admin-content {
+  width: 100%;
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item {
+  width: 25%;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .title {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .num {
+  font-size: 26px;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 10px;
+  text-align: center;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .num.fs14 {
+  font-size: 14px;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .publish-btn {
+  width: 50px;
+  height: 50px;
+  background: #FFFFFF;
+  border: 1px dashed #B5B5B5;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #B5B5B5;
+  cursor: pointer;
+}
+.more{
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+.more a {
+  font-size: 12px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+.order-admin-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.order-admin-container .order-admin-left-container {
+  width: 380px;
+  margin-bottom: 30px;
+}
+.order-admin-container .order-admin-right-container {
+  width: 810px;
+  margin-bottom: 30px;
+}
+
+.order-admin-container .order-admin-right-container .border-module-box{
+  box-shadow: 0px 0px 10px 0px rgba(6, 0, 1, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #F4F5F7;
+  margin-bottom: 20px;
+}
+
+
+.order-admin-container .order-admin-right-container .name-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-family: PingFang SC;
+  color: #333333;
+  padding:10px 20px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.order-admin-container .order-admin-right-container .order-detail {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 40px 40px 0;
+}
+.order-admin-container .order-admin-right-container .order-detail .order-detail-item {
+  width: 25%;
+  margin-bottom: 40px;
+}
+.order-admin-container .order-admin-right-container .order-detail .order-detail-item p {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+}
+.order-admin-container .order-admin-right-container .order-detail .order-detail-item p.title {
+  margin-bottom: 10px;
+}
+.order-admin-container .order-admin-right-container .order-detail .order-detail-item p.date a {
+  font-weight: 600;
+  color: #1652B5;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: 600;
+}
+.order-admin-container .order-admin-right-container .order-detail .order-detail-item p.date a:hover {
+  border-bottom: 1px solid #1652B5;
+}
+.order-admin-container .order-admin-right-container .order-detail .order-detail-item p.date.red {
+  color: #C00202;
+}
+.order-admin-container .order-admin-right-container .buyer-box {
+  width: 100%;
+}
+.order-admin-container .order-admin-right-container .buyer-box .title-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.order-admin-container .order-admin-right-container .buyer-box .title-box p.title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.order-admin-container .order-admin-right-container .buyer-box .title-box .more{
+  padding: 10px 20px;
+}
+.order-admin-container .order-admin-right-container .buyer-box .title-box .more a {
+  font-size: 12px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+}
+.order-admin-container .order-admin-right-container .buyer-box .feedback-box {
+  width: 100%;
+}
+.order-admin-container .order-admin-right-container .buyer-box .feedback-box li {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.order-admin-container .order-admin-right-container .buyer-box .feedback-box li.title {
+  background-color: #F0F0F0;
+}
+.order-admin-container .order-admin-right-container .buyer-box .feedback-box li p {
+  width: 50px;
+  text-align: center;
+}
+.order-admin-container .order-admin-right-container .buyer-box .feedback-box li div {
+  width: 70px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.order-admin-container .order-admin-right-container .buyer-box .feedback-box li div img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.order-admin-container .order-admin-right-container .buyer-box .score-box li p {
+  width: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order-admin-container .order-admin-right-container .buyer-box .score-box li p .red-text {
+  color: #DA0000;
+}
+.order-admin-container .order-admin-right-container .buyer-box .score-box li p .green-text {
+  color: #0CA345;
+}

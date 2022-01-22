@@ -1,0 +1,94 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/balance.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >我的钱包</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+      <div class="account-balance-container">
+        <div class="account-balance-left-container">
+           <div class="detailed-list-2">
+            <p class="module-title">钱包功能选项</p>
+            <div class="detailed-list-2-content">
+              {% include 'front/wallet/tab_box/wallet_tab.html' %}
+            </div>
+          </div>
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="account-balance-right-container">
+          <div class="hint-text">
+            <span></span>
+            <img src="{% static 'images/jinggao.png' %}" alt="jinggao">
+            <p>
+              目前平台支持两种类型的虚拟币充值，优劣比对如下，您可自行选择合适的代币。
+            </p>
+          </div>
+          <div class="hint-box">
+            <p>ETH         隐私性一般   转账费高       购买简单    单价非常高</p>
+            <p>TRC20-USDT  隐私性差     转账费非常便宜  购买简单    单价很低</p>
+          </div>
+          <div class="el-card all-card">
+            <div class="el-card__header">总资产</div>
+            <div class="el-card__body">
+              <div class="all-body-item-container">
+                <div class="all-body-item-box">
+                  <div class="all-body-item-title">总余额</div>
+                  <div class="all-body-item-body">
+                    <div class="text item">总余额(USDT): {{ total_balance_usd | keep_two_decimal_places}}</div>
+                    <div class="text item">总余额(CNY): {{ total_balance_cny | keep_two_decimal_places}}</div>
+                  </div>
+                </div>
+                <div class="all-body-item-box">
+                  <div class="all-body-item-title">总支出</div>
+                  <div class="all-body-item-body">
+                    <div class="text item">总支出(USDT): {{ total_out_usd | keep_two_decimal_places }}</div>
+                    <div class="text item">折合成(CNY): {{ total_out_cny | keep_two_decimal_places }}</div>
+                  </div>
+                </div>
+                <div class="all-body-item-box">
+                  <div class="all-body-item-title">总收入</div>
+                  <div class="all-body-item-body">
+                    <div class="text item">总支出(USDT): {{ total_in_usd | keep_two_decimal_places}}</div>
+                    <div class="text item">折合成(CNY): {{ total_in_cny | keep_two_decimal_places}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-box-container">
+            <div class="el-card">
+              <div class="el-card__header">ETH</div>
+              <div class="el-card__body">
+                <div class="text item">余额: {{ total_eth_balance | keep_two_decimal_places }}</div>
+                <div class="text item">总收入: {{ total_eth_out_amount | keep_two_decimal_places }}</div>
+                <div class="text item">总支出: {{ total_eth_in_amount_amount | keep_two_decimal_places }}</div>
+                <div class="text item">折合成USDT: {{ total_eth_balance_usd | keep_two_decimal_places}}</div>
+                <div class="text item">折合成人民币: {{ total_eth_balance_cny | keep_two_decimal_places }}</div>
+              </div>
+            </div>
+            <div class="el-card">
+              <div class="el-card__header">USDT资产</div>
+              <div class="el-card__body">
+                <div class="text item">余额: {{ total_usdt_balance | keep_two_decimal_places }}</div>
+                <div class="text item">总收入: {{ total_usdt_in_amount | keep_two_decimal_places }}</div>
+                <div class="text item">总支出: {{ total_usdt_out_amount | keep_two_decimal_places }}</div>
+                <div class="text item">折合成USDT: {{ total_usdt_balance | keep_two_decimal_places }}</div>
+                <div class="text item">折合成人民币: {{ total_usdt_balance_cny | keep_two_decimal_places }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

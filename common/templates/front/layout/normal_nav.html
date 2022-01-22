@@ -1,0 +1,53 @@
+{% load staticfiles clb_tags%}
+<div class="nav-container">
+    <ul class="nav-box">
+        {% if nav_active == 'index' %}
+            <li class="active"><a href="{% url 'index' %}">首页</a></li>
+        {% else %}
+            <li><a href="{% url 'index' %}">首页</a></li>
+        {% endif %}
+        {% if nav_active == 'message' %}
+            <li class="active"><a href="{% url 'message_list' %}">消息</a></li>
+        {% else %}
+            <li><a href="{% url 'message_list' %}" >消息</a></li>
+        {% endif %}
+        {% if nav_active == 'marchant' %}
+            {% if request.session.is_merchant == 'Yes' %}
+                <li class="active"><a href="{% url 'become_marchant' %}">我的商户</a></li>
+            {% else %}
+                <li class="active"><a href="{% url 'become_marchant' %}">开通商户</a></li>
+            {% endif %}
+        {% else %}
+            {% if request.session.is_merchant == 'Yes' %}
+                <li><a href="{% url 'become_marchant' %}">我的商户</a></li>
+            {% else %}
+                <li><a href="{% url 'become_marchant' %}">开通商户</a></li>
+            {% endif %}
+        {% endif %}
+        {% if nav_active == 'account' %}
+            <li class="active"><a href="{% url 'account_uinfo' %}">账户</a></li>
+        {% else %}
+            <li><a href="{% url 'account_uinfo' %}">账户</a></li>
+        {% endif %}
+        {% if nav_active == 'forum' %}
+             <li class="active"><a href="{% url 'forum_cat_list' %}">论坛</a></li>
+        {% else %}
+            <li><a href="{% url 'forum_cat_list' %}">论坛</a></li>
+        {% endif %}
+        {% if nav_active == 'support' %}
+            <li class="active"><a href="{% url 'help_desk_list' %}">工单</a></li>
+        {% else %}
+            <li><a href="{% url 'help_desk_list' %}">工单</a></li>
+        {% endif %}
+        {% if nav_active == 'order' %}
+            <li class="active"><a href="{% url 'order_list' %}">订单</a></li>
+        {% else %}
+            <li><a href="{% url 'order_list' %}">订单</a></li>
+        {% endif %}
+        {% if nav_active == 'wallet' %}
+            <li class="active"><a href="{% url 'wallet_info' %}">我的钱包</a></li>
+        {% else %}
+            <li><a href="{% url 'wallet_info' %}">我的钱包</a></li>
+        {% endif %}
+    </ul>
+</div>

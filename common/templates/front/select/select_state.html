@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div class="el-form-item">
+    <p class="el-form-label">商品产地</p>
+    <select id="state-select"  name="state_id" class="el-select">
+        {% if state_id == 0 %}
+            <option value="0" selected>全部</option>
+        {% else %}
+            <option value="0">全部</option>
+        {% endif %}
+         {% for state in goods_slist %}
+            {% if state.id == state_id %}
+               <option value="{{ state.id }}" selected>{{ state.state }}</option>
+            {% else %}
+                <option value="{{ state.id }}">{{ state.state }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>

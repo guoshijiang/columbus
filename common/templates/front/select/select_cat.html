@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div class="el-form-item">
+    <p class="el-form-label">商品分类</p>
+    <select id="cat-select"  name="cat_id" class="el-select">
+        {% if cat_id == 0 %}
+            <option value="0" selected>全部</option>
+        {% else %}
+            <option value="0">全部</option>
+        {% endif %}
+         {% for cat in goods_clist %}
+            {% if cat.id == cat_id %}
+               <option value="{{ cat.id }}" selected>{{ cat.name }}</option>
+            {% else %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>

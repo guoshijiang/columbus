@@ -1,0 +1,34 @@
+{% load staticfiles%}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哥伦布区块链隐私商城</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Contro" content="no-siteapp" />
+    <meta name="renderer" content="webkit" />
+    <link rel="icon" type="image/png" sizes="16x16" />
+    <link rel="stylesheet" href="{% static 'css/reset.css'%}">
+    <link rel="stylesheet" href="{% static 'css/common.css'%}">
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+     {% if request.session.user_name %}
+         {% include 'front/layout/normal_head.html' %}
+     {% else %}
+         {% include 'front/layout/unauth_head.html' %}
+     {% endif %}
+     <div class="body-page-container">
+      {% if request.session.user_name %}
+      {% include 'front/layout/normal_nav.html' %}
+      {% else %}
+          {% include 'front/layout/unauth_nav.html' %}
+      {% endif %}
+      {% block body %}
+      {% endblock %}
+      {% include 'front/layout/bottom.html' %}
+     </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+{% load staticfiles clb_tags%}
+<div class="account-info-box">
+    <div class="account-info-left">
+      <div class="header-img-box">
+        <img src="{% url 'enter_website' %}media/{{ marchant.logo }}" alt="header-img">
+      </div>
+      <p>{{ marchant.name }}</p>
+    </div>
+    <div class="account-info-right">
+      <div class="info-item">
+        <p class="info-label">加入时间：</p>
+        <p class="info-text">{{ marchant.created_at | hdatetime }}</p>
+      </div>
+      <div class="info-item">
+        <p class="info-label">商家名称：</p>
+        <p class="info-text">{{ marchant.name }}</p>
+      </div>
+      <div class="info-item">
+        <p class="info-label">商家介绍：</p>
+        <p class="info-text">{{ marchant.introduce }}</p>
+      </div>
+      <div class="btn-item">
+        <a class="el-button primary" href="{% url 'update_marchant' marchant.id%}" >编辑</a>
+      </div>
+    </div>
+</div>
+<div class="shop-growth">
+    <div class="module-title">店铺成长</div>
+    <div class="shop-growth-box">
+      <div class="shop-growth-item"><p class="label">店铺等级</p><p class="content">{{ marchant.shop_level }}</p></div>
+      <div class="shop-growth-item"><p class="label">店铺评分</p><p class="content">{{ marchant.shop_score }}</p></div>
+      <div class="shop-growth-item"><p class="label">本月销量</p><p class="content">{{ marchant.month_sell_num }}</p></div>
+      <div class="shop-growth-item"><p class="label">本月销售总额</p><p class="content">{{  marchant.month_sell_amount | keep_two_decimal_places}}</p></div>
+      <div class="shop-growth-item"><p class="label">总销量</p><p class="content">{{  marchant.total_sell_num }}</p></div>
+      <div class="shop-growth-item"><p class="label">总销售额</p><p class="content">{{  marchant.total_sell_amount | keep_two_decimal_places}}</p></div>
+    </div>
+</div>

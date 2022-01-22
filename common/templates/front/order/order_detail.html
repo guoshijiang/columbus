@@ -1,0 +1,124 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/orderDetail.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >订单详情</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="place-order-container">
+        <div class="place-order-left-container">
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="place-order-right-container">
+          <p class="name-box">订单详情</p>
+          <div class="address-box">
+            <div class="address-left-box"><img src="{% static 'images/address-i.png' %}" alt="address_i"></div>
+            <div class="address-right-box">
+              <div class="el-form">
+                <div class="el-form-item">
+                  <div class="el-form-label">收货人：</div>
+                  <p>{{ order_dtl.user_address.user_name }}</p>
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">手机号：</div>
+                  <p>{{ order_dtl.user_address.phone }}</p>
+                </div>
+                <div class="el-form-item">
+                  <div class="el-form-label">收货地址：</div>
+                  <p>{{ order_dtl.user_address.address }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src="{% static 'images/tiao.png' %}" alt="tiao" class="line-box">
+          <div class="shop-info-box">
+             <a style="text-decoration:none" href="{% url 'marchants_detail' order_dtl.merchant.id %}">
+                <div class="shop-name">{{ order_dtl.merchant.name }}</div>
+             </a>
+              <ul class="commodity-list-box">
+                <li>
+                  <div class="left-commodity-box">
+                    <a href="#" target="_blamk">
+                      <div class="img-box">
+                        <img src="{% url 'enter_website' %}media/{{ order_dtl.goods.logo }}" alt="">
+                      </div>
+                      <div class="info-box">
+                        <p class="name">{{ order_dtl.goods.name }}</p>
+                        <p class="desc">{{ order_dtl.goods.detail }}</p>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="right-commodity-box">
+                    <p class="name">商品总金额： ¥{{ order_dtl.cny_amount | keep_two_decimal_places }}</p>
+                    <p class="name">数量：{{ order_dtl.buy_nums }}</p>
+                  </div>
+                </li>
+              </ul>
+              <div class="price-info-box">
+                <div class="price-info-item end pay-price">
+                  <p>实付币种数量：<span class="red">{{ order_dtl.pay_coin_amount | keep_two_decimal_places}} {{ order_dtl.pay_asset.name }}</span></p>
+                </div>
+                <div class="price-info-item order-info">
+                  <p>订单编号：{{ order_dtl.order_number }}</p>
+                  <p>下单时间：{{ order_dtl.pay_at }}</p>
+                  <p>订单状态：{{ order_dtl.status | user_order_status }}</p>
+                  {% if order_dtl.express_number %}
+                     <p>快递单号：{{ order_dtl.express_number }}</p>
+                  {% else %}
+                     <p>快递单号：商家未发货</p>
+                  {% endif %}
+                </div>
+                {% if return_goods %}
+                    <div class="price-info-item order-info">
+                      <p>退/换货状态：{{ order_return.process | user_order_status}}</p>
+                      <p>退/换货进度：进行中 </p>
+                      <p>退货金额：{{ order_dtl.pay_coin_amount | keep_two_decimal_places}} {{ order_dtl.pay_asset.name }}</p>
+                      <p>描述：{{ order_return.ret_goods_rs }}</p>
+                    </div>
+                {% endif %}
+                <div class="price-info-item end btn-box">
+                  {% if order_dtl.status == 'NO_PAY'  %}
+                     <a class="el-button btn confirm-btn">重新支付</a>
+                  {% endif %}
+                  {% if order_dtl.status == 'SEND_GOODS'  %}
+                     <a href="{% url 'confirm_recv_goods' order_dtl.id %}" class="el-button btn confirm-btn">确认收货</a>
+                  {% endif %}
+                  {% if order_dtl.status != 'FINISH' and order_dtl.status != "RETURN_GOODS" %}
+                     <a href="{% url 'return_order' order_dtl.id %}" class="el-button btn confirm-btn">退/换货</a>
+                  {% endif %}
+                  {% if order_dtl.status == "RETURN_GOODS" and order_return.is_send_goods == 'Yes' and order_return.process != 'RETURN_SELLER_RJT' %}
+                     <a href="{% url 'order_detail' order_dtl.id %}?window=number" class="el-button btn confirm-btn">添加快递单号</a>
+                  {% endif %}
+                  {% if order_dtl.status == "RETURN_GOODS" %}
+                     <a href="{% url 'cancle_return_order' order_dtl.id  %}" class="el-button btn confirm-btn">撤销退/换货</a>
+                  {% endif %}
+                  {% if order_dtl.status == "RETURN_GOODS" and order_return.process == 'RETURN_SELLER_RJT' %}
+                      <a href="{% url 'order_detail' order_dtl.id %}?window=approval" class="el-button btn confirm-btn">申述</a>
+                  {% endif %}
+                  {% if order_dtl.status == 'RECV_GOODS'  %}
+                      <a href="{% url 'create_comment' order_dtl.id %}" class="el-button btn confirm-btn" >评价</a>
+                  {% endif %}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if window == "number" %}
+        {% include 'front/order/window/ship_number.html' %}
+    {% endif %}
+    {% if window == "approval" %}
+        {% include 'front/order/window/approval.html' %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,354 @@
+.detailed-list-2 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.detailed-list-2 .detailed-list-2-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 22px;
+  border: 1px solid #F4F5F7;
+}
+.detailed-list-2 ul {
+  width: 100%;
+}
+.detailed-list-2 ul li {
+  width: 100%;
+  margin-bottom: 28px;
+}
+.detailed-list-2 ul li a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  text-decoration: none;
+}
+.detailed-list-2 ul li a.active {
+  color: #1652B5;
+  border-bottom: 1px solid #1652B5;
+}
+.detailed-list-2 ul li:last-child {
+  margin-bottom: 0;
+}
+.exchange-rate-box {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 33px 33px 10px;
+  border: 1px solid #F4F5F7;
+}
+.exchange-rate-box .exchange-rate-content ul {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.exchange-rate-box .exchange-rate-content ul li .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.exchange-rate-box .exchange-rate-content ul li .price {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.up {
+  color: #C30000;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.down {
+  color: #05C300;
+}
+.place-order-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 60px;
+}
+.place-order-container .place-order-left-container {
+  width: 380px;
+  margin-bottom: 35px;
+}
+.place-order-container .place-order-right-container {
+  width: 791px;
+}
+.place-order-container .place-order-right-container .name-box {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  padding-top: 10px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.place-order-container .place-order-right-container .address-box {
+  font-size: 30px;
+  color: #BFBFBF;
+  display: flex;
+}
+.place-order-container .place-order-right-container .address-box .address-left-box {
+  padding: 50px 30px;
+}
+.place-order-container .place-order-right-container .address-box .address-right-box {
+  width: 600px;
+  padding: 17px 0 34px;
+}
+.place-order-container .place-order-right-container .address-box .address-right-box .el-form {
+  margin-top: 20px;
+}
+.place-order-container .place-order-right-container .address-box .address-right-box .el-form .el-form-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #282828;
+}
+.place-order-container .place-order-right-container .address-box .address-right-box .el-form .el-form-item .el-form-label {
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.place-order-container .place-order-right-container .line-box {
+  display: block;
+  width: 100%;
+}
+.place-order-container .place-order-right-container .shop-info-box {
+  width: 100%;
+}
+.place-order-container .place-order-right-container .shop-info-box .shop-name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #010101;
+  line-height: 54px;
+  padding: 12px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box {
+  width: 100%;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 20px;
+  padding-top: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box a {
+  display: flex;
+  text-decoration: none;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .img-box {
+  width: 140px;
+  height: 140px;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .img-box img {
+  max-width: 140px;
+  max-height: 140px;
+  display: block;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box {
+  width: 345px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .icon-box {
+  margin-bottom: 14px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .icon-box span {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-right: 10px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .icon-box .blue-text {
+  color: #1652B5;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .icon-box .green-text {
+  color: #008B4C;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .desc {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 7px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .see-data {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 7px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .see-data span {
+  margin-right: 30px;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .left-commodity-box .info-box .stock {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .right-commodity-box {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.place-order-container .place-order-right-container .shop-info-box .commodity-list-box li .right-commodity-box .name {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box {
+  width: 100%;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item {
+  width: 791px;
+  box-sizing: border-box;
+  padding: 0 34px;
+  display: flex;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.between {
+  justify-content: space-between;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.end {
+  justify-content: flex-end;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.price {
+  margin-bottom: 40px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.freight {
+  margin-bottom: 80px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.total-price {
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #999999;
+  line-height: 54px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.total-price p {
+  margin-left: 80px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.total-price span.red {
+  color: #E12218;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.total-price span.black {
+  color: #222222;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.pay-price {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #999999;
+  line-height: 50px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.pay-price .red {
+  color: #E12218;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.btn-box .btn {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 20px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.btn-box .btn.refund {
+  background-color: #F5F5F5;
+  color: #222;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.btn-box .btn.confirm-btn {
+  background-color: #E12218;
+  color: #fff;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.order-info {
+  background: #F5F5F5;
+  padding: 28px 34px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.place-order-container .place-order-right-container .shop-info-box .price-info-box .price-info-item.order-info p {
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #222222;
+  line-height: 30px;
+}
+.publish-comment-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 35px;
+}
+.publish-comment-box .comment-input {
+  width: 400px;
+}
+.publish-comment-box .el-textarea__inner {
+  width: 400px;
+  height: 200px;
+  background-color: #F5F5F5;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.publish-comment-box .el-form-item {
+  display: flex;
+  align-items: center;
+}
+.publish-comment-box .el-form-item .el-form-label {
+  min-width: 50px;
+  width: 80px;
+}
+.publish-comment-box .el-form-item .el-select {
+  width: 150px;
+}
+.publish-comment-box .submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  background: #E12218;
+  border-radius: 20px;
+  font-size: 18px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-top: 70px;
+  cursor: pointer;
+}

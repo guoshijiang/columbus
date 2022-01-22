@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    {% load staticfiles clb_tags%}
+    {% block head %}
+        <link rel="stylesheet" href="{% static 'backend/css/AdminLTE.min.css' %}">
+        <link rel="stylesheet" href="{% static 'backend/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'backend/css/b_login.css' %}">
+    {% endblock %}
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a>哥伦布商城后台系统</a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">登录</p>
+            <form class="dataForm" id="dataForm" action="{% url 'b_login' %}" method="post">
+                <div class="form-group has-feedback">
+                    <input name="name" id="name" autocomplete="off" type="text" class="form-control" placeholder="用户名">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input name="password" id="password" autocomplete="off" type="password" class="form-control" placeholder="密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        {{ tip_msg }}
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" id="loginButton" class="btn btn-primary btn-block btn-flat">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

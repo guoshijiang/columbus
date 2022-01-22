@@ -1,0 +1,128 @@
+@import './common/listOption.less';
+
+.work-order-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .work-order-left-container{
+    width: 380px;
+    margin-bottom: 30px;
+  }
+  .work-order-right-container{
+    width: 800px;
+    margin-bottom: 30px;
+    padding-right: 9px;
+    .hint-box{
+      width: 100%;
+      height: 44px;
+      display: flex;
+      background-color: rgba(255, 0, 0, 0.17);
+      span{
+        width: 10px;
+        height: 44px;
+        background-color: #FF0000;
+      }
+      p{
+        padding: 0 22px;
+        font-size: 16px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #FF0000;
+        line-height: 44px;
+        a{
+          color: #7e8c8d;
+          text-decoration: none;
+        }
+      }
+    }
+    .hint-text{
+      margin-top: 19px;
+      font-size: 14px;
+      font-family: PingFang SC;
+      font-weight: 400;
+      color: #333333;
+      text-align: center;
+    }
+    .title-box{
+      font-size: 18px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #333333;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F0F0F0;
+      margin-top: 27px;
+    }
+    .form-box{
+      width: 550px;
+      padding: 22px 52px;
+      .el-form-item{
+        display: flex;
+        .el-input{
+          width: 450px;
+          border: 1px solid #BFBFBF;
+          border-radius: 22px;
+        }
+        .el-input.el-textarea_inner{
+          width: 450px;
+          height: 200px;
+          box-sizing: border-box;
+          padding: 20px;
+        }
+      }
+      .text-area-box{
+        width: 450px;
+        height: 200px;
+        background: #FFFFFF;
+        border-radius: 5px;
+      }
+      .verification-code-box{
+        width: 450px;
+        margin-bottom: 22px;
+        margin-top: 30px;
+        img{
+          width: 100%;
+        }
+      }
+      .send-btn{
+        width: 450px;
+        height: 44px;
+        background: linear-gradient(90deg, #008DFF, #0060FF);
+        box-shadow: 0px 10px 20px 0px rgba(76, 110, 245, 0.3);
+        border-radius: 22px;
+        margin-top: 63px;
+      }
+    }
+    .work-title{
+      font-size: 18px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 18px;
+    }
+    .table-box{
+      .remove-btn{
+        width: 90px;
+        height: 30px;
+        background: #1652B5;
+        border-radius: 15px;
+        font-size: 14px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.express-dialog{
+  display: none;
+  .el-form{
+    .el-form-item{
+      display: flex;
+    }
+  }
+  &.show{
+    display: block;
+  }
+}

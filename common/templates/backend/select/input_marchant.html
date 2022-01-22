@@ -1,0 +1,8 @@
+{% load staticfiles clb_tags%}
+<div class="form-group">
+    {% if marchant_name %}
+        <input name="marchant_name" id="marchant_name" class="form-control input-sm" value="{{ marchant_name }}" placeholder="请输入商家名称">
+    {% else %}
+        <input name="marchant_name" id="marchant_name" class="form-control input-sm" placeholder="请输入商家名称">
+    {% endif %}
+</div>

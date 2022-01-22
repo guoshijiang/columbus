@@ -1,0 +1,87 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="box-header with-border">
+                <div class="btn-group">
+                    <a href="{% url 'b_order_detail' order_dtl.id %}" class="btn flat btn-sm btn-default BackButton">
+                        <i class="fa fa-arrow-left"></i>
+                        返回
+                    </a>
+                </div>
+              </div>
+              <form id="dataForm" class="form-horizontal dataForm" action="{% url 'order_adjust' order_dtl.id %}" method="post" novalidate="novalidate">
+                <input type="hidden" name="id" value="8">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">胜出方</label>
+                        <div class="col-sm-10 col-md-4">
+                            <div class="form-group">
+                               <select id="goods_type-select"  name="vector" class="form-control el-select">
+                                  {% for data in select_data %}
+                                      {% if vector == data.mark %}
+                                          <option value="{{ data.mark }}">{{ data.name }}</option>
+                                      {% else %}
+                                          <option value="{{ data.mark }}">{{ data.name }}</option>
+                                      {% endif %}
+                                  {% endfor %}
+                               </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">失败方</label>
+                        <div class="col-sm-10 col-md-4">
+                           <div class="form-group">
+                               <select id="goods_type-select"  name="fail" class="form-control el-select">
+                                  {% for data in select_data %}
+                                      {% if fail == data.mark %}
+                                          <option value="{{ data.mark }}">{{ data.name }}</option>
+                                      {% else %}
+                                          <option value="{{ data.mark }}">{{ data.name }}</option>
+                                      {% endif %}
+                                  {% endfor %}
+                               </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">原因</label>
+                        <div class="col-sm-10 col-md-4">
+                           <textarea name="reason" cols="40" rows="10" style="height:200px; width:800px" required id="id_content">
+                           </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10 col-md-4">
+                        <div class="btn-group">
+                            <button type="submit" class="btn flat btn-info dataFormSubmit">
+                                提交
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

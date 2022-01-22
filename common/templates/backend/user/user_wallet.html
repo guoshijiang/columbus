@@ -1,0 +1,52 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <div class="btn-group">
+                <a href="{% url 'user_detail' user_id %}" class="btn flat btn-sm btn-default BackButton">
+                    <i class="fa fa-arrow-left"></i>
+                    返回
+                </a>
+              </div>
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>资产名称</th>
+                        <th>地址</th>
+                        <th>余额</th>
+                        <th>收入统计</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for u_wallet in u_wallet_list %}
+                        <tr>
+                            <td>{{ u_wallet.asset }}</td>
+                            <td>{{ u_wallet.balance | keep_two_decimal_places }}</td>
+                            <td>{{ u_wallet.in_amount | keep_two_decimal_places }}</td>
+                            <td>{{ u_wallet.out_amount | keep_two_decimal_places }}</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

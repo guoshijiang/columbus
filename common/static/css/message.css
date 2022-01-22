@@ -1,0 +1,192 @@
+.message-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.message-container .message-left-container {
+  width: 380px;
+  height: 924px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin-bottom: 30px;
+  border-right: 1px solid #F0F0F0;
+  overflow-y: auto;
+}
+.message-container .message-left-container .contacts-list {
+  width: 100%;
+}
+.message-container .message-left-container .contacts-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 6px;
+}
+.message-container .message-left-container .contacts-list li.active {
+  background-color: #ccc;
+}
+.message-container .message-left-container .contacts-list li:hover {
+  background-color: #eee;
+}
+.message-container .message-left-container .contacts-list li .header-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message-container .message-left-container .contacts-list li .header-img img {
+  max-width: 42px;
+  max-height: 42px;
+}
+.message-container .message-left-container .contacts-list li .user-info {
+  width: 285px;
+}
+.message-container .message-left-container .contacts-list li .user-info .info-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.message-container .message-left-container .contacts-list li .user-info .info-box .name {
+  width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #333;
+}
+.message-container .message-left-container .contacts-list li .user-info .info-box .time {
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #999;
+}
+.message-container .message-left-container .contacts-list li .user-info .new-message {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #999;
+}
+.message-container .message-right-container {
+  width: 810px;
+  margin-bottom: 30px;
+}
+.message-container .message-right-container .name-box {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  padding-top: 10px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.message-container .message-right-container .message-info-box {
+  width: 100%;
+  height: 800px;
+  box-sizing: border-box;
+  padding: 50px 20px;
+  overflow-y: auto;
+}
+.message-container .message-right-container .message-info-box .message-info-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.message-container .message-right-container .message-info-box .time-box {
+  display: flex;
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #999999;
+  line-height: 21px;
+  align-self: center;
+  margin-bottom: 20px;
+}
+.message-container .message-right-container .message-info-box .message-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+.message-container .message-right-container .message-info-box .message-box.left-message-box {
+  align-self: flex-start;
+}
+.message-container .message-right-container .message-info-box .message-box.left-message-box .user-logo {
+  margin-right: 20px;
+}
+.message-container .message-right-container .message-info-box .message-box.right-message-box {
+  align-self: flex-end;
+}
+.message-container .message-right-container .message-info-box .message-box.right-message-box .user-logo {
+  margin-left: 20px;
+}
+.message-container .message-right-container .message-info-box .message-box .user-logo {
+  max-width: 43px;
+  max-height: 43px;
+}
+.message-container .message-right-container .message-info-box .message-box .message-text {
+  max-width: 520px;
+  background: #1652B5;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 22px;
+  padding: 10px 12px;
+}
+.message-container .message-right-container .message-info-box .message-box .message-text img{
+  max-width: 520px;
+}
+.message-container .message-right-container .message-info-box .message-box .send-img {
+  max-width: 200px;
+}
+.message-container .message-right-container .send-box {
+  box-sizing: border-box;
+  height: 70px;
+  background: #FFFFFF;
+  box-shadow: 0px -2px 10px 0px rgba(153, 153, 153, 0.26);
+  border-radius: 20px 20px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.message-container .message-right-container .send-box .text-input {
+  width: 620px;
+  height: 40px;
+  background: #EEEEEE;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  line-height: 40px;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+.message-container .message-right-container .send-box .el-button {
+  padding: 8px 20px;
+}
+.message-container .message-right-container .send-box .el-upload {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+}
+.message-container .message-right-container .send-box .el-upload .el-upload__input {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}

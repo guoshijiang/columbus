@@ -1,0 +1,63 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <style>
+        #id_user_pho{
+            opacity: 0;
+            width: 178px;
+            height: 178px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+  <div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >修改用户名称</a>
+        </li>
+<span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="account-container">
+        <div class="account-basic-info">
+          <div class="img-box">
+            {% if user.user_pho %}
+                <img src="{% url 'enter_website' %}media/{{ user.user_pho }}" >
+            {% else %}
+                <img src="{% static 'images/touxiang_d.png' %}">
+            {% endif %}
+          </div>
+          <div class="right-info">
+            <p class="name"> 用户名称:  <span> {{ user.user_name }} </span></p>
+            <p class="basic">加入时间： <span style=" margin-left:2px">{{ user.created_at | hdatetime }}</span></p>
+            <p class="basic">信任级别： <span style=" margin-left:2px">等级{{ user.member_level }}</span></p>
+          </div>
+        </div>
+        <div class="el-tabs" style="margin-top: 10px;">
+           {% include 'front/account/tab/tab_box.html' %}
+        </div>
+        <div class="el-tab-content">
+          <form action="{% url 'account_uinfo' %}" method="post" class="el-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="el-form-item flex alcenter">
+              <p class="el-form-label">用户名：</p>
+              {{ uinfo_form.user_name }}
+              {% if uinfo_form.user_name.errors %}
+                 <div style="color:red; margin-left:8px; margin-top:5px">
+                     {{ uinfo_form.user_name.errors }}
+                 </div>
+              {% endif %}
+            </div>
+            <div class="el-form-item flex center">
+              <button type="submit" class="el-button primary persnal-btn">保存更改</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,331 @@
+.account-info-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 31px 8px 13px 12px;
+  border: 1px solid #F4F5F7;
+}
+.account-info-box .account-info-left .header-img-box {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+}
+.account-info-box .account-info-left .header-img-box img {
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+}
+.account-info-box .account-info-left p {
+  font-size: 16px;
+  font-family: Adobe Heiti Std;
+  font-weight: normal;
+  color: #666666;
+  text-align: center;
+  margin-top: 14px;
+}
+.account-info-box .account-info-left span {
+  display: block;
+  margin: 7px auto;
+  width: 49px;
+  height: 17px;
+  text-align: center;
+  background: #FF6600;
+  border-radius: 9px 8px 8px 8px;
+  font-size: 12px;
+  line-height: 17px;
+  font-family: PingFang SC;
+  font-weight: 200;
+  color: #FDFDFD;
+}
+.account-info-box .account-info-right {
+  font-size: 15px;
+  line-height: 24px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  padding-top: 25px;
+}
+.account-info-box .account-info-right .info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.account-info-box .account-info-right .info-item.last-info-item {
+  margin-bottom: 0;
+  padding-right: 30px;
+}
+.account-info-box .account-info-right .info-item .info-label {
+  display: flex;
+  flex-shrink: 0;
+}
+.account-info-box .account-info-right .info-item .info-label span {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+.account-info-box .account-info-right .info-item .info-label span img {
+  width: 100%;
+}
+.account-info-box .account-info-right .info-item .red-text {
+  color: #FF0000;
+}
+.account-info-box .account-info-right .info-item .green-text {
+  color: #04BC00;
+}
+.account-info-box .account-info-right .btn-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-info-box .login-btn-box {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shop-growth {
+  margin-top: 24px;
+}
+.shop-growth .shop-growth-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px;
+  border: 1px solid #F4F5F7;
+}
+.shop-growth .shop-growth-box .shop-growth-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+.shop-growth .shop-growth-box .shop-growth-item:last-child {
+  margin-bottom: 0;
+}
+.shop-growth .shop-growth-box .shop-growth-item p {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  line-height: 20px;
+}
+.shop-growth .shop-growth-box .shop-growth-item p.label {
+  width: 110px;
+  margin-right: 20px;
+}
+.shop-admin-box {
+  width: 100%;
+}
+.shop-admin-box .title-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 26px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.shop-admin-box .title-box p.title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 14px;
+}
+.shop-admin-box .shop-admin-content {
+  width: 100%;
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item {
+  width: 25%;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .title {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .num {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 10px;
+  text-align: center;
+}
+.shop-admin-box .shop-admin-content .shop-admin-item .publish-btn {
+  width: 50px;
+  height: 50px;
+  background: #FFFFFF;
+  border: 1px dashed #B5B5B5;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #B5B5B5;
+  cursor: pointer;
+}
+.more a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  text-decoration: none;
+}
+.shop-admin-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.shop-admin-container .shop-admin-left-container {
+  width: 380px;
+  margin-bottom: 30px;
+}
+.shop-admin-container .shop-admin-right-container {
+  width: 810px;
+  margin-bottom: 30px;
+}
+.shop-admin-container .shop-admin-right-container .shop-tab-container {
+  width: 100%;
+  margin-top: 20px;
+}
+.shop-admin-container .shop-admin-right-container .shop-tab-container ::v-deep .el-tabs__item.is-active {
+  color: #333;
+  background-color: #F0F0F0;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box {
+  width: 100%;
+  margin-top: 10px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box a {
+  display: flex;
+  text-decoration: none;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .img-box {
+  width: 140px;
+  height: 140px;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .img-box img {
+  max-width: 140px;
+  max-height: 140px;
+  display: block;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box {
+  width: 345px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .icon-box {
+  margin-bottom: 14px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .icon-box span {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  margin-right: 10px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .icon-box .blue-text {
+  color: #1652B5;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .icon-box .green-text {
+  color: #008B4C;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .desc {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 7px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .see-data {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 7px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .see-data span {
+  margin-right: 30px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .left-commodity-box .info-box .stock {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box {
+  width: 200px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 4px;
+  text-align: right;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box .price {
+  font-size: 20px;
+  font-family: SourceHanSansCN;
+  font-weight: 500;
+  color: #EC5151;
+  margin-bottom: 10px;
+  text-align: right;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box .exchange-rate {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  line-height: 16px;
+  text-align: right;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box .btn-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box .btn-box .el-button {
+  margin-left: 10px;
+}
+.shop-admin-container .shop-admin-right-container .commodity-list-box li .right-commodity-box .btn-box .remove-btn {
+  width: 90px;
+  height: 30px;
+  background: #1652B5;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 14px auto 0;
+}
+.shop-admin-container .shop-admin-right-container .pagination-box {
+  display: flex;
+  justify-content: center;
+}

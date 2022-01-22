@@ -1,0 +1,7 @@
+{% load staticfiles clb_tags%}
+<form method="post" action="{% url 'forum_cmt_reply' form_dtl.id %}">
+   <div class="publish-box">
+      <textarea rows="5" name="content" placeholder="请输入内容"  class="text-area el-textarea_inner" style="outline: none;padding: 20px;box-sizing: border-box;"></textarea>
+      <button type="submit" class="el-button primary" style="width: 100px;">发布</button>
+   </div>
+</form>

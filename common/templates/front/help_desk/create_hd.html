@@ -1,0 +1,51 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/support.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+          <li class="name-box">
+              <a href="{% url 'index' %}" >工单中心</a>
+          </li>
+          <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+      <div class="work-order-container">
+        <div class="work-order-left-container">
+            {% include 'front/public/list_item.html' %}
+        </div>
+        <div class="work-order-right-container">
+            <p class="hint-text">我们努力在24小时内回答您的问题。</p>
+          <div class="title-box">
+            创建工单
+          </div>
+          <div class="form-box">
+              <form method="post" action="{% url 'submit_hd' %}">
+                <div class="el-form">
+                  <div class="el-form-item">
+                    <div class="el-form-label">标题</div>
+                    {{ hd_form.title }}
+                  </div>
+                  <div class="el-form-item">
+                    <div class="el-form-label">内容</div>
+                    {{ hd_form.content }}
+                  </div>
+                  <div class="el-form-item">
+                    <p style="font-size: 16px; color: red">{{ tip_msg }}</p>
+                  </div>
+                  <div class="el-form-item">
+                    <div class="el-form-label"></div>
+                    <button type="submit" class="el-button primary send-btn">提交数据</button>
+                  </div>
+                </div>
+              </form>
+          </div>
+      </div>
+    </div>
+ </div>
+{% endblock %}

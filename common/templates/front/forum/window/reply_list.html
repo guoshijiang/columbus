@@ -1,0 +1,20 @@
+{% load staticfiles clb_tags%}
+ <div class="reply-list">
+  <ul>
+    {% for fcmtrp in form_cmtrlpy.reply %}
+        <li>
+          <div class="left-header-img">
+              {% if fcmtrp.user.user_pho %}
+                <img src="{% url 'enter_website' %}media/{{ fcmtrp.user.user_pho }}" alt="">
+              {% else %}
+                <img src="{% static 'images/touxiang_d.png' %}" alt="">
+              {% endif %}
+          </div>
+          <div class="right-reply-info-box">
+            <p><span class="name">{{ fcmtrp.user.user_name }}<span class="time">{{ fcmtrp.created_at | hdatetime }}</span></span></p>
+            <p class="reply-text">{{ fcmtrp.content }}</p>
+          </div>
+        </li>
+   {% endfor %}
+  </ul>
+</div>

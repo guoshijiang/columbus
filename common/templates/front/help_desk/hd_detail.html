@@ -1,0 +1,82 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/support.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >工单中心</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+  <div class="work-order-container">
+    <div class="work-order-left-container">
+        {% include 'front/public/list_item.html' %}
+    </div>
+    <div class="work-order-right-container">
+      {% if ht_dtl.process != "Handled"  %}
+          <div class="title-box">继续提问</div>
+          <form method="post" action="{% url 'hd_reply' %}">
+              <div>
+                  <input type="hidden" name="topic_id" value="{{ topic_id }}">
+                  <textarea name="content" id="" cols="30" rows="10" style="width: 100%;padding: 10px;margin-bottom: 20px;margin-top: 10px;border: 1px solid #ccc;"></textarea>
+                  <button type="submit" class="el-button primary">提交</button>
+              </div>
+          </form>
+      {% endif %}
+     {% for hd_dtl in hd_dtl_list %}
+        <div class="reply-box">
+            {% if hd_dtl.admin_user == "Admin" %}
+               <div class="left-reply-box">
+                  <div class="title-box">管理员</div>
+                  <ul>
+                    <li>
+                      <p class="time">{{ hd_dtl.created_at | hdatetime }}</p>
+                      <p class="content">{{ hd_dtl.content }}</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="right-reply-box"></div>
+            {% endif %}
+            {% if hd_dtl.admin_user == "User" %}
+                <div class="left-reply-box" style="border: 0"></div>
+                <div class="right-reply-box">
+                  <div class="my-reply-box">
+                    <div class="title-box">我</div>
+                      <ul>
+                        <li>
+                          <p class="time">{{ hd_dtl.created_at | hdatetime }}</p>
+                          <p class="content">{{ hd_dtl.content }}</p>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+            {% endif %}
+         </div>
+     {% endfor %}
+      <div class="reply-box">
+        <div class="left-reply-box" style="border: 0"></div>
+           <div class="right-reply-box">
+              <div class="my-reply-box">
+                <div class="title-box">我</div>
+                  <ul>
+                    <li>
+                      <p class="time">{{ ht_dtl.created_at | hdatetime }}</p>
+                      <p class="content">{{ ht_dtl.content }}</p>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+      <div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% load staticfiles clb_tags%}
+{% if request.session.user_name %}
+<div class="account-info-box">
+  <div class="info-box-container">
+    <div class="account-info-left">
+      <div class="header-img-box">
+         {% if user.user_pho %}
+                <img src="{% url 'enter_website' %}media/{{ user.user_pho }}" >
+            {% else %}
+                <img src="{% static 'images/touxiang_d.png' %}">
+            {% endif %}
+      </div>
+      <p>用户名身份</p>
+      <span>卖家</span>
+    </div>
+    <div class="account-info-right">
+      <div class="info-item">
+        <p class="info-label"><span></span>加入时间：</p>
+        <p class="info-text">{{ request.session.join_time | cn_hdatetime }}</p>
+      </div>
+      <div class="info-item">
+        <p class="info-label"><span></span>信任级别：</p>
+        <p class="info-text">等级 {{ request.session.member_level }}</p>
+      </div>
+      <div class="info-item">
+        <p class="info-label">
+            <span>
+                <img src="{% static 'images/ziyuan-2.png' %}" alt="ziyuan-2">
+            </span>订单总计：
+        </p>
+        <p class="info-text red-text"> {{ request.session.btc_out_amount | keep_two_decimal_places }} ETH</p>
+      </div>
+      <div class="info-item">
+        <p class="info-label"><span><img src="{% static 'images/XMR.png' %}" alt="XMR.png"></span>订单总计：</p>
+        <p class="info-text red-text">{{ request.session.usdt_out_amount | keep_two_decimal_places }}  USDT</p>
+      </div>
+      <div class="info-item last-info-item">
+        <p class="info-label"><span></span>调解信息(胜/败）</p>
+        <p class="info-text">
+            <span class="green-text">{{ request.session.adjust_victor }}</span><span class="red-text">/{{ request.session.adjust_fail }}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'front/public/buyer_stat.html' %}
+{% endif %}

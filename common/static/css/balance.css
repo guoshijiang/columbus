@@ -1,0 +1,405 @@
+.detailed-list-2 {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.detailed-list-2 .detailed-list-2-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 22px;
+  border: 1px solid #F4F5F7;
+}
+.detailed-list-2 ul {
+  width: 100%;
+}
+.detailed-list-2 ul li {
+  width: 100%;
+  margin-bottom: 28px;
+}
+.detailed-list-2 ul li a {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  text-decoration: none;
+}
+.detailed-list-2 ul li a.active {
+  color: #1652B5;
+  border-bottom: 1px solid #1652B5;
+}
+.detailed-list-2 ul li:last-child {
+  margin-bottom: 0;
+}
+.buyer-statistics-container {
+  width: 100%;
+}
+.buyer-statistics-container .buyer-statistics-content {
+  width: 100%;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 13px 15px 20px;
+  border-bottom: 1px solid #F4F5F7;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div.no-bottom {
+  margin-bottom: 0;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div h6 {
+  font-size: 20px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p.red-text {
+  color: #FF0000;
+}
+.buyer-statistics-container .buyer-statistics-content .buyer-statistics-item div p.green-text {
+  color: #04BC00;
+}
+.exchange-rate-box {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 33px 33px 10px;
+  border: 1px solid #F4F5F7;
+}
+.exchange-rate-box .exchange-rate-content ul {
+  width: 100%;
+}
+.exchange-rate-box .exchange-rate-content ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.exchange-rate-box .exchange-rate-content ul li .name {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #343434;
+}
+.exchange-rate-box .exchange-rate-content ul li .price {
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.up {
+  color: #C30000;
+}
+.exchange-rate-box .exchange-rate-content ul li .price.down {
+  color: #05C300;
+}
+.account-balance-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.account-balance-container .account-balance-left-container {
+  width: 380px;
+  margin-bottom: 30px;
+}
+.account-balance-container .account-balance-right-container {
+  width: 810px;
+  margin-bottom: 30px;
+}
+.account-balance-container .account-balance-right-container .hint-text {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 0, 0, 0.17);
+  margin-bottom: 11px;
+}
+.account-balance-container .account-balance-right-container .hint-text span {
+  width: 10px;
+  height: 70px;
+  background: #FF0000;
+}
+.account-balance-container .account-balance-right-container .hint-text img {
+  width: 24px;
+  height: 24px;
+  margin-top: 23px;
+  margin-left: 11px;
+  margin-right: 12px;
+  align-self: flex-start;
+}
+.account-balance-container .account-balance-right-container .hint-text p {
+  font-size: 16px;
+  line-height: 28px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FF0000;
+}
+.account-balance-container .account-balance-right-container .hint-box {
+  width: 100%;
+  padding: 11px 23px 13px 17px;
+  background: rgba(255, 0, 0, 0.17);
+  margin-bottom: 34px;
+  box-sizing: border-box;
+}
+.account-balance-container .account-balance-right-container .hint-box p {
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #FF0000;
+  line-height: 30px;
+}
+
+.account-balance-container .account-balance-right-container .flex-box-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-balance-container .account-balance-right-container .el-card.all-card{
+  width: 100%;
+}
+
+.account-balance-container .account-balance-right-container .el-card {
+  width: 47.5%;
+  border-radius: 4px;
+    border: 1px solid #ebeef5;
+    background-color: #fff;
+    overflow: hidden;
+    color: #303133;
+    transition: .3s;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+}
+.account-balance-container .account-balance-right-container .el-card .el-card__header{
+  padding: 18px 20px;
+  border-bottom: 1px solid #ebeef5;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+}
+.account-balance-container .account-balance-right-container .el-card .el-card__body{
+  padding: 20px;
+}
+.account-balance-container .account-balance-right-container .el-card .el-card__body .text.item{
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.account-balance-container .account-balance-right-container .el-card .el-card__body .all-body-item-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-balance-container .account-balance-right-container .el-card .el-card__body .all-body-item-container .all-body-item-box {
+  width: 33.3%;
+  border-right: 1px solid #ebeef5;
+}
+
+.account-balance-container .account-balance-right-container .el-card .el-card__body .all-body-item-container .all-body-item-box:last-child{
+  border-right: none;
+}
+
+.account-balance-container .account-balance-right-container .el-card .el-card__body .all-body-item-container .all-body-item-box .all-body-item-title{
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  text-align: center;
+}
+
+.account-balance-container .account-balance-right-container .el-card .el-card__body .all-body-item-container .all-body-item-box .all-body-item-body{
+  padding: 20px;
+  text-align: center;
+  padding-bottom: 0;
+}
+  
+
+.account-balance-container .account-balance-right-container .title-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F0F0F0;
+  margin-top: 20px;
+}
+.account-balance-container .account-balance-right-container .title-box .left-title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+}
+.account-balance-container .account-balance-right-container .title-box .right-title {
+  font-size: 30px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #298B02;
+  padding-right: 24px;
+}
+.account-balance-container .account-balance-right-container .title-box .right-title span {
+  font-size: 20px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-right: 7px;
+}
+.account-balance-container .account-balance-right-container .desc-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 0;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.account-balance-container .account-balance-right-container .fund-title-box {
+  width: 100%;
+  padding: 15px 33px;
+  box-sizing: border-box;
+  background-color: #F0F0F0;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.account-balance-container .account-balance-right-container .fund-content-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px 80px 14px 18px;
+}
+.account-balance-container .account-balance-right-container .fund-content-box .left-fund-box {
+  width: 542px;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  line-height: 20px;
+}
+.account-balance-container .account-balance-right-container .fund-content-box .left-fund-box p {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 23px;
+}
+.account-balance-container .account-balance-right-container .fund-content-box .left-fund-box p:last-child {
+  color: #FF0000;
+}
+.account-balance-container .account-balance-right-container .fund-content-box .right-fund-box {
+  width: 113px;
+  height: 109px;
+}
+.account-balance-container .account-balance-right-container .code-box {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+}
+.account-balance-container .account-balance-right-container .pgp-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 21px 24px 32px 18px;
+}
+.account-balance-container .account-balance-right-container .pgp-box p {
+  font-size: 14px;
+  line-height: 20px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 13px;
+  text-align: justify;
+}
+.account-balance-container .account-balance-right-container .pgp-box p.pgp-title {
+  color: #1652B5;
+}
+.account-balance-container .account-balance-right-container .table-box {
+  width: 100%;
+}
+.account-balance-container .account-balance-right-container .table-box .table-title {
+  font-size: 18px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 17px;
+}
+.account-balance-container .account-balance-right-container .extract-box {
+  width: 100%;
+  margin-top: 30px;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-title {
+  width: 100%;
+  height: 44px;
+  background-color: #F0F0F0;
+  box-sizing: border-box;
+  padding: 0 25px;
+  font-size: 18px;
+  line-height: 44px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: #333333;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content {
+  padding-top: 20px;
+  padding-left: 16px;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .title {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-bottom: 17px;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .form-box {
+  width: 550px;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .form-box .el-form .el-form-item {
+  display: flex;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .form-box .text-area-box {
+  width: 450px;
+  height: 200px;
+  background: #FFFFFF;
+  border-radius: 5px;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .form-box .verification-code-box {
+  width: 450px;
+  margin-bottom: 22px;
+  margin-left: 100px;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .form-box .verification-code-box img {
+  width: 100%;
+}
+.account-balance-container .account-balance-right-container .extract-box .extract-content .form-box .send-btn {
+  width: 450px;
+  height: 44px;
+  margin-left: 100px;
+  background: linear-gradient(90deg, #008dff, #0060ff);
+  box-shadow: 0px 10px 20px 0px rgba(76, 110, 245, 0.3);
+  border-radius: 22px;
+  margin-top: 63px;
+}
+.account-balance-container .account-balance-right-container .small-hint-box {
+  font-size: 14px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #343434;
+  margin-top: 50px;
+}

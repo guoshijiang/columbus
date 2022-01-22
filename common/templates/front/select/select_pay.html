@@ -1,0 +1,21 @@
+{% load staticfiles clb_tags %}
+<div class="el-form-item">
+    <p class="el-form-label">支付方式</p>
+    <select id="order-by-select" name="pay_way"  class="el-select">
+        {% if pay_way == 'all' %}
+            <option value="all" selected>全部</option>
+        {% else %}
+          <option value="all">全部</option>
+        {% endif %}
+        {% if pay_way == 'ETH' %}
+            <option value="ETH" selected>ETH</option>
+        {% else %}
+            <option value="ETH">ETH</option>
+        {% endif %}
+         {% if pay_way == 'USDT' %}
+            <option value="USDT" selected>USDT</option>
+        {% else %}
+            <option value="ETH">USDT</option>
+        {% endif %}
+    </select>
+</div>

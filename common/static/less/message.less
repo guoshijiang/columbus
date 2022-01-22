@@ -1,0 +1,226 @@
+.message-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  .message-left-container{
+    width: 380px;
+    height: 924px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    margin-bottom: 30px;
+    border-right: 1px solid #F0F0F0;
+    overflow-y: auto;
+    .contacts-list{
+      width: 100%;
+      li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 6px;
+        &.active{
+          background-color: #ccc;
+        }
+        &:hover{
+          background-color: #eee;
+        }
+        .header-img{
+          width: 42px;
+          height: 42px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img{
+            max-width: 42px;
+            max-height: 42px;
+          }
+        }
+        .user-info {
+          width: 285px;
+          .info-box{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            .name{
+              width: 120px;
+              overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+              font-size: 14px;
+              font-family: Source Han Sans CN;
+              font-weight: 400;
+              color: #333;
+            }
+            .time{
+              font-size: 14px;
+              font-family: Source Han Sans CN;
+              font-weight: 400;
+              color: #999;
+            }
+          }
+          .new-message{
+            width: 100%;
+            overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+            font-size: 14px;
+            font-family: Source Han Sans CN;
+            font-weight: 400;
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+  .message-right-container{
+    width: 810px;
+    margin-bottom: 30px;
+    .name-box{
+      font-size: 18px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #333333;
+      padding-top: 10px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .message-info-box{
+      width: 100%;
+      height: 800px;
+      box-sizing: border-box;
+      padding: 50px;
+      overflow-y: auto;
+      .message-info-list{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .time-box{
+        display: flex;
+        font-size: 16px;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: #999999;
+        line-height: 21px;
+        align-self: center;
+        margin-bottom: 20px;
+      }
+      .message-box{
+        display: flex;
+        margin-bottom: 20px;
+        &.left-message-box{
+          align-self: flex-start;
+          .user-logo{
+            margin-right: 20px;
+          }
+        }
+        &.right-message-box{
+          align-self: flex-end;
+          .user-logo{
+            margin-left: 20px;
+          }
+        }
+        .user-logo{
+          max-width: 43px;
+          max-height: 43px;
+        }
+        .message-text{
+          width: 172px;
+          background: #1652B5;
+          border-radius: 20px;
+          font-size: 14px;
+          font-family: Source Han Sans CN;
+          font-weight: 400;
+          color: #FFFFFF;
+          line-height: 22px;
+          padding: 10px 12px;
+        }
+        .send-img{
+          max-width: 200px;
+        }
+      }
+    }
+    .send-box{
+      box-sizing: border-box;
+      height: 70px;
+      background: #FFFFFF;
+      box-shadow: 0px -2px 10px 0px rgba(153, 153, 153, 0.26);
+      border-radius: 20px 20px 0px 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      .text-input{
+        width: 620px;
+        height: 40px;
+        background: #EEEEEE;
+        border-radius: 10px;
+        outline: none;
+        font-size: 14px;
+        line-height: 40px;
+        box-sizing: border-box;
+        padding: 0 10px;
+      }
+      .el-button{
+        padding: 8px 20px;
+      }
+      .el-upload{
+        width: 30px;
+        height: 30px;
+        position: relative;
+        cursor: pointer;
+        border: none;
+        .el-upload__input{
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/seller_commodity_admin.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >商家商品管理</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="shop-admin-container">
+        <div class="shop-admin-left-container">
+            {% include 'front/marchant/left/self_marchant_left.html' %}
+        </div>
+        <div class="shop-admin-right-container">
+          <div class="shop-admin-box">
+            <div class="title-box">
+              <p class="title">商品管理</p>
+              <p class="more"><a href="#" ></a></p>
+            </div>
+            <div class="shop-admin-content">
+              <div class="shop-admin-item">
+                <p class="title">在售中</p>
+                <p class="num">{{ selling_goods }}</p>
+              </div>
+              <div class="shop-admin-item">
+                <p class="title">已售罄</p>
+                <p class="num">{{ selled_goods }}</p>
+              </div>
+              <div class="shop-admin-item">
+                <p class="title">已下架</p>
+                <p class="num">{{ sale_goods }}</p>
+              </div>
+              <div class="shop-admin-item">
+                <a href="{% url 'marchant_add_goods' %}"  style="text-decoration: none;">
+                  <div class="publish-btn" >+</div>
+                </a>
+                <p class="num">发布新商品</p>
+              </div>
+            </div>
+          </div>
+          <div class="el-tabs" style="margin-top: 10px;">
+            <div class="tabs-box">
+              {% if status_active == "all" %}
+                <a class="el-tab active" href="{% url 'marchant_goods_list'  %}">全部</a>
+              {% else %}
+                  <a class="el-tab" href="{% url 'marchant_goods_list'  %}">全部</a>
+              {% endif %}
+              {% if status_active == "selling" %}
+                  <a class="el-tab active" href="{% url 'marchant_goods_list'  %}?status=1">在售</a>
+              {% else %}
+                  <a class="el-tab" href="{% url 'marchant_goods_list'  %}?status=1">在售</a>
+              {% endif %}
+              {% if status_active == "selled" %}
+                  <a class="el-tab active" href="{% url 'marchant_goods_list'  %}?status=2">售磬</a>
+              {% else %}
+                  <a class="el-tab" href="{% url 'marchant_goods_list'  %}?status=2">售磬</a>
+              {% endif %}
+              {% if status_active == "sale" %}
+                  <a class="el-tab active" href="{% url 'marchant_goods_list'  %}?status=3">已下架</a>
+              {% else %}
+                  <a class="el-tab" href="{% url 'marchant_goods_list'  %}?status=3">已下架</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="shop-tab-container">
+            <ul class="commodity-list-box">
+              {% for goods in goods_list %}
+              <li>
+                <div class="left-commodity-box">
+                  <a href="{% url 'goods_detail' goods.id %}">
+                    <div class="img-box">
+                      <img src="{% url 'enter_website' %}media/{{ goods.logo }}" alt="">
+                    </div>
+                    <div class="info-box">
+                      <p class="name">{{ goods.title }}</p>
+                      <p class="desc">{{ goods.name }}</p>
+                      <p class="see-data"><span>浏览：{{ goods.views }}</span><span>销售：{{ goods.sell_nums }}</span></p>
+                      <p class="stock">剩余数量：{{ goods.left_amount }}</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="right-commodity-box">
+                  <p class="name">价格</p>
+                  <p class="price">¥ {{ goods.price | keep_two_decimal_places }}</p>
+                  <p class="exchange-rate">({{ goods.price | eth_price | keep_two_decimal_places }} BTC)</p>
+                  <p class="exchange-rate">({{ goods.price | usdt_price | keep_two_decimal_places }} USDT)</p>
+                  <div class="btn-box">
+                    <a href="{% url 'marchant_upd_goods' goods.id %}" class="el-button primary">修改</a>
+                    {% if goods.is_sale == 'Yes' %}
+                        <a href="{% url 'marchant_goods_sale' %}?gid={{ goods.id }}&is_sale=No" class="el-button primary">下架</a>
+                    {% else %}
+                        <a href="{% url 'marchant_goods_sale' %}?gid={{ goods.id }}&is_sale=Yes" class="el-button primary">上架</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% include 'front/select/pagination.html' with items=goods_list %}
+        </div>
+    </div>
+</div>
+{% endblock %}

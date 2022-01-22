@@ -1,0 +1,9 @@
+PayOrderSuccess = 'order_2000'           # 支付成功
+OrderException = 'order_1000'            # 订单异常
+UserBalanceNotEnough = "marchant_1001"   # 用户钱包余额不足
+PayWayError = "marchant_1002"            # 支付方式错误
+GoodsNotEnough = "marchant_1004"         # 商品数量小于可购买的数量
+GoodsSellOut = "marchant_1005"           # 商品已经售完
+CanNotBuySelfGoods = "marchant_1006"     # 不能购买自己的商品
+GoodsNotExist = "marchant_1007"     # 购买的商品不存在
+OrderNotExist = "marchant_1008"     # 订单不存在

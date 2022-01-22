@@ -1,0 +1,66 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+                <div class="box-header">
+                    <div>
+                        <a href="{% url 'create_bnews' %}" data-toggle="tooltip" class="btn btn-primary btn-sm" data-original-title="添加">
+                            <i class="fa fa-plus"></i> 添加
+                        </a>
+                    </div>
+                </div>
+              <div class="box-body table-responsive">
+                <table class="table table-hover table-bordered datatable" width="100%">
+                    <thead>
+                    <tr>
+                        <th>通知标题</th>
+                        <th>查看次数</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for b_news in b_news_list %}
+                        <tr>
+                            <td>{{ b_news.title }}</td>
+                            <td>{{ b_news.views }}</td>
+                            <td>{{ b_news.created_at | hdatetime }}</td>
+                            <td class="td-do">
+                                <a href="{% url 'bnews_detail' b_news.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 详情
+                                </a>
+                                 <a href="{% url 'update_bnews' b_news.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 修改
+                                </a>
+                                 <a href="{% url 'delete_news' b_news.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 删除
+                                </a>
+                            </td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                  {% include 'backend/select/pagination.html' with items=b_news_list %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

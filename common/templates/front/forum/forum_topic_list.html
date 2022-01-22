@@ -1,0 +1,114 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forumChild.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+        <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+        <div class="for-box">
+            <li class="name-box">
+                <a href="#" >论坛主题列表</a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+        </div>
+     </ul>
+     <div>
+        <div class="forum-child-container">
+          <p class="title-box">子版块</p>
+            {% for topic in topic_list %}
+              <div class="forum-container-item">
+                <div class="left-forum-box">
+                  <div class="icon"><i class="el-icon-chat-dot-round"></i></div>
+                  <div class="name-info-box">
+                    <p class="name"><a href="{% url 'forum_list_by_topic' topic.id %}" >{{ topic.name }}</a></p>
+                  </div>
+                </div>
+                <div class="right-forum-box">
+                  <div class="data-box">
+                    <p class="num">{{ topic.topic_num }}</p>
+                    <p class="name">主题</p>
+                  </div>
+                  <div class="data-box">
+                    <p class="num">{{ topic.forum_num }}</p>
+                    <p class="name">帖子</p>
+                  </div>
+                  <div class="span-line"></div>
+                    {% if  item.lastest_reply  %}
+                      <div class="lately-box">
+                        <p class="time">
+                            {% if topic.lastest_reply.user.user_pho %}
+                                <img src="{% url 'enter_website' %}media/{{ topic.lastest_reply.user.user_pho }}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/touxiang_d.png' %}" alt="">
+                            {% endif %}
+                            {{ topic.lastest_reply.created_at | cn_hdatetime }}
+                        </p>
+                        <div class="conversation-box">{{ topic.lastest_reply.content }}</div>
+                      </div>
+                   {% endif %}
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+         <div class="btn-box">
+          {% if request.session.user_name %}
+            <a class="el-button primary" href="{% url 'pulish_form' %}?cat_id={{ cat_id }}" >发布帖子</a>
+          {% else %}
+            <a class="el-button primary" href="{% url 'login' %}" >登录以发布</a>
+          {% endif %}
+         </div>
+        <div class="forum-child-container">
+          <p class="title-box">新闻和活动</p>
+          <div class="forum-child-box">
+            {% for form in form_list %}
+                <div class="forum-container-item">
+                  <div class="left-forum-box">
+                    <div class="icon"><i class="el-icon-chat-dot-round"></i></div>
+                    <div class="name-info-box list-box">
+                      <p class="name"><a href="{% url 'forum_detail' form.id %}" >{{ form.title }}</a></p>
+                      <div class="keyword-box">
+                        ·<p>{{ form.created_at | hdatetime }}</p>·
+                        <p class="custom-name">{{ form.user.user_name }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right-forum-box">
+                    <div class="data-box">
+                      <p class="num">{{ form.likes }}</p>
+                      <p class="name">赞同</p>
+                    </div>
+                    <div class="data-box">
+                      <p class="num">{{ form.answers }}</p>
+                      <p class="name">评论</p>
+                    </div>
+                    <div class="data-box">
+                      <p class="num">{{ form.views }}</p>
+                      <p class="name">浏览</p>
+                    </div>
+                    <div class="span-line"></div>
+                      {% if form.lastest_reply  %}
+                          <div class="lately-box">
+                            <p class="time">
+                                {% if form.lastest_reply.user.user_pho %}
+                                    <img src="{% url 'enter_website' %}media/{{ form.lastest_reply.user.user_pho }}" alt="">
+                                {% else %}
+                                    <img src="{% static 'images/touxiang_d.png' %}" alt="">
+                                {% endif %}
+                                {{ form.lastest_reply.created_at | cn_hdatetime }}
+                            </p>
+                            <div class="conversation-box">{{ form.lastest_reply.content }}</div>
+                          </div>
+                     {% endif %}
+                  </div>
+                </div>
+            {% endfor %}
+            {% include 'front/select/pagination.html' with items=form_list %}
+          </div>
+        </div>
+      </div>
+ </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/createOrder.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+        <ul class="breadcrumb-navigation-container">
+            <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+            <div class="for-box">
+                <li class="name-box">
+                    <a href="#" >确认订单</a>
+                </li>
+                <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+            </div>
+        </ul>
+        <div class="shop-detail-container">
+            <div class="shop-detail-left-container">
+                {% include "front/public/list_item.html" %}
+                {% include "front/public/coin_rete.html" %}
+            </div>
+            <div class="shop-detail-right-container">
+                <div class="shop-basic-info-box">
+                    <div class="left-basic-info">
+                        <div class="big-img-box">
+                            <img src="{% url 'enter_website' %}media/{{ goods_detail.logo }}" alt="">
+                        </div>
+                    </div>
+                    <div class="right-basic-info">
+                         <div style="margin-top:10px">
+                           <p class="shop-name"> {{ goods_detail.title }} </p>
+                         </div>
+                         <ul class="project-characteristic-content" style="padding:0">
+                            <li>
+                                <div>
+                                    <p>购买数量</p>
+                                    <p class="gray-text">{{ goods_quantity }}</p>
+                                    <p class="gray-text">1</p>
+                                </div>
+                            </li>
+                            <li class="no-margin-bottom">
+                                <div>
+                                    <p>特殊说明</p>
+                                    <p class="gray-text">{{ goods_detail.mark }}</p>
+                                </div>
+                            </li>
+                             <li>
+                                <div>
+                                    <p>支付方式</p>
+                                    <p class="gray-text">{{ pay_asset_name }}</p>
+                                </div>
+                            </li>
+                             <li>
+                                <div>
+                                    <p>支付金额</p>
+                                    <p class="gray-text">{{ total_pay_out | keep_two_decimal_places }}</p>
+                                </div>
+                            </li>
+                              <li>
+                                <div>
+                                    <p>收获地址</p>
+                                    <p class="gray-text">{{ user_address.address }}</p>
+                                </div>
+                            </li>
+                         </ul>
+                         <form method="post" action="{% url 'create_pay_order' %}">
+                             <input type="hidden" name="goods_id" value="{{ goods_id }}">
+                             <input type="hidden" name="address_id" value="{{ address_id }}">
+                             <input type="hidden" name="eth_unit_coin_amount" value="{{ eth_unit_coin_amount }}">
+                             <input type="hidden" name="usdt_unit_coin_amount" value="{{ usdt_unit_coin_amount }}">
+                             <input type="hidden" name="goods_quantity" value="{{ goods_quantity }}">
+                             <input type="hidden" name="pay_asset_name" value="{{ pay_asset_name }}">
+                             <div class="buy-btn-box">
+                                <button type="submit" class="buy-btn">立即支付</button>
+                             </div>
+                         </form>
+                         <p class="hint-text">如果您放弃支付，系统将不会保存订单的状态, 你需要重新下单, 支付成功之后将跳转到订单详细页面</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

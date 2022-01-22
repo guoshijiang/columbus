@@ -1,0 +1,50 @@
+{% load staticfiles clb_tags %}
+<div class="buyer-statistics-container">
+  <p class="module-title">买方统计</p>
+  <div class="buyer-statistics-content">
+    <div class="buyer-statistics-item">
+      <div class="title-item no-bottom">
+        <h6>买来物品</h6>
+        <p>{{ request.session.btc_balance | keep_two_decimal_places }}</p>
+      </div>
+    </div>
+    <div class="buyer-statistics-item">
+      <div class="title-item">
+        <h6>支出(ETH)</h6>
+        <p></p>
+      </div>
+      <div class="option-item">
+        <p>花费</p>
+        <p class="green-text">{{ request.session.eth_balance | keep_two_decimal_places }} ETH</p>
+      </div>
+      <div class="option-item no-bottom">
+        <p>托管</p>
+        <p class="red-text">{{ request.session.eth_balance | keep_two_decimal_places }} ETH</p>
+      </div>
+    </div>
+    <div class="buyer-statistics-item">
+      <div class="title-item">
+        <h6>支出(USDT)</h6>
+        <p></p>
+      </div>
+      <div class="option-item">
+        <p>花费</p>
+        <p class="green-text">{{ request.session.usdt_balance | keep_two_decimal_places }} USDT</p>
+      </div>
+      <div class="option-item no-bottom">
+        <p>托管</p>
+        <p class="red-text">{{ request.session.usdt_balance | keep_two_decimal_places }} USDT</p>
+      </div>
+    </div>
+    <div class="buyer-statistics-item">
+      <div class="option-item">
+        <p>BTC采购总额</p>
+        <p>{{ request.session.btc_in_amount | keep_two_decimal_places}} BTC</p>
+      </div>
+      <div class="option-item no-bottom">
+        <p>USDT采购总额</p>
+        <p>{{ request.session.usdt_in_amount | keep_two_decimal_places}} USDT</p>
+      </div>
+    </div>
+  </div>
+</div>

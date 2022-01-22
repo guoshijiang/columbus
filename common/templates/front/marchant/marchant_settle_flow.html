@@ -1,0 +1,81 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/seller.css' %}">
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+       <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+       <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+       <div class="for-box">
+         <li class="name-box">
+           <a href="#" >结算流水</a>
+         </li>
+         <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+       </div>
+     </ul>
+     <div class="order-container">
+         <div class="order-left-container">
+             {% include 'front/marchant/left/self_marchant_left.html' %}
+         </div>
+         <div class="order-right-container">
+            <div class="el-tabs" style="margin-top: 10px;">
+              <div class="tabs-box">
+                {% if status == 0 %}
+                  <a class="el-tab active" href="{% url 'marchant_settle_flow' marchant.id %}?status=0">全部</a>
+                {% else %}
+                    <a class="el-tab" href="{% url 'marchant_settle_flow' marchant.id %}?status=0">全部</a>
+                {% endif %}
+                {% if status == 1 %}
+                    <a class="el-tab active" href="{% url 'marchant_settle_flow' marchant.id %}?status=1">已结算</a>
+                {% else %}
+                    <a class="el-tab" href="{% url 'marchant_settle_flow'  marchant.id %}?status=1">已结算</a>
+                {% endif %}
+                {% if status == 2 %}
+                    <a class="el-tab active" href="{% url 'marchant_settle_flow' marchant.id %}?status=2">无效</a>
+                {% else %}
+                    <a class="el-tab" href="{% url 'marchant_settle_flow' marchant.id %}?status=2">无效</a>
+                {% endif %}
+                {% if status == 3 %}
+                    <a class="el-tab active" href="{% url 'marchant_settle_flow' marchant.id %}?status=3">待结算</a>
+                {% else %}
+                    <a class="el-tab" href="{% url 'marchant_settle_flow' marchant.id %}?status=3">待结算</a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="order-list-container">
+                <div class="el-table">
+                    <ul class="el-table-header">
+                      <li>支付人</li>
+                      <li>币种数量</li>
+                      <li>币种</li>
+                      <li>是否结算</li>
+                      <li>关联订单</li>
+                      <li>支付时间</li>
+                    </ul>
+                    <div class="el-table-body">
+                        {% if marchant_flow_list %}
+                          {% for mct_flow in marchant_flow_list %}
+                              <ul class="el-table_data_item">
+                                <li>{{ mct_flow.order.user }}</li>
+                                <li>{{ mct_flow.coin_amount | keep_two_decimal_places }}</li>
+                                <li>{{ mct_flow.asset.name }}</li>
+                                <li>{{ mct_flow.order.order_number }}</li>
+                                <li>{{ mct_flow.created_at | hdatetime }}</li>
+                              </ul>
+                          {% endfor %}
+                        {% else %}
+                          <div class="el-table_no_data">暂无数据</div>
+                        {% endif %}
+                    </div>
+                  </div>
+            </div>
+           {% include 'front/select/pagination.html' with items=marchant_flow_list %}
+     </div>
+ </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/support.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >工单中心</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+      <div class="work-order-container">
+        <div class="work-order-left-container">
+            {% include 'front/public/list_item.html' %}
+        </div>
+        <div class="work-order-right-container">
+          <div>
+              <p style="float:left" class="work-title">工单列表</p>
+              <a href="{% url 'submit_hd' %}" style="float:right">提交新工单</a>
+          </div>
+          <div class="el-table">
+            <ul class="el-table-header">
+              <li>ID</li>
+              <li>标题</li>
+              <li>状态</li>
+              <li>提交时间</li>
+              <li>查看</li>
+            </ul>
+            <div class="el-table-body">
+               {% if help_desk_list %}
+                  {% for hd in help_desk_list %}
+                     <ul class="el-table_data_item">
+                        <li>{{ hd.id }}</li>
+                        <li>{{ hd.title }}</li>
+                        <li>{{ hd.process | helpdesk_handle}}</li>
+                        <li>{{ hd.created_at | hdatetime }}</li>
+                        <li>
+                            <a href="{% url 'help_desk_detail'  hd.id %}" class="el-button primary">查看处理情况</a>
+                        </li>
+                     </ul>
+                  {% endfor %}
+                {% else %}
+                  <div class="el-table_no_data">暂无数据</div>
+               {% endif %}
+            </div>
+          </div>
+          {% include 'front/select/pagination.html' with items=help_desk_list %}
+        </div>
+      </div>
+    </div>
+{% endblock %}

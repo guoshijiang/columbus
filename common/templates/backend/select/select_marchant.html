@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div class="form-group">
+   <span class="el-form-label">选择商家: </span>
+   <select id="marchant_name-select"  name="marchant_name" class="form-control el-select">
+      {% if marchant_name == "all" %}
+          <option value="all">全部</option>
+      {% else %}
+          <option value="all">全部</option>
+      {% endif %}
+      {% for mct in mct_list %}
+        {% if mct.name == marchant_name %}
+           <option value="{{ mct.name }}" selected>{{ mct.name }}</option>
+        {% else %}
+            <option value="{{ mct.name }}">{{ mct.name }}</option>
+        {% endif %}
+     {% endfor %}
+   </select>
+</div>

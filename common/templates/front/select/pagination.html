@@ -1,0 +1,40 @@
+{% load staticfiles clb_tags %}
+<div class="el-pagination">
+    <ul>
+        {% if items.has_previous %}
+            <li>
+                <a href="{{ items.prefix_uri }}page={{ items.previous_page_number }}" tabindex="0">
+                    <img src="{% static 'images/arrow_2.png' %}" alt="arrow_1">
+                </a>
+            </li>
+        {% endif %}
+        {% if items.page_range_data.show_first %}
+            <li><a href="{{ items.prefix_uri }}page=1" tabindex="0">1</a></li>
+        {% endif %}
+        {{ items.page_range }}
+        {% for i in items.page_range_data.page_range %}
+            {% if i == items.number or i == page %}
+                <li>
+                    <a class="active" href="{{ items.prefix_uri }}page={{ i }}">{{ i }}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ items.prefix_uri }}page={{ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if items.page_range_data.show_last %}
+            <li>
+                <a href="{{ items.prefix_uri }}page={{ items.paginator.num_pages }}">{{ items.paginator.num_pages }}</a>
+            </li>
+        {% endif %}
+        {% if items.has_next %}
+            <li>
+                <a href="{{ items.prefix_uri }}page={{ items.next_page_number }}">
+                    <img src="{% static 'images/arrow_1.png' %}" alt="arrow_2">
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+

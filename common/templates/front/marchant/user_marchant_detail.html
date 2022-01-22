@@ -1,0 +1,100 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/shopDetail.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="#" >商家详情</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="shop-detail-container">
+        <div class="shop-detail-left-container">
+           {% include "front/public/list_item.html" %}
+           {% include "front/public/buyer_stat.html" %}
+        </div>
+        <div class="shop-detail-right-container">
+          <p class="name-box">店铺详情</p>
+          <div class="basic-info-box">
+            <div class="basic-left-info-box">
+              <div class="img-box">
+                <img src="{% url 'enter_website' %}media/{{ marchant.logo }}" alt="img">
+              </div>
+              <div class="info-box">
+                <div class="name-title-box">
+                  <p>{{ marchant.name }}</p>
+                  <span class="blue">供应商级别: {{ marchant.shop_level }}</span>
+                  <span class="green">商家评分: {{ marchant.shop_score }}</span>
+                </div>
+                <p>店铺好评率（12个月内）：{{ marchant.shop_score }}</p>
+                <p>加入时间：{{ marchant.created_at | hdatetime }}</p>
+                <p>最后一次在线：{{ marchant.updated_at | hdatetime }} </p>
+              </div>
+            </div>
+            <div class="basic-right-info-box">
+              <a href="{% url 'message_list' %}?friend_id={{ marchant.user.id }}" class="el-button blue radio basic-btn">发送消息</a>
+              <a href="{% url 'collect_marchant'  marchant.id %}" class="el-button blue radio basic-btn">收藏</a>
+              <a href="{% url 'add_mct_to_blacklist'  marchant.id %}" class="el-button blue radio basic-btn">加入黑名单</a>
+            </div>
+          </div>
+          <p class="title-box">买家反馈</p>
+          <ul class="feedback-box">
+          <li class="title">
+            <div></div>
+            <p>质量</p>
+            <p>服务</p>
+            <p>交易</p>
+          </li>
+          <li>
+            <div><img src="{% static 'images/goodh.png' %}" alt="goodh">好评</div>
+            <p>{{ marchant_stdata.quality_best }}</p>
+            <p>{{ marchant_stdata.serice_best }}</p>
+            <p>{{ marchant_stdata.trade_best }}</p>
+          </li>
+          <li>
+            <div><img src="{% static 'images/zhongping.png' %}" alt="zhongping">中评</div>
+            <p>{{ marchant_stdata.quality_good }}</p>
+            <p>{{ marchant_stdata.service_good }}</p>
+            <p>{{ marchant_stdata.trade_good }}</p>
+          </li>
+          <li>
+            <div><img src="{% static 'images/chaping-xuanzhong.png' %}" alt="chaping-xuanzhong">差评</div>
+            <p>{{ marchant_stdata.quality_bad }}</p>
+            <p>{{ marchant_stdata.service_bad }}</p>
+            <p>{{ marchant_stdata.trade_bad }}</p>
+          </li>
+        </ul>
+          <ul class="feedback-box score-box">
+          <li class="title">
+            <p>纠纷</p>
+            <p>质量平均率</p>
+            <p>服务平均率</p>
+            <p>交易平均率</p>
+          </li>
+          <li>
+            <p>
+                <span class="green-text">{{ marchant.adjust_victor }}</span>胜/
+                <span class="red-text">{{ marchant.adjust_fail }}</span>败
+            </p>
+            <p>{{ marchant_stdata.service_avg | keep_two_decimal_places }} <img src="{% static 'images/xingxing.png' %}" alt="xingxing"> </p>
+            <p>{{ marchant_stdata.quality_avg | keep_two_decimal_places }} <img src="{% static 'images/xingxing.png' %}" alt="xingxing"></p>
+            <p>{{ marchant_stdata.trade_avg | keep_two_decimal_places }}<img src="{% static 'images/xingxing.png' %}" alt="xingxing"></p>
+          </li>
+        </ul>
+          <div class="el-tabs" style="margin-top: 10px;">
+            <p class="name-box">商家介绍</p>
+          </div>
+          <div class="el-tab-content">
+              {{ marchant.detail }}
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

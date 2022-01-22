@@ -1,0 +1,39 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >公告详情</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <div class="news-detail-container">
+        <div class="news-detail-left-container">
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="news-detail-right-container">
+          <p class="title">{{ news_dtl.title }}</p>
+          <div class="info-box">
+            <div class="auth-info">
+              <img src="{% static 'images/touxiang_d.png' %}" alt="favico">
+              <p>哥伦布</p>
+            </div>
+            <p>发布时间：{{ news_dtl.created_at | hdatetime }}</p>
+            <p>阅读量：{{ news_dtl.views }}</p>
+          </div>
+          <div class="content-box">
+            <p>{{ news_dtl.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

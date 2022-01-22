@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<div class="el-form-item">
+    <p class="el-form-label">商品类型</p>
+    <div class="el-radio">
+        {% if type_name == "all" %}
+            <label><input type="radio" name="type_name" value="all" checked>全部</label>
+        {% else %}
+            <label><input type="radio" name="type_name" value="all">全部</label>
+        {% endif %}
+        {% if  type_name == "实体商品" %}
+            <label><input type="radio" name="type_name" value="实体商品" checked>实体商品</label>
+        {% else %}
+           <label><input type="radio" name="type_name" value="实体商品">实体商品</label>
+        {% endif %}
+         {% if type_name == "虚拟商品" %}
+            <label><input type="radio" name="type_name" value="虚拟商品" checked>虚拟商品</label>
+        {% else %}
+           <label><input type="radio" name="type_name" value="虚拟商品">虚拟商品</label>
+        {% endif %}
+    </div>
+</div>

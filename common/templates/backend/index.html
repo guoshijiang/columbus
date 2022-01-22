@@ -1,0 +1,133 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <section class="content-header">
+              <h1>
+                  后台首页
+              </h1>
+              <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+                  <li class="active">后台首页</li>
+              </ol>
+          </section>
+          <section class="content">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">总注册用户</span>
+                            <span class="info-box-number">{{ ttl_register_user }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red">
+                            <i class="fa fa-buysellads"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">商家总数</span>
+                            <span class="info-box-number">{{ ttl_mct }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green">
+                            <i class="fa fa-btc"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">ETH总充值</span>
+                            <span class="info-box-number">{{ ttl_d_eth | keep_two_decimal_places }}</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green">
+                            <i class="fa fa-btc"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">USDT总充值</span>
+                            <span class="info-box-number">{{ ttl_d_usdt | keep_two_decimal_places }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow">
+                            <i class="fa fa-btc"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">ETH总提现</span>
+                            <span class="info-box-number">{{ ttl_w_eth | keep_two_decimal_places }}</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow">
+                            <i class="fa fa-btc"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">USDT总提现</span>
+                            <span class="info-box-number">{{ ttl_w_usdt | keep_two_decimal_places }}</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow">
+                            <i class="fa fa-apple"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">商品总数</span>
+                            <span class="info-box-number">{{ ttl_gds }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow">
+                            <i class="fa fa-comment"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">总评论次数</span>
+                            <span class="info-box-number">{{ ttl_cmt }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow">
+                            <i class="fa fa-first-order"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">订单总数</span>
+                            <span class="info-box-number">{{ ttl_order }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+        </div>
+        <div class="page-right-footer-content-container">
+          <strong>Copyright © 2020 <a href="/"></a>.</strong> All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

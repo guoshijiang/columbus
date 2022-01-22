@@ -1,0 +1,74 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+   <link rel="stylesheet" href="{% static 'css/support.css' %}">
+
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="work-order-right-container" style="margin:20px">
+          <div class="title-box">回复</div>
+          <form method="post" action="{% url 'bhd_reply' %}">
+              <div>
+                  <input type="hidden" name="topic_id" value="{{ topic_id }}">
+                  <textarea name="content" id="" cols="30" rows="10" style="width: 100%;padding: 10px;margin-bottom: 20px;margin-top: 10px;border: 1px solid #ccc;"></textarea>
+                  <button type="submit" class="el-button primary">提交</button>
+              </div>
+          </form>
+         {% for hd_dtl in hd_dtl_list %}
+            <div class="reply-box">
+                {% if hd_dtl.admin_user == "Admin" %}
+                   <div class="left-reply-box">
+                      <div class="title-box">我</div>
+                      <ul>
+                        <li>
+                          <p class="time">{{ hd_dtl.created_at | hdatetime }}</p>
+                          <p class="content">{{ hd_dtl.content }}</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="right-reply-box"></div>
+                {% endif %}
+                {% if hd_dtl.admin_user == "User" %}
+                    <div class="left-reply-box" style="border: 0"></div>
+                    <div class="right-reply-box" style="border: #0f253c">
+                      <div class="my-reply-box">
+                        <div class="title-box">用户</div>
+                          <ul>
+                            <li>
+                              <p class="time">{{ hd_dtl.created_at | hdatetime }}</p>
+                              <p class="content">{{ hd_dtl.content }}</p>
+                            </li>
+                          </ul>
+                      </div>
+                    </div>
+                {% endif %}
+             </div>
+         {% endfor %}
+          <div class="reply-box">
+            <div class="left-reply-box" style="border: 0"></div>
+               <div class="right-reply-box">
+                  <div class="my-reply-box">
+                    <div class="title-box">我</div>
+                      <ul>
+                        <li>
+                          <p class="time">{{ ht_dtl.created_at | hdatetime }}</p>
+                          <p class="content">{{ ht_dtl.content }}</p>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+            </div>
+          <div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

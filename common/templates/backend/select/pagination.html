@@ -1,0 +1,39 @@
+{% load staticfiles clb_tags %}
+<ul class="pagination pagination-sm no-margin pull-right">
+    {% if items.has_previous %}
+        <li class="page-item active">
+            <a class="page-link" aria-label="Previous" href="{{ items.prefix_uri }}page={{ items.previous_page_number }}" tabindex="0">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+    {% endif %}
+    {% if items.page_range_data.show_first %}
+        <li><a class="page-link" href="{{ items.prefix_uri }}page=1" tabindex="0">1</a></li>
+    {% endif %}
+    {{ items.page_range }}
+    {% for i in items.page_range_data.page_range %}
+        {% if i == items.number or i == page %}
+            <li class="page-item">
+                <a class="page-link" class="active" href="{{ items.prefix_uri }}page={{ i }}">{{ i }}</a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{{ items.prefix_uri }}page={{ i }}">{{ i }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    {% if items.page_range_data.show_last %}
+        <li class="page-item">
+            <a class="page-link" href="{{ items.prefix_uri }}page={{ items.paginator.num_pages }}">{{ items.paginator.num_pages }}</a>
+        </li>
+    {% endif %}
+    {% if items.has_next %}
+        <li class="page-item active">
+            <a class="page-link" aria-label="Next" href="{{ items.prefix_uri }}page={{ items.next_page_number }}">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    {% endif %}
+</ul>
+
+

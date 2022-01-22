@@ -1,0 +1,60 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forum.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+     <ul class="breadcrumb-navigation-container">
+        <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}" alt="dingdan"></a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+        <div class="for-box">
+            <li class="name-box">
+                <a href="#" >论坛类别列表</a>
+            </li>
+            <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+        </div>
+     </ul>
+     <div>
+        <div class="forum-container">
+           {% for item in cat_lists %}
+              <div class="forum-container-item">
+                 <div class="left-forum-box">
+                  <div class="icon"><i class="el-icon-chat-dot-round"></i></div>
+                  <div class="name-info-box">
+                    <p class="name"><a href="{% url 'forum_topic_list' item.id %}" >{{ item.name }}</a></p>
+                    <p class="desc">{{ item.introduce }}</p>
+                  </div>
+                </div>
+                <div class="right-forum-box">
+                  <div class="data-box">
+                    <p class="num">{{ item.topic_num }}</p>
+                    <p class="name">主题</p>
+                  </div>
+                  <div class="data-box">
+                    <p class="num">{{ item.forum_num }}</p>
+                    <p class="name">帖子</p>
+                  </div>
+                  <div class="span-line"></div>
+                  {% if  item.lastest_reply  %}
+                      <div class="lately-box">
+                        <p class="time">
+                            {% if item.lastest_reply.user.user_pho %}
+                                <img src="{% url 'enter_website' %}media/{{ item.lastest_reply.user.user_pho }}" alt="">
+                            {% else %}
+                                <img src="{% static 'images/touxiang_d.png' %}" alt="">
+                            {% endif %}
+                            {{ item.lastest_reply.created_at | cn_hdatetime }}
+                        </p>
+                        <div class="conversation-box">{{ item.lastest_reply.content }}</div>
+                      </div>
+                  {% endif %}
+                </div>
+              </div>
+           {% endfor %}
+           {% include 'front/select/pagination.html' with items=cat_lists %}
+        </div>
+     </div>
+ </div>
+{% endblock %}

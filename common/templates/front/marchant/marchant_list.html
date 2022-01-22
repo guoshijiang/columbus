@@ -1,0 +1,64 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block body %}
+ <div class="layout-box">
+    <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >商家列表</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+    <!-- 内容区 -->
+    <div class="home-container">
+      <div class="home-left-container">
+         {% include 'front/public/coin_rete.html' %}
+      </div>
+      <div class="home-right-container">
+        <div class="search-shop-box">
+          <form method="post" action="{% url 'marchants_list' %}">
+              <div class="search-box" style="width:600px; height: 50px">
+                <input name="marchant_name" type="text" style="width:600px" placeholder="请输入商家的名称">
+                  <button type="submit" style="border:none; background-color:transparent; outline:none; ">
+                    <span class="search-btn">
+                        <img src="{% static 'images/search-icon.png' %}" alt="search-icon">
+                    </span>
+                  </button>
+              </div>
+          </form>
+        </div>
+        <div class="characteristic-business-container">
+          <p class="module-title">商家列表</p>
+          <ul class="characteristic-business-content">
+            {% for item in marchant_list %}
+                <li>
+                  <a href="{% url 'marchants_detail' item.id %}" >
+                    <div class="left-img">
+                      <img src="{% url 'enter_website' %}media/{{ item.logo }}">
+                    </div>
+                    <div class="right-info">
+                      <p class="name">
+                        商家名称
+                        <span class="icon">{{ item.name }}</span>
+                      </p>
+                      <p>简介：{{ item.introduce }}</p>
+                      <p>主营：{{ item.detail }}</p></div>
+                  </a>
+                </li>
+              {% endfor %}
+          </ul>
+        </div>
+        {% include 'front/select/pagination.html' with items=marchant_list %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}

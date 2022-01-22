@@ -1,0 +1,100 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/balance.css' %}">
+{% endblock %}
+{% block body %}
+<div class="layout-box">
+   <ul class="breadcrumb-navigation-container">
+      <li class="icon-box"><a href="#" ><img src="{% static 'images/dingdan.png' %}"></a></li>
+      <span class="lj-icon"><img src="{% static 'images/jt-1.png' %}"></span>
+      <div class="for-box">
+        <li class="name-box">
+          <a href="{% url 'index' %}" >充值</a>
+        </li>
+        <span class="lj-icon"><img src="{% static 'images/jt-2.png' %}"></span>
+      </div>
+    </ul>
+      <div class="account-balance-container">
+        <div class="account-balance-left-container">
+           <div class="detailed-list-2">
+            <p class="module-title">钱包功能选项</p>
+            <div class="detailed-list-2-content">
+              {% include 'front/wallet/tab_box/wallet_tab.html' %}
+            </div>
+          </div>
+          {% include 'front/public/list_item.html' %}
+          {% include 'front/public/coin_rete.html' %}
+        </div>
+        <div class="account-balance-right-container">
+          <div class="hint-text">
+            <span></span>
+            <img src="{% static 'images/jinggao.png' %}" alt="jinggao">
+            <p>
+              目前平台支持两种类型的虚拟币充值，优劣比对如下，您可自行选择合适的代币。
+            </p>
+          </div>
+          <div class="hint-box">
+            <p>ETH         隐私性一般   转账费高       购买简单    单价非常高</p>
+            <p>TRC20-USDT  隐私性差     转账费非常便宜  购买简单    单价很低</p>
+          </div>
+          <div class="el-tabs" style="margin-top: 10px;">
+            <div class="tabs-box">
+              {% if asset == "ETH" %}
+                  <a class="el-tab active" href="{% url 'wallet_deposit' %}?asset=ETH">ETH</a>
+              {% else %}
+                  <a class="el-tab" href="{% url 'wallet_deposit' %}?asset=ETH">ETH</a>
+              {% endif %}
+              {% if asset == "USDT" %}
+                  <a class="el-tab active" href="{% url 'wallet_deposit' %}?asset=USDT">USDT</a>
+              {% else %}
+                  <a class="el-tab" href="{% url 'wallet_deposit' %}?asset=USDT">USDT</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="title-box">
+            <p class="left-title">充值</p>
+            <p class="right-title">
+                <span>余额：{{ user_wallet.balance | keep_two_decimal_places }}</span>
+            </p>
+          </div>
+          <div class="fund-content-box" style="display: block; text-align: center">
+            <div><img style="width:300px; height:300px" src="{{ data_steam }}">
+            <div class="code-box" style="text-align:center;">
+                {{ user_wallet.address }}
+            </div>
+            <div style="margin-top: 10px; font-size:12px; color: red">
+              <p>本地址只接收 {{ user_wallet.asset }} 充值，充值其他币种将不会到账</p>
+              {% if asset == "ETH" %}
+                <p>充值金额需要大于 0.001 ETH, 否则充值不会到账</p>
+              {% else %}
+                <p>充值金额需要大于 10 USDT, 否则充值不会到账</p>
+              {% endif %}
+            </div>
+          </div>
+          <hr/>
+          <div class="pgp-box">
+            <!-- <p class="pgp-title">获得PGP签署的所有权证明</p> -->
+            {% if asset == "ETH" %}
+            <p class="pgp-content">
+              ● 该地址仅接受ETH，充错无法找回<br />
+              ● 最小金额 0.001 ETH约为50美金左右，小于该金额会无法到账<br />
+              ● 到账时间一般30分钟以内，如遇特殊情况（区块拥堵等）最迟1小时内到账<br />
+              ● 超过一小时未到账可提交工单联系管理员<br />
+              ● 具体到账可根据充值产生的交易ID到区块浏览器查看<br />
+            </p>
+            {% else %}
+            <p class="pgp-content">
+              ● 该地址仅接受 tron波场版本的USDT，协议TRC-20，非以太网络，充错无法找回<br />
+              ● 最小金额 10 USDT，小于该金额会无法到账<br />
+              ● 到账时间一般10分钟以内，如遇特殊情况（区块拥堵等）最迟1小时内到账<br />
+              ● 超过一小时未到账可提交工单联系管理员<br />
+              ● 具体到账可根据充值产生的交易ID到区块浏览器查看<br />
+            </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

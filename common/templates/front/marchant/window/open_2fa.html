@@ -1,0 +1,20 @@
+{% load staticfiles clb_tags %}
+<div class="el-dialog__wrapper express-dialog show">
+  <div class="el-dialog">
+    <div class="el-dialog-title">
+      <p>双重认证提示</p>
+      <a href="{% url 'index' %}" class="close"><img src="{% static 'images/close.png' %}" alt=""></a>
+    </div>
+    <div class="el-dialog__body">
+      <div class="el-form">
+        <div class="el-form-item">
+          <div class="el-form-label"></div>
+          <p>您还没有添加GPG开通认证，开通商家账号需要开启双重认证, 请点击下方的按钮去开启</p>
+        </div>
+      </div>
+      <div class="el-dialog__footer">
+        <a href="{% url 'update_gpg' %}" class="el-button primary">去开启</a>
+      </div>
+    </div>
+  </div>
+</div>

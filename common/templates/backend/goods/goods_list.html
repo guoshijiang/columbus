@@ -1,0 +1,87 @@
+{% extends 'backend/layout/main.html' %}
+{% load staticfiles clb_tags%}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'backend/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<div class="page-container">
+    {% include 'backend/layout/left.html' %}
+    <div class="page-right-container">
+      {% include 'backend/layout/head.html' %}
+      <div class="page-right-content-container">
+        <div class="page-right-top-content-container">
+          <div class="module-box">
+            <div class="module-box-body">
+              <form class="form-inline searchForm" id="searchForm" action="#">
+               {% include 'backend/select/select_marchant.html'%}
+               {% include 'backend/select/select_goods_type.html'%}
+                <div class="form-group">
+                    <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-search"></i> 查询
+                    </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="module-box">
+            <div class="module-box-body">
+              <table class="table table-hover table-bordered datatable" width="100%">
+                <thead>
+                <tr>
+                    <th>商品标题</th>
+                    <th>商品LOGO</th>
+                    <th>商品类别</th>
+                    <th>商品种类</th>
+                    <th>商品价格</th>
+                    <th>商品总量</th>
+                    <th>商品剩余量</th>
+                    <th>上下架</th>
+                    <th>特殊说明</th>
+                    <th>屏蔽商品</th>
+                    <th>上传时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for gds in gds_list %}
+                    <tr>
+                        <td>{{ gds.title }}</td>
+                        <td>
+                            <img style="max-width: 40px" src="{% url 'enter_website' %}media/{{ gds.logo.image }}">
+                        </td>
+                        <td>{{ gds.goods_type }}</td>
+                        <td>{{ gds.goods_cat }} </td>
+                        <td>{{ gds.price | keep_two_decimal_places }}</td>
+                        <td>{{ gds.total_amount }}</td>
+                        <td>{{ gds.left_amount }}</td>
+                        <td>{{ gds.is_sale }}</td>
+                        <td> {{ gds.mark }}</td>
+                        <td> {{ gds.is_active }}</td>
+                        <td>{{ gds.created_at | hdatetime }}</td>
+                        <td class="td-do">
+                            <a href="{% url 'b_goods_detail' gds.id %}" data-toggle="tooltip" class="btn btn-primary btn-sm" data-original-title="添加">
+                                <i class="fa"></i> 详情
+                            </a>
+                            {% if gds.is_active == True %}
+                                <a href="{% url 'disable_goods' gds.id  %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 屏蔽
+                                </a>
+                            {% else %}
+                                 <a href="{% url 'enable_goods' gds.id  %}" data-toggle="tooltip" class="btn btn-primary btn-sm">
+                                    <i class="fa"></i> 解除
+                                 </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="box-footer">
+              {% include 'backend/select/pagination.html' with items=gds_list %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
