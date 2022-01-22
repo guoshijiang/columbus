@@ -14,9 +14,56 @@ Golang 开发的那版，我们也会开源，因为整个项目都没有交付�
 
 本项目是一个区块链商城平台，区块链相关部分没有包含在这个代码里面，当然，也不会开源哈。
 
-#### 2.1. 用户端截图
+#### 2.1. 用户端部分界面截图
 
-#### 2.2 管理台截图
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u1.jpeg)
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u2.jpeg)
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u3.jpeg)
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u4.jpeg)
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u5.jpeg)
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u6.jpeg)
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/u7.jpeg)
+
+
+
+#### 2.2 管理台部分界面截图
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/b1.jpeg)
+
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/b2.jpeg)
+
+
+.： 
+    ![.： 
+](https://github.com/guoshijiang/columbus/blob/main/imgs/b3.jpeg)
+
+
+
 
 ### 3.项目部署
 
