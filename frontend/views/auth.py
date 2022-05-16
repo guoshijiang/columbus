@@ -1,7 +1,4 @@
 # encoding=utf-8
-import base64
-import hashlib
-import binascii
 import gnupg
 from django.shortcuts import redirect, render
 from clbauth.forms.user_form import (
@@ -21,9 +18,8 @@ from clbauth.help import (
     check_user_login, check_web_enter, get_code
 )
 # from common.rsa.crypt import rsa_encrypt
-# from frontend.wallet_adapter import create_address, submit_withdraw
 from django.http import HttpResponseRedirect
-from wallet.address import create_address
+from wallet.trx.address import create_address
 
 
 gpg = gnupg.GPG('gpg')
