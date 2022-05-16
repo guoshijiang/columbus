@@ -20,9 +20,10 @@ from common.models import Asset
 from clbauth.help import (
     check_user_login, check_web_enter, get_code
 )
-from common.rsa.crypt import rsa_encrypt
-from frontend.wallet_adapter import create_address, submit_withdraw
+# from common.rsa.crypt import rsa_encrypt
+# from frontend.wallet_adapter import create_address, submit_withdraw
 from django.http import HttpResponseRedirect
+from wallet.address import create_address
 
 
 gpg = gnupg.GPG('gpg')
@@ -49,34 +50,17 @@ def register(request):
         register_form = AuthUserRegisterForm(request, request.POST)
         if register_form.is_valid():
             create_auer = register_form.save_register_user()
-            data_list = create_address(create_auer.id)
-            print("data_list", )
-            eth_address = "0x00"
-            usdt_address = "0x00"
-            for data in data_list:
-                if data['asset_name'] == "ETH" and data['chain_name'] == "Ethereum":
-                    eth_address = data['address']
-                elif data['asset_name'] == "USDT" and data['chain_name'] == "Tron":
-                    usdt_address = data['address']
-                else:
-                    continue
-            asset_list = Asset.objects.filter(is_active=True)
-            if asset_list is not None:
-                for asset in asset_list:
-                    address = "0x00"
-                    if asset.name == "ETH":
-                        address = eth_address
-                    if asset.name == "USDT":
-                        address = usdt_address
-                    UserWallet.objects.create(
-                        user=create_auer,
-                        asset=asset,
-                        chain_name=asset.chain_name,
-                        address=address,
-                    )
-                return redirect("before_login")
-            else:
-                return redirect("before_login")
+            asset = Asset.objects.filter(name="USDT", is_active=True).first()
+            trx_addr = create_address()
+            UserWallet.objects.create(
+                user=create_auer,
+                asset=asset,
+                chain_name=asset.chain_name,
+                address=trx_addr.get("address"),
+                pubkey=trx_addr.get("public_key"),
+                privkey=trx_addr.get("privkey")
+            )
+            return redirect("before_login")
         else:
             error = register_form.errors
             return render(request, 'front/user/register.html', {'register_form': register_form, 'error': error})
@@ -146,9 +130,9 @@ def login(request):
             request.session["user_id"] = user.id
             request.session["user_name"] = user.user_name
             request.session["user_pho"] = user.user_pho
-            request.session["eth_balance"] = user_eth_wallet.balance
-            request.session["eth_in_amount"] = user_eth_wallet.in_amount
-            request.session["eth_out_amount"] = user_eth_wallet.out_amount
+            request.session["eth_balance"] = 0
+            request.session["eth_in_amount"] = 0
+            request.session["eth_out_amount"] = 0
             request.session["usdt_balance"] = user_usdt_wallet.balance
             request.session["usdt_in_amount"] = user_usdt_wallet.in_amount
             request.session["usdt_out_amount"] = user_usdt_wallet.out_amount

@@ -18,7 +18,7 @@ from clbauth.help import (
 )
 from common.helpers import dec, d0
 from clbauth.forms.withdraw_form import WithdrawForm
-from common.rsa.crypt import rsa_encrypt
+# from common.rsa.crypt import rsa_encrypt
 
 
 gpg = gnupg.GPG('gpg')
@@ -114,7 +114,7 @@ def wallet_deposit(request):
     nav_active = 'wallet'
     side_bar = "wallet_deposit"
     user_id = int(request.session.get("user_id"))
-    asset = request.GET.get("asset", "eth")
+    asset = request.GET.get("asset", "USDT")
     asset_db = Asset.objects.get(name=asset)
     user_wallet = UserWallet.objects.filter(user__id=user_id, asset=asset_db).first()
     qr = qrcode.QRCode(
@@ -151,7 +151,7 @@ def wallet_withdraw(request):
         user.save()
     user_eth_wallet = UserWallet.objects.filter(
         user__id=user_id,
-        asset=Asset.objects.get(name="eth")
+        asset=Asset.objects.get(name="USDT")
     ).first()
     user_usdt_wallet = UserWallet.objects.filter(
         user__id=user_id,

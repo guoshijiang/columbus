@@ -168,6 +168,20 @@ class UserWallet(BaseModel):
         null=True,
         verbose_name="链名称",
     )
+    pubkey = models.CharField(
+        max_length=512,
+        default="",
+        blank=True,
+        null=True,
+        verbose_name="公钥",
+    )
+    privkey = models.CharField(
+        max_length=512,
+        default="",
+        blank=True,
+        null=True,
+        verbose_name="私钥",
+    )
     address = models.CharField(
         max_length=128,
         default="",
