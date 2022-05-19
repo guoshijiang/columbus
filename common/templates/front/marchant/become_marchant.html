@@ -48,9 +48,6 @@
                 {% if   open_marchant_req_way == "POST" %}
                     {% include 'front/marchant/window/mct_pay.html' %}
                 {% endif %}
-                {% if user.is_open == "No" %}
-                    {% include 'front/marchant/window/open_2fa.html' %}
-                {% else %}
                     <a class="btn" href="{% url 'open_marchant' %}?pay_way=ETH" >支付 {{ mct_config.eth_amount | keep_two_decimal_places}} ETH</a>
                     <a class="btn" href="{% url 'open_marchant' %}?pay_way=USDT" >支付 {{ mct_config.usdt_amount | keep_two_decimal_places}} USDT</a>
                 {% endif %}
